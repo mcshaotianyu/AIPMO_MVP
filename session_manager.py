@@ -157,6 +157,10 @@ class SessionManager:
         """获取特定用户B的待处理会话"""
         return db.get_pending_sessions(user_b_id)
     
+    def get_all_pending_sessions(self) -> List[Dict]:
+        """获取所有待处理会话（用于测试，模拟所有用户）"""
+        return db.get_all_pending_sessions()
+    
     def mark_callback_triggered(self, session_id: str):
         """标记回调已触发"""
         db.mark_callback_triggered(session_id)

@@ -64,48 +64,59 @@ class SearchEmployeeTool:
         Returns:
             str: 检索结果
         """
-        return "id:1234567890, name:雷总"
         try:
-            # 模拟员工数据库
-            mock_employees = {
-                "人力资源": [
-                    {"id": "hr001", "name": "张小华", "department": "人力资源部", "position": "HR专员", "expertise": "招聘、培训"},
-                    {"id": "hr002", "name": "李明", "department": "人力资源部", "position": "HR主管", "expertise": "绩效管理、薪酬"}
-                ],
-                "财务": [
-                    {"id": "fin001", "name": "王会计", "department": "财务部", "position": "会计", "expertise": "报销审核、账务处理"},
-                    {"id": "fin002", "name": "陈出纳", "department": "财务部", "position": "出纳", "expertise": "资金管理、付款"}
-                ],
-                "技术": [
-                    {"id": "tech001", "name": "刘工程师", "department": "技术部", "position": "高级工程师", "expertise": "系统开发、架构设计"},
-                    {"id": "tech002", "name": "赵程序员", "department": "技术部", "position": "程序员", "expertise": "前端开发、UI设计"}
-                ],
-                "项目": [
-                    {"id": "pm001", "name": "孙项目", "department": "项目管理部", "position": "项目经理", "expertise": "项目管理、进度控制"},
-                    {"id": "pm002", "name": "周助理", "department": "项目管理部", "position": "项目助理", "expertise": "项目协调、文档管理"}
-                ]
+            # 从环境变量获取API密钥，如果没有则使用默认值
+            api_key = os.environ.get('EMPLOYEE_SEARCH_API_KEY', 'app-ZjfgBb44mO4yiK9EeYDsPfXq')
+            url = "https://agent.teleai.com.cn/v1/chat-messages"
+            
+            headers = {
+                "Authorization": f"Bearer {api_key}",
+                "Content-Type": "application/json"
             }
             
-            # 关键词匹配员工
-            found_employees = []
-            for keyword, employees in mock_employees.items():
-                if keyword in query:
-                    found_employees.extend(employees)
+            data = {
+                "input_data": {},
+                "query": query,
+                "mode": "streaming",
+                "conversation_id": "",
+                "user": "admin",
+                "files": []
+            }
             
-            # 也可以按姓名搜索
-            for dept_employees in mock_employees.values():
-                for emp in dept_employees:
-                    if emp["name"] in query:
-                        found_employees.append(emp)
+            # 发送请求
+            response = requests.post(url, headers=headers, json=data, timeout=30)
             
-            if found_employees:
-                result = "找到以下相关员工：\n"
-                for emp in found_employees:
-                    result += f"- {emp['name']} (ID: {emp['id']}) - {emp['department']} {emp['position']} - 专长: {emp['expertise']}\n"
-                return result.strip()
+            # 处理流式响应
+            if response.status_code == 200:
+                # 解析SSE格式的流式响应
+                full_answer = ""
+                
+                for line in response.text.split('\n'):
+                    if line.startswith('data: '):
+                        data_content = line[6:]  # 移除'data: '前缀
+                        if data_content.strip():
+                            try:
+                                event_data = json.loads(data_content)
+                                
+                                # 提取回答内容
+                                if 'answer' in event_data:
+                                    full_answer += event_data['answer']
+                            except json.JSONDecodeError:
+                                # 忽略非JSON数据行
+                                pass
+                
+                # 返回完整答案
+                if full_answer.strip():
+                    return full_answer.strip()
+                else:
+                    return "未找到相关员工信息"
             else:
-                return "未找到相关员工"
+                return f"员工检索失败：API请求失败，状态码: {response.status_code}, 响应: {response.text[:200]}"
             
+        except requests.exceptions.Timeout:
+            return "员工检索失败：请求超时"
+        except requests.exceptions.ConnectionError:
+            return "员工检索失败：无法连接到员工检索服务"
         except Exception as e:
             return f"员工检索失败：{str(e)}"
 

@@ -173,10 +173,23 @@ def interactive_mode():
             print("   请先启动子agent服务: cd subagent && python server.py")
         return
     
-    # 输入用户B的ID
-    print("请输入您的员工ID（默认: 1234567890 - 雷总）:")
-    user_b_id = input("> ").strip() or "1234567890"
-    print(f"\n当前用户: 员工ID {user_b_id}")
+    # 输入用户B的ID（支持"*"或"all"来接收所有员工的会话）
+    print("请输入您的员工ID:")
+    print("  - 输入具体员工ID: 只接收该员工的问询")
+    print("  - 输入 '*' 或 'all': 接收所有员工的问询（测试模式）")
+    print("  - 直接回车: 使用默认ID 1234567890")
+    user_b_id_input = input("> ").strip()
+    
+    if not user_b_id_input:
+        user_b_id = "1234567890"
+        print(f"\n当前用户: 员工ID {user_b_id} (默认)")
+    elif user_b_id_input.lower() in ["*", "all"]:
+        user_b_id = "*"
+        print(f"\n当前模式: 测试模式 - 接收所有员工的问询")
+    else:
+        user_b_id = user_b_id_input
+        print(f"\n当前用户: 员工ID {user_b_id}")
+    
     print("\n💡 等待新的问询请求...")
     print("   (收到问询时会自动开始对话)")
     print("   输入 'quit' 退出\n")
@@ -190,12 +203,17 @@ def interactive_mode():
         """自动处理新会话"""
         monitoring["in_conversation"] = True
         
+        # 【关键修复】使用会话中的实际user_b_id，而不是外部的user_b_id变量
+        actual_user_b_id = session.get('user_b_id', user_b_id)
+        
         print("\n")
         print("🔔" + "═" * 68 + "🔔")
         print("                   ✨ 收到新的问询请求 ✨")
         print("═" * 70)
         print(f"📌 来自用户: {session['user_a']}")
         print(f"📌 原始问题: {session['question']}")
+        if user_b_id == "*":
+            print(f"📌 模拟员工: {session.get('user_b_name', '未知')} (ID: {actual_user_b_id})")
         print("═" * 70)
         
         # 显示子agent的第一个问题
@@ -214,8 +232,8 @@ def interactive_mode():
                     monitoring["active"] = False
                     break
                 
-                # 提交回复
-                result = reply_to_session(session_id, user_b_id, user_input)
+                # 【关键修复】使用会话中的实际user_b_id来回复
+                result = reply_to_session(session_id, actual_user_b_id, user_input)
                 
                 if result:
                     if result.get('session_status') == 'completed':

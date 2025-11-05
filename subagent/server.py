@@ -326,7 +326,7 @@ def get_pending_sessions():
     获取用户B的待处理会话列表
     
     请求参数:
-    - user_b_id: 用户B的ID
+    - user_b_id: 用户B的ID（如果为"*"或"all"，则返回所有待处理会话）
     
     返回格式:
     {
@@ -339,7 +339,11 @@ def get_pending_sessions():
         if not user_b_id:
             return jsonify({"status": "error", "error": "缺少user_b_id参数"}), 400
         
-        sessions = session_manager.get_pending_sessions(user_b_id)
+        # 支持"*"或"all"查询所有待处理会话（用于测试）
+        if user_b_id in ["*", "all"]:
+            sessions = session_manager.get_all_pending_sessions()
+        else:
+            sessions = session_manager.get_pending_sessions(user_b_id)
         
         return jsonify({
             "status": "success",
