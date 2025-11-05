@@ -162,12 +162,18 @@ def start_session():
         task = f"帮用户询问：{question}"
         conversation_history = create_conversation_history(task, user_b_name)
         
+        # 【修复】保存system prompt和开场白到数据库
+        for msg in conversation_history:
+            session_manager.add_conversation_turn(session_id, msg["role"], msg["content"])
+        
         # 获取LLM的第一条回复
-        assistant_response = call_llm(client, conversation_history)
+        assistant_response = call_llm(client, conversation_history)  # 其实是问询，向用户B问询相关信息
         
         # 检测是否直接完成（不太可能）
         completed_info = extract_completed_info(assistant_response)
         if completed_info:
+            # 保存assistant回复
+            session_manager.add_conversation_turn(session_id, "assistant", assistant_response)
             session_manager.set_session_result(session_id, completed_info)
             trigger_callback_if_needed(session_id)
             return jsonify({
@@ -177,7 +183,7 @@ def start_session():
                 "result": completed_info
             })
         
-        # 记录对话历史
+        # 记录assistant回复到对话历史
         session_manager.add_conversation_turn(session_id, "assistant", assistant_response)
         session_manager.update_session_status(session_id, "in_progress")
         
@@ -224,7 +230,7 @@ def reply():
         if not all([session_id, user_b_id, message]):
             return jsonify({"status": "error", "error": "缺少必要参数"}), 400
         
-        # 获取会话
+        # 先获取会话用于验证（不加载完整历史）
         session = session_manager.get_session(session_id)
         if not session:
             return jsonify({"status": "error", "error": "会话不存在"}), 404
@@ -237,22 +243,20 @@ def reply():
         if session.status == "completed":
             return jsonify({"status": "error", "error": "会话已完成"}), 400
         
-        # 添加用户回复到历史
+        # 【关键修复1】先保存用户回复到数据库
         session_manager.add_conversation_turn(session_id, "user", message)
         
-        # 重建对话历史
-        client = init_client()
-        task = f"帮用户询问：{session.question}"
-        conversation_history = create_conversation_history(task, session.user_b_name)
-        
-        # 恢复历史对话
-        for turn in session.conversation_history:
+        # 【关键修复2】然后从数据库重新加载完整历史（包含刚保存的user消息）
+        from database.db import db
+        conversation_history = []
+        for turn in db.get_session_messages(session_id):
             conversation_history.append({
                 "role": turn["role"],
                 "content": turn["content"]
             })
         
         # 调用LLM获取下一个问题或结论
+        client = init_client()
         assistant_response = call_llm(client, conversation_history)
         
         # 检测是否完成

@@ -182,6 +182,8 @@ def process_user_query(user_query: str, conversation_history: list = None, user_
             {"role": "system", "content": SYSTEM_PROMPT}
         ]
         print(f"[INFO] 用户 {user_id} 没有历史对话，创建新对话")
+        # 保存system消息到数据库
+        conversation_manager.set_conversation(user_id, messages)
     
     # 添加用户查询
     messages.append({"role": "user", "content": user_query})
