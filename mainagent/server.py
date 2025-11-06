@@ -241,14 +241,14 @@ def unified_message():
     """
     统一消息入口 - 用于企业微信集成
     
-    根据消息类型自动路由：
-    1. 如果消息包含 session_id 和 user_b_id → 路由到subagent（用户B回复）
-    2. 如果消息包含 query → 路由到mainagent（用户A查询）
-    3. 如果是查询会话状态 → 路由到subagent
+    根据消息内容自动路由（不依赖type字段）：
+    1. 如果消息包含 session_id + user_b_id + message → 路由到subagent（用户B回复）
+    2. 如果消息包含 session_id → 路由到subagent（查询会话状态）
+    3. 如果消息包含 user_b_id（无session_id） → 路由到subagent（查询待处理会话）
+    4. 如果消息包含 query → 路由到mainagent（用户A查询）
     
     请求格式:
     {
-        "type": "user_query" | "user_b_reply" | "get_session_status" | "get_pending_sessions",
         "query": "...",  // 用户A查询时使用
         "session_id": "...",  // 用户B回复或查询会话时使用
         "user_b_id": "...",  // 用户B回复或查询会话时使用
@@ -266,24 +266,25 @@ def unified_message():
         if not data:
             return jsonify({"status": "error", "error": "请求体不能为空"}), 400
         
-        message_type = data.get('type')
-        
-        # 自动识别消息类型（如果没有指定type）
-        if not message_type:
-            if data.get('session_id') and data.get('user_b_id'):
-                # 用户B的回复
+        # 自动识别消息类型（根据实际字段判断，不依赖type字段）
+        # 优先级：session_id > user_b_id > query
+        # 1. 如果有session_id，说明是subagent相关的请求
+        if data.get('session_id'):
+            # 如果有user_b_id和message，说明是用户B的回复
+            if data.get('user_b_id') and data.get('message'):
                 message_type = "user_b_reply"
-            elif data.get('query'):
-                # 用户A的查询
-                message_type = "user_query"
-            elif data.get('session_id'):
-                # 查询会话状态
-                message_type = "get_session_status"
-            elif data.get('user_b_id'):
-                # 查询待处理会话
-                message_type = "get_pending_sessions"
+            # 否则是查询会话状态
             else:
-                return jsonify({"status": "error", "error": "无法识别消息类型，请提供type字段或必要参数"}), 400
+                message_type = "get_session_status"
+        # 2. 如果没有session_id但有user_b_id，说明是查询待处理会话
+        elif data.get('user_b_id'):
+            message_type = "get_pending_sessions"
+        # 3. 如果有query，说明是用户A的查询
+        elif data.get('query'):
+            message_type = "user_query"
+        # 4. 无法识别
+        else:
+            return jsonify({"status": "error", "error": "无法识别消息类型，请提供必要的参数字段（query、session_id或user_b_id）"}), 400
         
         # 根据消息类型路由
         if message_type == "user_query":

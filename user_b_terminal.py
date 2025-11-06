@@ -38,11 +38,10 @@ def get_pending_sessions(user_b_id):
     """获取用户B的待处理会话"""
     try:
         if USE_UNIFIED_ENTRY:
-            # 使用统一入口
+            # 使用统一入口（不指定type，由服务端根据user_b_id自动路由）
             response = requests.post(
                 f"{MAINAGENT_URL}/message",
                 json={
-                    "type": "get_pending_sessions",
                     "user_b_id": user_b_id
                 },
                 timeout=5
@@ -72,11 +71,10 @@ def get_session_status(session_id):
     """获取会话详情"""
     try:
         if USE_UNIFIED_ENTRY:
-            # 使用统一入口
+            # 使用统一入口（不指定type，由服务端根据session_id自动路由）
             response = requests.post(
                 f"{MAINAGENT_URL}/message",
                 json={
-                    "type": "get_session_status",
                     "session_id": session_id
                 },
                 timeout=5
@@ -106,11 +104,10 @@ def reply_to_session(session_id, user_b_id, message):
     """回复会话"""
     try:
         if USE_UNIFIED_ENTRY:
-            # 使用统一入口
+            # 使用统一入口（不指定type，由服务端根据session_id+user_b_id+message自动路由）
             response = requests.post(
                 f"{MAINAGENT_URL}/message",
                 json={
-                    "type": "user_b_reply",
                     "session_id": session_id,
                     "user_b_id": user_b_id,
                     "message": message

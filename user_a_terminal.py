@@ -52,7 +52,7 @@ class UserATerminal:
             response = requests.post(
                 f"{MAINAGENT_URL}/message",
                 json={
-                    "type": "user_query",  # 明确指定消息类型
+                    # 不指定type，由服务端根据字段自动路由
                     "query": query,
                     "conversation_history": self.conversation_history,
                     "user_id": self.user_id  # 传递用户ID
