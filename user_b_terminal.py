@@ -266,7 +266,7 @@ def interactive_mode():
                 if monitoring["in_conversation"]:
                     continue
                 
-                sessions = get_pending_sessions(user_b_id)
+                sessions = get_pending_sessions(user_b_id)  # 模拟用户B接受新的session（来自subagent）
                 if sessions:
                     for session in sessions:
                         session_id = session['session_id']

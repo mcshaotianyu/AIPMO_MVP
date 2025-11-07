@@ -115,6 +115,7 @@ class UserATerminal:
                 
                 # 检查新通知
                 for session_id, notification in notifications.items():
+                    # 不在已读消息中
                     if session_id not in self.known_notifications:
                         self.known_notifications.add(session_id)
                         self.display_notification(notification)
@@ -146,7 +147,7 @@ class UserATerminal:
         """运行交互终端"""
         self.print_banner()
         
-        # 启动通知监控线程
+        # 启动通知监控线程，每三秒轮询一次，检查是否有新的推送通知，模拟用户A接收消息
         monitor_thread = threading.Thread(target=self.notification_monitor)
         monitor_thread.daemon = True
         monitor_thread.start()
