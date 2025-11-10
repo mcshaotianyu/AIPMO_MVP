@@ -25,24 +25,58 @@ class SearchDocTool:
             str: 检索结果
         """
         try:
-            # 这里可以接入真实的检索系统，如Elasticsearch、向量数据库等
-            # 目前返回模拟结果
-            mock_docs = {
-                "二次报销": "二次报销是指员工在首次报销被拒绝或需要补充材料后，重新提交报销申请的流程。通常需要提供完整的发票、申请表和相关证明材料。审批流程：1.重新填写报销单 2.补充缺失材料 3.部门主管审批 4.财务审核 5.出纳付款。",
-                "项目进度": "项目进度管理包括计划制定、执行监控、风险评估等环节。需要定期更新进度报告，确保项目按时完成。关键节点：需求分析->设计->开发->测试->上线->维护。",
-                "人力资源": "人力资源部门负责员工招聘、培训、绩效管理、薪酬福利等工作。是企业人才管理的核心部门。联系方式：HR@company.com，电话：400-123-4567。",
-                "财务流程": "财务流程包括预算编制、费用审批、报销管理、财务分析等环节。需要严格按照公司制度执行。财务部门工作时间：周一至周五 9:00-18:00。",
-                "请假": "请假流程：1.填写请假申请单 2.直属主管审批 3.人力资源部备案 4.超过3天需总监审批。病假需提供医院证明，年假需提前一周申请。",
-                "加班": "加班申请流程：1.填写加班申请单 2.部门主管审批 3.人力资源部确认 4.财务部计算加班费。加班费标准：工作日1.5倍，周末2倍，法定节假日3倍。"
+            # 从环境变量获取API密钥，如果没有则使用默认值
+            api_key = os.environ.get('DOC_SEARCH_API_KEY', 'app-4xeuqrykny8i5bw9ELtlyzg4')
+            url = "https://agent.teleai.com.cn/v1/chat-messages"
+            
+            headers = {
+                "Authorization": f"Bearer {api_key}",
+                "Content-Type": "application/json"
             }
             
-            # 关键词匹配
-            for keyword, info in mock_docs.items():
-                if keyword in query:
-                    return info
+            data = {
+                "input_data": {},
+                "query": query,
+                "mode": "streaming",
+                "conversation_id": "",
+                "user": "admin",
+                "files": []
+            }
             
-            return "未找到相关文档信息"
+            # 发送请求
+            response = requests.post(url, headers=headers, json=data, timeout=30)
             
+            # 处理流式响应
+            if response.status_code == 200:
+                # 解析SSE格式的流式响应
+                full_answer = ""
+                
+                for line in response.text.split('\n'):
+                    if line.startswith('data: '):
+                        data_content = line[6:]  # 移除'data: '前缀
+                        if data_content.strip():
+                            try:
+                                event_data = json.loads(data_content)
+                                
+                                # 提取回答内容
+                                if 'answer' in event_data:
+                                    full_answer += event_data['answer']
+                            except json.JSONDecodeError:
+                                # 忽略非JSON数据行
+                                pass
+                
+                # 返回完整答案
+                if full_answer.strip():
+                    return full_answer.strip()
+                else:
+                    return "未找到相关文档信息"
+            else:
+                return f"文档检索失败：API请求失败，状态码: {response.status_code}, 响应: {response.text[:200]}"
+            
+        except requests.exceptions.Timeout:
+            return "文档检索失败：请求超时"
+        except requests.exceptions.ConnectionError:
+            return "文档检索失败：无法连接到文档检索服务"
         except Exception as e:
             return f"文档检索失败：{str(e)}"
 
