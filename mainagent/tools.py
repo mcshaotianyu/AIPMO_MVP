@@ -217,62 +217,6 @@ class ContactEmployeeTool:
             return f"联系员工失败：{str(e)}"
 
 
-def get_function_definitions() -> List[Dict]:
-    """获取Function Call的函数定义（旧格式，兼容性）"""
-    return [
-        {
-            "name": "search_doc",
-            "description": "根据查询内容检索相关文档信息",
-            "parameters": {
-                "type": "object",
-                "properties": {
-                    "query": {
-                        "type": "string",
-                        "description": "要检索的查询内容"
-                    }
-                },
-                "required": ["query"]
-            }
-        },
-        {
-            "name": "search_employee",
-            "description": "当知识库文档中不存在用户问题的相关答案时，调用此工具从员工台账中找到可能能解决用户问题的员工",
-            "parameters": {
-                "type": "object",
-                "properties": {
-                    "query": {
-                        "type": "string",
-                        "description": "要检索的查询内容，可以是相关职责描述、部门、职位或员工姓名等"
-                    }
-                },
-                "required": ["query"]
-            }
-        },
-        {
-            "name": "contact_employee",
-            "description": "当用户同意联系员工时，调用此工具联系员工问询相关问题",
-            "parameters": {
-                "type": "object",
-                "properties": {
-                    "employee_id": {
-                        "type": "string",
-                        "description": "员工ID"
-                    },
-                    "employee_name": {
-                        "type": "string",
-                        "description": "员工姓名"
-                    },
-                    "question": {
-                        "type": "string",
-                        "description": "要问询的问题"
-                    }
-                },
-                "required": ["employee_id", "employee_name", "question"]
-            }
-        }
-    ]
-
-
 def get_tools_definitions() -> List[Dict]:
     """获取新格式的tools定义"""
     return [

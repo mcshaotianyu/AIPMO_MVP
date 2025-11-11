@@ -5,7 +5,7 @@ import json
 import re
 from openai import OpenAI
 from prompts import SYSTEM_PROMPT
-from tools import ToolManager, get_function_definitions, get_tools_definitions
+from tools import ToolManager, get_tools_definitions
 from conversation_manager import conversation_manager
 
 

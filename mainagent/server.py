@@ -145,11 +145,10 @@ def get_functions():
     }
     """
     try:
-        from tools import get_function_definitions, get_tools_definitions
-        functions = get_function_definitions()  # 旧格式
-        tools = get_tools_definitions()  # 新格式
+        from tools import get_tools_definitions
+        tools = get_tools_definitions()
         
-        return jsonify({"functions": functions, "tools": tools})
+        return jsonify({"tools": tools})
         
     except Exception as e:
         return jsonify({"status": "error", "error": str(e)}), 500
