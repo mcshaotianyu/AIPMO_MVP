@@ -17,7 +17,7 @@ echo "🧹 清理旧服务..."
 sleep 1
 
 # 清理Python缓存
-rm -rf __pycache__ mainagent/__pycache__ subagent/__pycache__ 2>/dev/null
+rm -rf __pycache__ mainagent/__pycache__ subagent/__pycache__ codeagent/__pycache__ 2>/dev/null
 
 # 启动主Agent
 echo "🚀 启动主Agent服务 (端口5001)..."
@@ -35,10 +35,19 @@ SUB_PID=$!
 cd ..
 sleep 2
 
+# 启动代码Agent
+echo "🚀 启动代码Agent服务 (端口5004)..."
+cd codeagent
+python server.py > ../logs/codeagent.log 2>&1 &
+CODE_PID=$!
+cd ..
+sleep 2
+
 # 检查服务
 echo "🔍 检查服务状态..."
 MAIN_HEALTH=$(curl -s http://127.0.0.1:5001/health 2>/dev/null)
 SUB_HEALTH=$(curl -s http://127.0.0.1:5000/health 2>/dev/null)
+CODE_HEALTH=$(curl -s http://127.0.0.1:5004/health 2>/dev/null)
 
 if [[ "$MAIN_HEALTH" != *"ok"* ]]; then
     echo "❌ 主Agent启动失败！"
@@ -52,8 +61,15 @@ if [[ "$SUB_HEALTH" != *"ok"* ]]; then
     exit 1
 fi
 
+if [[ "$CODE_HEALTH" != *"ok"* ]]; then
+    echo "❌ 代码Agent启动失败！"
+    echo "   查看日志: tail -f logs/codeagent.log"
+    exit 1
+fi
+
 echo "✅ 主Agent运行中 (PID: $MAIN_PID)"
 echo "✅ 子Agent运行中 (PID: $SUB_PID)"
+echo "✅ 代码Agent运行中 (PID: $CODE_PID)"
 echo ""
 echo "════════════════════════════════════════════════════════════"
 echo "                  服务已就绪，开始测试"
@@ -89,5 +105,6 @@ echo "  - 停止服务: ./stop_services.sh"
 echo "  - 查看状态: ./check_status.sh"
 echo "  - 主Agent日志: tail -f logs/mainagent.log"
 echo "  - 子Agent日志: tail -f logs/subagent.log"
+echo "  - 代码Agent日志: tail -f logs/codeagent.log"
 echo ""
 

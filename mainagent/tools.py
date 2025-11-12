@@ -164,57 +164,152 @@ class ContactEmployeeTool:
         self.subagent_url = os.environ.get('SUBAGENT_URL', 'http://localhost:5000')
         self.mainagent_url = os.environ.get('MAINAGENT_URL', 'http://localhost:5001')
     
-    def execute(self, employee_id: str, employee_name: str, question: str, user_a: str = "user_a") -> str:
+    def execute(self, employee_info: List[Dict[str, str]], user_a: str = "user_a") -> str:
         """
         联系员工
         
         Args:
-            employee_id: 员工ID
-            employee_name: 员工姓名
-            question: 问询问题
+            employee_info: 员工信息列表，每个元素是一个字典，包含：
+                - id: 员工ID
+                - name: 员工姓名
+                - question: 问询问题
             user_a: 用户A的标识
             
         Returns:
-            str: 问询结果
+            str: 问询结果，包含所有联系员工的会话信息
+        """
+        if not employee_info or not isinstance(employee_info, list):
+            return "错误：employee_info 必须是一个非空列表"
+        
+        results = []
+        session_ids = []
+        
+        for idx, emp in enumerate(employee_info):
+            if not isinstance(emp, dict):
+                results.append(f"错误：第 {idx+1} 个员工信息格式不正确，必须是字典")
+                continue
+            
+            employee_id = emp.get("id") or emp.get("employee_id")
+            employee_name = emp.get("name") or emp.get("employee_name")
+            question = emp.get("question")
+            
+            if not all([employee_id, employee_name, question]):
+                results.append(f"错误：第 {idx+1} 个员工信息不完整，需要 id、name、question")
+                continue
+            
+            try:
+                # 生成唯一会话ID
+                session_id = str(uuid.uuid4())
+                session_ids.append(session_id)
+                
+                # 构造回调URL
+                callback_url = f"{self.mainagent_url}/session_callback"
+                
+                # 调用子agent的start_session接口
+                response = requests.post(
+                    f"{self.subagent_url}/start_session",
+                    json={
+                        "session_id": session_id,
+                        "user_a": user_a,
+                        "user_b_id": employee_id,
+                        "user_b_name": employee_name,
+                        "question": question,
+                        "callback_url": callback_url
+                    },
+                    timeout=30
+                )
+                
+                if response.status_code == 200:
+                    result = response.json()
+                    if result.get("status") == "success":
+                        # 会话创建成功
+                        first_question = result.get("first_question", "")
+                        results.append(f"已成功联系{employee_name}（ID: {employee_id}），子agent已向其提问：{first_question}\n会话ID: {session_id}")
+                    else:
+                        results.append(f"联系{employee_name}失败：{result.get('error', '未知错误')}")
+                else:
+                    results.append(f"联系{employee_name}失败：子agent服务返回错误码 {response.status_code}")
+                
+            except requests.exceptions.Timeout:
+                results.append(f"联系{employee_name}失败：子agent服务超时")
+            except requests.exceptions.ConnectionError:
+                results.append(f"联系{employee_name}失败：无法连接到子agent服务（{self.subagent_url}）")
+            except Exception as e:
+                results.append(f"联系{employee_name}失败：{str(e)}")
+        
+        # 组合所有结果
+        result_text = "\n\n".join(results)
+        if session_ids:
+            result_text += f"\n\n所有会话ID: {', '.join(session_ids)}\n我会在收到完整回复后通知您。"
+        
+        return result_text
+
+
+class SelectEmployeeTool:
+    """筛选员工工具"""
+    
+    def __init__(self):
+        self.name = "select_employee"
+        self.description = "根据用户输入和相关文件筛选符合条件的员工"
+        self.codeagent_url = os.environ.get('CODEAGENT_URL', 'http://localhost:5004')
+    
+    def execute(self, query: str, file_path: str = "/Users/shaotianyu/Desktop/teleai/aipmo/tianyu/myserver/codeagent/data/user_info.xlsx", max_iterations: int = 10) -> str:
+        """
+        执行员工筛选
+        
+        Args:
+            query: 筛选条件描述（例如："筛选出分数在80分以上的员工"）
+            file_path: 文件路径（可选，默认为 ./data/user_info.xlsx）
+            max_iterations: 最大迭代次数（可选，默认10）
+            
+        Returns:
+            str: 筛选结果
         """
         try:
-            # 生成唯一会话ID
-            session_id = str(uuid.uuid4())
+            # 如果没有提供文件路径或为空字符串，使用默认值
+            # if not file_path or file_path.strip() == "":
+            #     file_path = "/Users/shaotianyu/Desktop/teleai/aipmo/tianyu/myserver/codeagent/data/user_info.xlsx"
+            file_path = "/Users/shaotianyu/Desktop/teleai/aipmo/tianyu/myserver/codeagent/data/user_info.xlsx"
+            # 构造请求数据
+            request_data = {
+                "query": query,
+                "file_path": file_path,
+                "max_iterations": max_iterations
+            }
             
-            # 构造回调URL
-            callback_url = f"{self.mainagent_url}/session_callback"
-            
-            # 调用子agent的start_session接口
+            # 调用codeagent的query接口
             response = requests.post(
-                f"{self.subagent_url}/start_session",
-                json={
-                    "session_id": session_id,
-                    "user_a": user_a,
-                    "user_b_id": employee_id,
-                    "user_b_name": employee_name,
-                    "question": question,
-                    "callback_url": callback_url
-                },
-                timeout=30
+                f"{self.codeagent_url}/query",
+                json=request_data,
+                timeout=60
             )
             
             if response.status_code == 200:
                 result = response.json()
-                if result.get("status") == "success":
-                    # 会话创建成功
-                    first_question = result.get("first_question", "")
-                    return f"已成功联系{employee_name}（ID: {employee_id}），子agent已向其提问：{first_question}\n\n会话ID: {session_id}\n我会在收到完整回复后通知您。"
+                status = result.get("status")
+                
+                if status == "completed":
+                    final_answer = result.get("final_answer", "")
+                    iterations = result.get("iterations", 0)
+                    return final_answer
+                elif status == "max_iterations_reached":
+                    final_answer = result.get("final_answer", "")
+                    iterations = result.get("iterations", 0)
+                    return f"筛选完成（达到最大迭代次数{iterations}次）：\n{final_answer}"
+                elif status == "error":
+                    error_msg = result.get("error", "未知错误")
+                    return f"筛选员工失败：{error_msg}"
                 else:
-                    return f"联系员工失败：{result.get('error', '未知错误')}"
+                    return f"筛选员工返回未知状态：{status}"
             else:
-                return f"联系员工失败：子agent服务返回错误码 {response.status_code}"
+                return f"筛选员工服务返回错误码 {response.status_code}，响应: {response.text[:200]}"
             
         except requests.exceptions.Timeout:
-            return f"联系员工失败：子agent服务超时"
+            return f"筛选员工服务超时"
         except requests.exceptions.ConnectionError:
-            return f"联系员工失败：无法连接到子agent服务（{self.subagent_url}）"
+            return f"筛选员工服务连接失败：无法连接到代码Agent服务（{self.codeagent_url}）"
         except Exception as e:
-            return f"联系员工失败：{str(e)}"
+            return f"筛选员工执行异常：{str(e)}"
 
 
 def get_tools_definitions() -> List[Dict]:
@@ -258,24 +353,59 @@ def get_tools_definitions() -> List[Dict]:
             "type": "function",
             "function": {
                 "name": "contact_employee",
-                "description": "当用户同意联系员工时，调用此工具联系员工问询相关问题",
+                "description": "当用户同意联系员工时，调用此工具联系员工问询相关问题。可以一次联系多个员工",
                 "parameters": {
                     "type": "object",
                     "properties": {
-                        "employee_id": {
-                            "type": "string",
-                            "description": "员工ID"
-                        },
-                        "employee_name": {
-                            "type": "string",
-                            "description": "员工姓名"
-                        },
-                        "question": {
-                            "type": "string",
-                            "description": "要问询的问题"
+                        "employee_info": {
+                            "type": "array",
+                            "description": "员工信息列表，每个元素包含一个员工的联系信息",
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                    "id": {
+                                        "type": "string",
+                                        "description": "员工ID"
+                                    },
+                                    "name": {
+                                        "type": "string",
+                                        "description": "员工姓名"
+                                    },
+                                    "question": {
+                                        "type": "string",
+                                        "description": "要问询的问题或要直接发送给该员工的消息"
+                                    }
+                                },
+                                "required": ["id", "name", "question"]
+                            }
                         }
                     },
-                    "required": ["employee_id", "employee_name", "question"]
+                    "required": ["employee_info"]
+                }
+            }
+        },
+        {
+            "type": "function",
+            "function": {
+                "name": "select_employee",
+                "description": "根据用户输入和相关文件筛选符合条件的员工。当用户需要根据文件内容（如Excel文件）筛选员工时，使用此工具。例如：筛选出分数在80分以上的员工、筛选出不及格的员工等",
+                "parameters": {
+                    "type": "object",
+                    "properties": {
+                        "query": {
+                            "type": "string",
+                            "description": "筛选条件描述，例如：'筛选出分数在80分以上的员工'、'筛选出不及格的员工'、'筛选出得分在85-90分之间的员工'等"
+                        },
+                        "file_path": {
+                            "type": "string",
+                            "description": "要处理的文件路径（可选，默认为 ./data/user_info.xlsx）"
+                        },
+                        "max_iterations": {
+                            "type": "integer",
+                            "description": "最大迭代次数（可选，默认10）"
+                        }
+                    },
+                    "required": ["query"]
                 }
             }
         }
@@ -290,7 +420,8 @@ class ToolManager:
         self.tools = {
             "search_doc": SearchDocTool(),
             "search_employee": SearchEmployeeTool(),
-            "contact_employee": ContactEmployeeTool()
+            "contact_employee": ContactEmployeeTool(),
+            "select_employee": SelectEmployeeTool()
         }
     
     def execute_tool(self, tool_name: str, tool_input: Dict[str, Any]) -> str:
@@ -316,12 +447,24 @@ class ToolManager:
                     return f"错误：{tool_name} 需要 query 参数"
                 return tool.execute(query)
             elif tool_name == "contact_employee":
-                employee_id = tool_input.get("employee_id", "")
-                employee_name = tool_input.get("employee_name", "")
-                question = tool_input.get("question", "")
-                if not all([employee_id, employee_name, question]):
-                    return f"错误：contact_employee 需要 employee_id, employee_name, question 参数"
-                return tool.execute(employee_id, employee_name, question, user_a=self.user_id)
+                employee_info = tool_input.get("employee_info")
+                if not employee_info:
+                    return f"错误：contact_employee 需要 employee_info 参数（员工信息列表）"
+                if not isinstance(employee_info, list):
+                    return f"错误：employee_info 必须是一个列表"
+                if len(employee_info) == 0:
+                    return f"错误：employee_info 列表不能为空"
+                return tool.execute(employee_info, user_a=self.user_id)
+            elif tool_name == "select_employee":
+                query = tool_input.get("query", "")
+                if not query:
+                    return f"错误：select_employee 需要 query 参数"
+                # 如果没有提供file_path或为空，使用默认值
+                file_path = tool_input.get("file_path")
+                if not file_path or file_path.strip() == "":
+                    file_path = "./data/user_info.xlsx"
+                max_iterations = tool_input.get("max_iterations", 10)
+                return tool.execute(query, file_path, max_iterations)
             else:
                 return f"错误：工具 {tool_name} 执行逻辑未实现"
                 

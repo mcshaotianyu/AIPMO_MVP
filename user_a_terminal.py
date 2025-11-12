@@ -57,7 +57,7 @@ class UserATerminal:
                     "conversation_history": self.conversation_history,
                     "user_id": self.user_id  # 传递用户ID
                 },
-                timeout=60
+                timeout=600
             )
             
             if response.status_code == 200:
