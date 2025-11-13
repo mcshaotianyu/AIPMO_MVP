@@ -256,7 +256,7 @@ def trigger_callback_if_needed(session_id: str):
     # 在后台线程中触发回调
     def do_callback():
         try:
-            print(f"[INFO] 触发回调: {session.callback_url}")
+            print(f"[INFO] 触发回调: {session.callback_url}")  # /session_callback
             response = requests.post(
                 session.callback_url,
                 json={
