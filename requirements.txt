@@ -1,0 +1,15 @@
+# Multi-Agent 系统统一依赖包
+# 安装方法: pip install -r requirements.txt
+
+# 核心依赖（所有Agent都需要）
+openai>=1.0.0
+flask>=2.0.0
+requests>=2.28.0
+
+# 数据库依赖（MainAgent和SubAgent需要）
+psycopg2-binary>=2.9.0
+
+# 数据处理依赖（CodeAgent需要）
+pandas>=2.0.0
+openpyxl>=3.1.0
+

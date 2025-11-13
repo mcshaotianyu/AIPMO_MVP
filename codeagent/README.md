@@ -8,6 +8,15 @@
 2. **生成Python代码**：基于列信息和用户查询生成数据处理代码
 3. **执行代码**：安全执行生成的Python代码并返回结果
 
+## 在系统中的角色
+
+CodeAgent 被 MainAgent 的 `SelectEmployeeTool` 内部调用，用于根据用户查询条件筛选符合条件的员工。
+
+**调用流程：**
+```
+用户A → MainAgent → SelectEmployeeTool → CodeAgent/query
+```
+
 ## 工具说明
 
 ### 1. read_xlsx
@@ -32,7 +41,7 @@ pip install -r requirements.txt
 python server.py
 ```
 
-服务默认运行在端口 5002。
+服务默认运行在端口 **5004**。
 
 ### API接口
 
@@ -41,19 +50,31 @@ python server.py
 GET /health
 ```
 
-#### 2. 单次查询
+#### 2. 单次查询（被MainAgent调用）
 ```bash
 POST /query
 Content-Type: application/json
 
 {
-    "query": "查询所有年龄大于30的员工姓名和部门",
+    "query": "筛选出分数在80分以上的员工",
     "file_path": "/path/to/data.xlsx",
     "max_iterations": 10
 }
 ```
 
-#### 3. 多轮对话
+**返回格式：**
+```json
+{
+    "status": "completed" | "max_iterations_reached" | "error",
+    "final_answer": "筛选结果",
+    "iterations": 执行迭代次数,
+    "execution_log": ["执行日志..."],
+    "function_called": ["调用的工具列表"],
+    "error": "错误信息"
+}
+```
+
+#### 3. 多轮对话（测试用）
 ```bash
 POST /chat
 Content-Type: application/json
@@ -82,6 +103,11 @@ Content-Type: application/json
 
 ## 环境变量
 
-- `DEEPSEEK_API_KEY`：DeepSeek API密钥（默认：sk-1e6a5099e785466789ea6243ef517aac）
-- `CODEAGENT_PORT`：服务端口（默认：5002）
+- `DEEPSEEK_API_KEY`：DeepSeek API密钥
+- `CODEAGENT_PORT`：服务端口（默认：5004）
 
+## 集成说明
+
+CodeAgent 作为系统的一个组件，通常不需要直接调用。它会被 MainAgent 在需要筛选员工时自动调用。
+
+如果需要独立测试 CodeAgent，可以使用 `test_terminal.py` 脚本。

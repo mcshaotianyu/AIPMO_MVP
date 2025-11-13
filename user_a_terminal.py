@@ -52,10 +52,9 @@ class UserATerminal:
             response = requests.post(
                 f"{MAINAGENT_URL}/message",
                 json={
-                    # 不指定type，由服务端根据字段自动路由
-                    "query": query,
-                    "conversation_history": self.conversation_history,
-                    "user_id": self.user_id  # 传递用户ID
+                    # 统一接口：只传递user_id和query/message，服务端自动路由和获取对话历史
+                    "user_id": self.user_id,
+                    "query": query  # 也支持message字段
                 },
                 timeout=600
             )
@@ -63,7 +62,7 @@ class UserATerminal:
             if response.status_code == 200:
                 result = response.json()
                 
-                # 更新对话历史
+                # 更新对话历史（从服务端返回的结果中获取）
                 self.conversation_history = result.get("conversation_history")
                 
                 return result

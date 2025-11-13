@@ -336,7 +336,7 @@ def get_tools_definitions() -> List[Dict]:
             "type": "function",
             "function": {
                 "name": "search_employee",
-                "description": "根据查询内容从员工台账中检索相关员工信息",
+                "description": "当search_doc工具无法检索到相关信息或检索到的结果不足以解决用户问题时，根据query内容从员工台账中检索相关员工",
                 "parameters": {
                     "type": "object",
                     "properties": {
