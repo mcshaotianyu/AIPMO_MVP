@@ -4,7 +4,7 @@ import os
 import sys
 import requests
 from flask import Flask, request, jsonify
-from core import execute_function_call_agent, process_user_query
+from core import process_user_query
 from conversation_manager import conversation_manager
 
 # 添加当前目录到路径以导入session_manager
@@ -25,91 +25,6 @@ SUBAGENT_URL = os.environ.get('SUBAGENT_URL', 'http://localhost:5000')
 def health():
     """健康检查"""
     return jsonify({"status": "ok"})
-
-
-@app.route('/query', methods=['POST'])
-def query():
-    """
-    处理用户查询接口（单次查询）
-    
-    请求格式:
-    {
-        "query": "用户查询内容",
-        "max_iterations": 10  // 可选，最大迭代次数，默认10
-    }
-    
-    返回格式:
-    {
-        "status": "completed" | "max_iterations_reached" | "error",
-        "final_answer": "最终答案",
-        "iterations": 执行迭代次数,
-        "execution_log": ["执行日志..."],
-        "error": "错误信息"  // 仅在出错时返回
-    }
-    """
-    try:
-        data = request.json
-        if not data:
-            return jsonify({"status": "error", "error": "请求体不能为空"}), 400
-        
-        query = data.get('query')
-        if not query:
-            return jsonify({"status": "error", "error": "query 参数必填"}), 400
-        
-        max_iterations = data.get('max_iterations', 10)
-        
-        # 执行Function Call Agent
-        result = execute_function_call_agent(query, max_iterations)
-        
-        return jsonify(result)
-        
-    except Exception as e:
-        return jsonify({"status": "error", "error": str(e)}), 500
-
-
-@app.route('/chat', methods=['POST'])
-def chat():
-    """
-    多轮对话接口（向后兼容，内部转发到/message统一入口）
-    
-    请求格式:
-    {
-        "query": "用户查询内容",
-        "conversation_history": [...]  // 可选，对话历史
-        "user_id": "用户标识"  // 可选，用户ID
-    }
-    
-    返回格式:
-    {
-        "status": "completed" | "max_iterations_reached" | "error",
-        "answer": "回答内容",
-        "function_called": ["调用的函数名列表"] | null,
-        "function_result": "最后一个函数执行结果" | null,
-        "iterations": "ReAct迭代次数",
-        "conversation_history": [...],
-        "error": "错误信息"  // 仅在出错时返回
-    }
-    """
-    try:
-        data = request.json
-        if not data:
-            return jsonify({"status": "error", "error": "请求体不能为空"}), 400
-        
-        query = data.get('query')
-        if not query:
-            return jsonify({"status": "error", "error": "query 参数必填"}), 400
-        
-        conversation_history = data.get('conversation_history')
-        user_id = data.get('user_id', 'user_a')
-        
-        # 【向后兼容】内部转发到统一入口/message的处理逻辑
-        # 保持/chat接口不变，但内部使用统一处理
-        result = process_user_query(query, conversation_history, user_id)
-        
-        return jsonify(result)
-        
-    except Exception as e:
-        return jsonify({"status": "error", "error": str(e)}), 500
 
 
 @app.route('/tools', methods=['GET'])
@@ -255,7 +170,6 @@ def unified_message():
         "query": "...",  // 用户A查询时使用（向后兼容）
         "message": "...",  // 用户B回复内容（向后兼容，也支持作为消息内容）
         "session_id": "...",  // 明确指定会话ID（向后兼容）
-        "user_b_id": "...",  // 用户B标识（向后兼容）
         "conversation_history": [...],  // 用户A查询时可选
         ...
     }
@@ -335,6 +249,7 @@ def unified_message():
             if len(pending_sessions) > 0:
                 # 用户B：有未完成的会话 → 路由到subagent
                 # 判断条件：如果有多个pending会话，取最先create的那一条（最旧的）
+                # TODO:如果有多个session，应该基于query用模型判断最相关的session
                 if len(pending_sessions) > 1:
                     # 多个会话时，取最先create的（最旧的，即列表最后一个）
                     # 因为查询结果按created_at DESC排序，所以最后一个是最旧的

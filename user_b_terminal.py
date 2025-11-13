@@ -37,22 +37,13 @@ def print_banner():
 def get_pending_sessions(user_b_id):
     """获取用户B的待处理会话"""
     try:
-        if USE_UNIFIED_ENTRY:
-            # 使用统一入口（不指定type，由服务端根据user_b_id自动路由）
-            response = requests.post(
-                f"{MAINAGENT_URL}/message",
-                json={
-                    "user_b_id": user_b_id
-                },
-                timeout=5
-            )
-        else:
-            # 直接连接subagent（向后兼容）
-            response = requests.get(
-                f"{SUBAGENT_URL}/get_pending_sessions",
-                params={"user_b_id": user_b_id},
-                timeout=5
-            )
+        response = requests.post(
+            f"{MAINAGENT_URL}/message",
+            json={
+                "user_b_id": user_b_id
+            },
+            timeout=5
+        )
         
         result = response.json()
         
@@ -170,22 +161,8 @@ def interactive_mode():
             print("   请先启动子agent服务: cd subagent && python server.py")
         return
     
-    # 输入用户B的ID（支持"*"或"all"来接收所有员工的会话）
-    print("请输入您的员工ID:")
-    print("  - 输入具体员工ID: 只接收该员工的问询")
-    print("  - 输入 '*' 或 'all': 接收所有员工的问询（测试模式）")
-    print("  - 直接回车: 使用默认ID 1234567890")
-    user_b_id_input = input("> ").strip()
-    
-    if not user_b_id_input:
-        user_b_id = "1234567890"
-        print(f"\n当前用户: 员工ID {user_b_id} (默认)")
-    elif user_b_id_input.lower() in ["*", "all"]:
-        user_b_id = "*"
-        print(f"\n当前模式: 测试模式 - 接收所有员工的问询")
-    else:
-        user_b_id = user_b_id_input
-        print(f"\n当前用户: 员工ID {user_b_id}")
+    user_b_id = "*"
+    print(f"\n当前模式: 接收所有员工的问询，模拟User B")
     
     print("\n💡 等待新的问询请求...")
     print("   (收到问询时会自动开始对话)")
@@ -295,33 +272,9 @@ def interactive_mode():
         monitoring["active"] = False
 
 
-def quick_reply_mode():
-    """快速回复模式（通过命令行参数）"""
-    if len(sys.argv) < 4:
-        print("用法: python user_b_terminal.py quick <session_id> <user_b_id> <message>")
-        return
-    
-    session_id = sys.argv[2]
-    user_b_id = sys.argv[3]
-    message = " ".join(sys.argv[4:])
-    
-    print(f"\n回复会话 {session_id}...")
-    result = reply_to_session(session_id, user_b_id, message)
-    
-    if result:
-        if result.get('session_status') == 'completed':
-            print("\n✓ 会话已完成！")
-            print(f"\n结果: {result['result']}")
-        elif result.get('next_question'):
-            print(f"\n下一个问题: {result['next_question']}")
-
-
 def main():
     """主函数"""
-    if len(sys.argv) > 1 and sys.argv[1] == "quick":
-        quick_reply_mode()
-    else:
-        interactive_mode()
+    interactive_mode()
 
 
 if __name__ == "__main__":
