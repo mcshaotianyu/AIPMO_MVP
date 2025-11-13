@@ -9,6 +9,8 @@ from conversation_manager import conversation_manager
 
 # 添加当前目录到路径以导入session_manager
 sys.path.append(os.path.dirname(os.path.abspath(__file__)))
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+from session_manager import session_manager
 
 app = Flask(__name__)
 
@@ -240,20 +242,21 @@ def unified_message():
     """
     统一消息入口 - 用于企业微信集成
     
-    根据消息内容自动路由（不依赖type字段）：
-    1. 如果消息包含 session_id + user_b_id + message → 路由到subagent（用户B回复）
-    2. 如果消息包含 session_id → 路由到subagent（查询会话状态）
-    3. 如果消息包含 user_b_id（无session_id） → 路由到subagent（查询待处理会话）
-    4. 如果消息包含 query → 路由到mainagent（用户A查询）
+    新的路由逻辑（基于user_id自动判断）：
+    1. 如果提供了session_id，使用明确路由（向后兼容）
+    2. 如果提供了user_id，查询该用户是否在sessions表中作为user_b_id存在且有未完成会话
+       - 如果有未完成会话 → 路由到subagent（用户B回复）
+       - 如果没有 → 路由到mainagent（用户A查询）
+    3. 如果没有user_id，使用原有字段组合方式（向后兼容）
     
     请求格式:
     {
-        "query": "...",  // 用户A查询时使用
-        "session_id": "...",  // 用户B回复或查询会话时使用
-        "user_b_id": "...",  // 用户B回复或查询会话时使用
-        "message": "...",  // 用户B回复内容
+        "user_id": "...",  // 发送消息的用户ID（新方式，推荐）
+        "query": "...",  // 用户A查询时使用（向后兼容）
+        "message": "...",  // 用户B回复内容（向后兼容，也支持作为消息内容）
+        "session_id": "...",  // 明确指定会话ID（向后兼容）
+        "user_b_id": "...",  // 用户B标识（向后兼容）
         "conversation_history": [...],  // 用户A查询时可选
-        "user_id": "...",  // 用户A标识，可选
         ...
     }
     
@@ -265,97 +268,116 @@ def unified_message():
         if not data:
             return jsonify({"status": "error", "error": "请求体不能为空"}), 400
         
-        # 自动识别消息类型（根据实际字段判断，不依赖type字段）
-        # 优先级：session_id > user_b_id > query
-        # 1. 如果有session_id，说明是subagent相关的请求
-        if data.get('session_id'):
-            # 如果有user_b_id和message，说明是用户B的回复
-            if data.get('user_b_id') and data.get('message'):
-                message_type = "user_b_reply"
-            # 否则是查询会话状态
-            else:
-                message_type = "get_session_status"
-        # 2. 如果没有session_id但有user_b_id，说明是查询待处理会话
-        elif data.get('user_b_id'):
-            message_type = "get_pending_sessions"
-        # 3. 如果有query，说明是用户A的查询
-        elif data.get('query'):
-            message_type = "user_query"
-        # 4. 无法识别
-        else:
-            return jsonify({"status": "error", "error": "无法识别消息类型，请提供必要的参数字段（query、session_id或user_b_id）"}), 400
+        # 【新路由逻辑】优先使用基于user_id的自动路由
+        user_id = data.get('user_id')
+        message_content = data.get('message') or data.get('query')  # 支持message和query字段
         
-        # 根据消息类型路由
-        if message_type == "user_query":
-            # 用户A的查询 - 使用mainagent处理
-            query = data.get('query')
-            if not query:
-                return jsonify({"status": "error", "error": "query 参数必填"}), 400
-            
-            conversation_history = data.get('conversation_history')
-            user_id = data.get('user_id', 'user_a')
-            
-            result = process_user_query(query, conversation_history, user_id)
-            return jsonify(result)
-            
-        elif message_type == "user_b_reply":
-            # 用户B的回复 - 转发到subagent
+        # 如果提供了session_id，使用明确路由（向后兼容）
+        if data.get('session_id'):
             session_id = data.get('session_id')
-            user_b_id = data.get('user_b_id')
-            message = data.get('message')
             
-            if not all([session_id, user_b_id, message]):
-                return jsonify({"status": "error", "error": "session_id, user_b_id, message 参数必填"}), 400
-            
-            try:
-                response = requests.post(
-                    f"{SUBAGENT_URL}/reply",
-                    json={
-                        "session_id": session_id,
-                        "user_b_id": user_b_id,
-                        "message": message
-                    },
-                    timeout=30
-                )
+            # 如果有user_b_id和message，说明是用户B的回复
+            if data.get('user_b_id') and message_content:
+                user_b_id = data.get('user_b_id')
                 
-                if response.status_code == 200:
-                    return jsonify(response.json())
-                else:
-                    return jsonify({"status": "error", "error": f"SubAgent返回错误: {response.status_code}"}), response.status_code
+                try:
+                    response = requests.post(
+                        f"{SUBAGENT_URL}/reply",
+                        json={
+                            "session_id": session_id,
+                            "user_b_id": user_b_id,
+                            "message": message_content
+                        },
+                        timeout=30
+                    )
                     
-            except requests.exceptions.ConnectionError:
-                return jsonify({"status": "error", "error": f"无法连接到SubAgent服务 ({SUBAGENT_URL})"}), 503
-            except Exception as e:
-                return jsonify({"status": "error", "error": str(e)}), 500
-                
-        elif message_type == "get_session_status":
-            # 查询会话状态 - 转发到subagent
-            session_id = data.get('session_id')
-            if not session_id:
-                return jsonify({"status": "error", "error": "session_id 参数必填"}), 400
-            
-            try:
-                response = requests.get(
-                    f"{SUBAGENT_URL}/get_status",
-                    params={"session_id": session_id},
-                    timeout=5
-                )
-                
-                if response.status_code == 200:
-                    return jsonify(response.json())
-                else:
-                    return jsonify({"status": "error", "error": f"SubAgent返回错误: {response.status_code}"}), response.status_code
+                    if response.status_code == 200:
+                        return jsonify(response.json())
+                    else:
+                        return jsonify({"status": "error", "error": f"SubAgent返回错误: {response.status_code}"}), response.status_code
+                        
+                except requests.exceptions.ConnectionError:
+                    return jsonify({"status": "error", "error": f"无法连接到SubAgent服务 ({SUBAGENT_URL})"}), 503
+                except Exception as e:
+                    return jsonify({"status": "error", "error": str(e)}), 500
+            else:
+                # 查询会话状态
+                try:
+                    response = requests.get(
+                        f"{SUBAGENT_URL}/get_status",
+                        params={"session_id": session_id},
+                        timeout=5
+                    )
                     
-            except requests.exceptions.ConnectionError:
-                return jsonify({"status": "error", "error": f"无法连接到SubAgent服务 ({SUBAGENT_URL})"}), 503
+                    if response.status_code == 200:
+                        return jsonify(response.json())
+                    else:
+                        return jsonify({"status": "error", "error": f"SubAgent返回错误: {response.status_code}"}), response.status_code
+                        
+                except requests.exceptions.ConnectionError:
+                    return jsonify({"status": "error", "error": f"无法连接到SubAgent服务 ({SUBAGENT_URL})"}), 503
+                except Exception as e:
+                    return jsonify({"status": "error", "error": str(e)}), 500
+        
+        # 【核心新逻辑】如果提供了user_id，基于数据库状态自动路由
+        if user_id:
+            if not message_content:
+                return jsonify({"status": "error", "error": "message 或 query 参数必填"}), 400
+            
+            # 查询该用户是否在sessions表中作为user_b_id存在，且有未完成会话
+            try:
+                pending_sessions = session_manager.get_pending_sessions(user_id)
             except Exception as e:
-                return jsonify({"status": "error", "error": str(e)}), 500
+                print(f"[ERROR] 查询待处理会话失败: {str(e)}")
+                # 查询失败，默认路由到mainagent
+                pending_sessions = []
+            
+            if len(pending_sessions) > 0:
+                # 用户B：有未完成的会话 → 路由到subagent
+                # 判断条件：如果有多个pending会话，取最先create的那一条（最旧的）
+                if len(pending_sessions) > 1:
+                    # 多个会话时，取最先create的（最旧的，即列表最后一个）
+                    # 因为查询结果按created_at DESC排序，所以最后一个是最旧的
+                    session_id = pending_sessions[-1]['session_id']
+                    print(f"[INFO] 用户 {user_id} 有 {len(pending_sessions)} 个待处理会话，自动使用最先创建的: {session_id}")
+                else:
+                    # 只有一个会话，直接使用
+                    session_id = pending_sessions[0]['session_id']
+                    print(f"[INFO] 用户 {user_id} 有1个待处理会话，自动使用: {session_id}")
                 
-        elif message_type == "get_pending_sessions":
-            # 查询待处理会话 - 转发到subagent
+                # 转发到subagent的reply接口
+                try:
+                    response = requests.post(
+                        f"{SUBAGENT_URL}/reply",
+                        json={
+                            "session_id": session_id,
+                            "user_b_id": user_id,
+                            "message": message_content
+                        },
+                        timeout=30
+                    )
+                    
+                    if response.status_code == 200:
+                        return jsonify(response.json())
+                    else:
+                        return jsonify({"status": "error", "error": f"SubAgent返回错误: {response.status_code}"}), response.status_code
+                        
+                except requests.exceptions.ConnectionError:
+                    return jsonify({"status": "error", "error": f"无法连接到SubAgent服务 ({SUBAGENT_URL})"}), 503
+                except Exception as e:
+                    return jsonify({"status": "error", "error": str(e)}), 500
+            else:
+                # 用户A：没有未完成的会话（或不在sessions表中） → 路由到mainagent
+                query = message_content
+                conversation_history = data.get('conversation_history')
+                
+                result = process_user_query(query, conversation_history, user_id)
+                return jsonify(result)
+        
+        # 【向后兼容】如果没有user_id，使用原有字段组合方式
+        # 1. 如果有user_b_id，查询待处理会话
+        if data.get('user_b_id'):
             user_b_id = data.get('user_b_id')
-            if not user_b_id:
-                return jsonify({"status": "error", "error": "user_b_id 参数必填"}), 400
             
             try:
                 response = requests.get(
@@ -373,10 +395,24 @@ def unified_message():
                 return jsonify({"status": "error", "error": f"无法连接到SubAgent服务 ({SUBAGENT_URL})"}), 503
             except Exception as e:
                 return jsonify({"status": "error", "error": str(e)}), 500
-        else:
-            return jsonify({"status": "error", "error": f"未知的消息类型: {message_type}"}), 400
+        
+        # 2. 如果有query，路由到mainagent
+        if data.get('query'):
+            query = data.get('query')
+            conversation_history = data.get('conversation_history')
+            user_id = data.get('user_id', 'user_a')
+            
+            result = process_user_query(query, conversation_history, user_id)
+            return jsonify(result)
+        
+        # 3. 无法识别
+        return jsonify({
+            "status": "error",
+            "error": "无法识别消息类型，请提供 user_id（推荐）或必要的参数字段（query、session_id或user_b_id）"
+        }), 400
             
     except Exception as e:
+        print(f"[ERROR] 统一消息入口处理异常: {str(e)}")
         return jsonify({"status": "error", "error": str(e)}), 500
 
 
