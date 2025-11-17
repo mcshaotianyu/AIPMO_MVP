@@ -201,6 +201,7 @@ def start_session():
 def reply():
     """
     用户B回复接口
+    用户b回复消息到企微应用
     
     请求格式:
     {
@@ -386,6 +387,6 @@ def trigger_callback_if_needed(session_id: str):
 
 if __name__ == '__main__':
     # 运行服务
-    port = int(os.environ.get('PORT', 5000))
+    port = int(os.environ.get('PORT', 5002))
     app.run(host='0.0.0.0', port=port, debug=False)
 

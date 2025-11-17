@@ -23,7 +23,7 @@ import os
 # USE_UNIFIED_ENTRY = os.environ.get('USE_UNIFIED_ENTRY', 'false').lower() == 'true'
 # USE_UNIFIED_ENTRY = os.environ.get('USE_UNIFIED_ENTRY', 'true')
 USE_UNIFIED_ENTRY = 'true'
-SUBAGENT_URL = "http://localhost:5000"
+SUBAGENT_URL = "http://localhost:5002"
 MAINAGENT_URL = "http://localhost:5001"
 
 

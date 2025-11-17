@@ -28,7 +28,7 @@ cd ..
 sleep 2
 
 # 启动子Agent  
-echo "🚀 启动子Agent服务 (端口5000)..."
+echo "🚀 启动子Agent服务 (端口5002)..."
 cd subagent
 python server.py > ../logs/subagent.log 2>&1 &
 SUB_PID=$!
@@ -38,7 +38,7 @@ sleep 2
 # 检查服务
 echo "🔍 检查服务状态..."
 MAIN_HEALTH=$(curl -s http://127.0.0.1:5001/health 2>/dev/null)
-SUB_HEALTH=$(curl -s http://127.0.0.1:5000/health 2>/dev/null)
+SUB_HEALTH=$(curl -s http://127.0.0.1:5002/health 2>/dev/null)
 
 if [[ "$MAIN_HEALTH" != *"ok"* ]]; then
     echo "❌ 主Agent启动失败！"

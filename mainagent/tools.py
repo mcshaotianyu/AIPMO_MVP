@@ -6,6 +6,14 @@ import uuid
 import os
 from typing import Dict, Any, List
 
+# 兼容从项目根目录与从 mainagent 目录两种运行方式
+try:
+    from wechat.msg_send import send_text_message  # 当项目根目录在 sys.path 时
+except ModuleNotFoundError:
+    import sys
+    sys.path.append(os.path.dirname(os.path.dirname(__file__)))  # 加入项目根目录
+    from wechat.msg_send import send_text_message
+
 
 class SearchDocTool:
     """检索文档工具"""
@@ -127,7 +135,7 @@ class ContactEmployeeTool:
     def __init__(self):
         self.name = "contact_employee"
         self.description = "联系员工获取问题答案"
-        self.subagent_url = os.environ.get('SUBAGENT_URL', 'http://localhost:5000')
+        self.subagent_url = os.environ.get('SUBAGENT_URL', 'http://localhost:5002')
         self.mainagent_url = os.environ.get('MAINAGENT_URL', 'http://localhost:5001')
     
     def execute(self, employee_id: str, employee_name: str, question: str, user_a: str = "user_a") -> str:
@@ -169,6 +177,32 @@ class ContactEmployeeTool:
                 if result.get("status") == "success":
                     # 会话创建成功
                     first_question = result.get("first_question", "")
+
+                    # 拿问题发送的用户b的企微 需要用户b的手机号
+                    send_res = send_text_message(employee_id, first_question)
+                    # {
+                    #   "errcode" : 0,
+                    #   "errmsg" : "ok",
+                    #   "invaliduser" : "userid1|userid2",
+                    #   "invalidparty" : "partyid1|partyid2",
+                    #   "invalidtag": "tagid1|tagid2",
+                    #   "unlicenseduser" : "userid3|userid4",
+                    #   "msgid": "xxxx",
+                    #   "response_code": "xyzxyz"
+                    # }
+                    # 如果部分接收人无权限或不存在，发送仍然执行，
+                    # 但会返回无效的部分（即invaliduser或invalidparty或invalidtag或unlicenseduser），
+                    # 常见的原因是接收人不在应用的可见范围内。
+
+                    if send_res.get("errcode") != 0:
+                        print(f"联系员工失败: errcode={send_res.get('errcode')}")
+                        print("\n排查建议:")
+                        print("1. errcode=60020：确认服务器公网IP已加入企业微信应用 IP 白名单")
+                        print("2. errcode=40001：检查 CORP_ID 与 SECRET 是否正确")
+                        print("3. errcode=40002：检查 AGENT_ID 是否正确")
+                        print("4. 检查到 qyapi.weixin.qq.com 的网络连通性")
+                        return f"联系员工失败：{send_res.get('errmsg', '未知错误')}"
+
                     return f"已成功联系{employee_name}（ID: {employee_id}），子agent已向其提问：{first_question}\n\n会话ID: {session_id}\n我会在收到完整回复后通知您。"
                 else:
                     return f"联系员工失败：{result.get('error', '未知错误')}"

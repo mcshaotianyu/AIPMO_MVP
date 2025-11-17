@@ -16,7 +16,7 @@ app = Flask(__name__)
 callback_notifications = {}
 
 # SubAgent服务URL
-SUBAGENT_URL = os.environ.get('SUBAGENT_URL', 'http://localhost:5000')
+SUBAGENT_URL = os.environ.get('SUBAGENT_URL', 'http://localhost:5002')
 
 
 @app.route('/health', methods=['GET'])
