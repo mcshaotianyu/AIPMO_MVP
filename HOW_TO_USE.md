@@ -1,23 +1,41 @@
-# 📖 使用说明 - Multi-Agent 系统测试
+# 📖 使用说明 - 企业微信集成版本
 
 ## 前置准备
 
+### 1. 配置企业微信环境变量（必需）
+
 ```bash
-# 1. 设置API Key（如果还没设置）
-export DEEPSEEK_API_KEY="your-api-key"
+export WECHAT_CORP_ID="your_corp_id"           # 企业ID（必需）
+export WECHAT_CORP_SECRET="your_corp_secret"   # 应用Secret（必需）
+export WECHAT_AGENT_ID="your_agent_id"         # 应用AgentID（必需）
+export WECHAT_TOKEN="your_token"               # 回调验证token（可选）
+export WECHAT_ENCODING_AES_KEY="your_key"      # 回调加密key（可选）
+export DEEPSEEK_API_KEY="your-api-key"         # DeepSeek API Key（必需）
+```
 
-# 2. 进入项目目录
+### 2. 进入项目目录
+
+```bash
 cd /Users/shaotianyu/Desktop/teleai/aipmo/tianyu/myserver
+```
 
-# 3. 清理可能存在的Python缓存（重要！）
+### 3. 清理Python缓存（可选）
+
+```bash
 rm -rf __pycache__ mainagent/__pycache__ subagent/__pycache__ codeagent/__pycache__
 ```
 
 ---
 
-## 测试步骤（3个终端）
+## 启动步骤
 
-### 🖥️ 终端1：启动服务
+### 1. 启动数据库
+
+```bash
+./start_database.sh
+```
+
+### 2. 启动服务
 
 ```bash
 ./start_test.sh
@@ -30,189 +48,114 @@ rm -rf __pycache__ mainagent/__pycache__ subagent/__pycache__ codeagent/__pycach
 ✅ 代码Agent运行中 (PID: xxxxx)
 ```
 
----
+### 3. 配置企业微信回调URL
 
-### 🖥️ 终端2：启动用户B（员工端）
-
-**打开新终端窗口**，执行：
-
-```bash
-cd /Users/shaotianyu/Desktop/teleai/aipmo/tianyu/myserver
-python user_b_terminal.py
-```
-
-**交互：**
-```
-当前用户: *
-💡 等待新的问询请求...
-   (收到问询时会自动开始对话)
-   输入 'quit' 退出
-```
-
-**此时这个终端会自动等待，不要关闭它！**
+在企业微信管理后台：
+1. 进入应用管理 → 选择应用
+2. 配置回调URL: `https://your-domain.com/wechat/callback`
+3. 设置Token和EncodingAESKey（如果使用加密模式）
 
 ---
 
-### 🖥️ 终端3：启动用户A（提问端）
+## 💬 使用流程
 
-**再打开一个新终端窗口**，执行：
+### 用户A发送消息
 
-```bash
-cd /Users/shaotianyu/Desktop/teleai/aipmo/tianyu/myserver
-python user_a_terminal.py
+在企业微信中，用户A发送消息：
+```
+健身房周末开门吗？
 ```
 
-**开始测试对话：**
+系统会自动：
+1. 接收消息（通过 `/wechat/callback`）
+2. 路由到MainAgent处理
+3. 可能调用工具（search_doc, contact_employee等）
+4. 推送给用户A
+
+### 如果触发联系员工
+
+当MainAgent决定联系员工时：
+1. 创建session并调用SubAgent
+2. SubAgent生成first_question
+3. **自动推送给用户B（被联系的员工）**
+
+### 用户B回复消息
+
+在企业微信中，用户B收到推送后回复：
 ```
-[user_a_张三] 您的问题: 健身房周末开门吗？
-
-🤖 助手回复:
-  我找到了负责健身房管理的员工：刘超（ID：1234567890）
-需要我帮您联系刘超询问健身房周末的具体开放时间吗？
-
-[user_a_张三] 您的问题: 需要
-
-🤖 助手回复:
-  好的，我已联系刘超，有结果后我会通知您。
+周末8:00-20:00开放
 ```
+
+系统会自动：
+1. 接收消息（通过 `/wechat/callback`）
+2. 路由到SubAgent（因为有pending session）
+3. 处理回复，生成next_question或result
+4. **推送给用户B**
+
+### 会话完成
+
+当SubAgent完成任务后：
+1. 异步回调MainAgent（`/session_callback`）
+2. 更新对话历史
+3. **自动推送给用户A（最终结果）**
 
 ---
 
-### 🔔 观察用户B终端（终端2）
+## 🛑 停止服务
 
-**约3-5秒后**，用户B终端会**自动显示**：
-
-```
-🔔════════════════════════════════════════════════════════════════════🔔
-                   ✨ 收到新的问询请求 ✨
-══════════════════════════════════════════════════════════════════════
-📌 来自用户: user_a_张三
-📌 原始问题: 健身房周末开门吗？
-📌 模拟员工: 刘超 (ID: *)
-══════════════════════════════════════════════════════════════════════
-
-💬 子Agent: 您好，我想了解一下健身房周末是否开放，具体时间是什么？
-
-[*] 您的回复: 
-```
-
-**现在直接输入回复**（无需任何菜单操作）：
-```
-[*] 您的回复: 周末8:00-20:00开放
-
-💬 子Agent: 好的，那我确认一下，周末是8:00到晚上8:00对吗？
-
-[*] 您的回复: 对的
-
-══════════════════════════════════════════════════════════════════════
-✓ 会话已完成！
-
-子Agent总结的信息:
-健身房周末8:00-20:00开放
-══════════════════════════════════════════════════════════════════════
-✅ 此结果已自动回调给主agent，将推送给用户A。
-
-💡 继续等待新的问询请求...
-   输入 'quit' 退出
-```
-
----
-
-### 🔔 观察用户A终端（终端3）
-
-**对话完成后约3-5秒**，用户A终端会**自动显示**推送通知：
-
-```
-🔔════════════════════════════════════════════════════════════════════🔔
-                   ✨ 收到新的推送通知 ✨
-══════════════════════════════════════════════════════════════════════
-📌 关于您的问题:
-   健身房周末开门吗？
-
-💡 我们已经为您咨询了相关人员，得到以下答复:
-
-健身房周末8:00-20:00开放
-
-⏰ 时间: 2024-01-01_12:00:00
-══════════════════════════════════════════════════════════════════════
-```
-
----
-
-## ✅ 完成！
-
-现在你已经完整体验了整个流程：
-1. ✅ 用户A提问
-2. ✅ 主Agent搜索并决定联系员工
-3. ✅ 用户B**自动收到通知**并进入对话
-4. ✅ 多轮对话完成
-5. ✅ 用户A**自动收到最终答案**
-
----
-
-## 🛑 停止测试
-
-在终端1执行：
 ```bash
 ./stop_services.sh
 ```
 
 ---
 
-## 💡 重要提示
+## 🔍 调试
 
-1. **用户B终端无需手动操作**
-   - 收到问询时会自动进入对话模式
-   - 直接输入回复，无需选择菜单或输入会话ID
-   - 会话完成后自动返回等待状态
+### 查看日志
 
-2. **统一消息入口**
-   - 所有消息都通过 `mainagent:5001/message` 统一接口
-   - 系统根据 `user_id` 自动路由
-   - 对话历史由服务端自动管理
-
-3. **推送通知会自动显示**
-   - 无需手动刷新
-   - 后台线程每3秒检查一次
-
----
-
-## 🐛 常见问题
-
-**Q: 用户B终端没有收到通知？**
-A: 清理Python缓存后重新运行：
 ```bash
-rm -rf __pycache__ mainagent/__pycache__ subagent/__pycache__
-python user_b_terminal.py
+# 主Agent日志
+tail -f logs/mainagent.log
+
+# 子Agent日志
+tail -f logs/subagent.log
+
+# 代码Agent日志
+tail -f logs/codeagent.log
 ```
 
-**Q: 请求超时？**
-A: 检查API Key是否正确：
+### 检查服务状态
+
 ```bash
-echo $DEEPSEEK_API_KEY
+./check_status.sh
 ```
 
-**Q: 端口被占用？**
-A: 清理端口：
+### 常见问题
+
+**Q: 服务启动失败？**
+A: 检查必需的环境变量是否配置：
 ```bash
-kill -9 $(lsof -ti:5000)
-kill -9 $(lsof -ti:5001)
-kill -9 $(lsof -ti:5004)
+echo $WECHAT_CORP_ID
+echo $WECHAT_CORP_SECRET
+echo $WECHAT_AGENT_ID
 ```
 
-**Q: 用户B一直显示"等待新的问询请求..."？**
+**Q: 消息未推送？**
 A: 检查：
-1. 主Agent服务是否正常运行
-2. 用户A是否已经触发联系员工
-3. 查看日志：`tail -f logs/mainagent.log`
+1. 环境变量是否正确配置
+2. 查看日志确认access_token是否获取成功
+3. 检查企业微信应用配置是否正确
+
+**Q: 回调验证失败？**
+A: 检查 `WECHAT_TOKEN` 是否正确，确认签名验证逻辑已实现
 
 ---
 
 ## 📚 相关文档
 
-- [统一消息入口说明](./UNIFIED_ENTRY.md)
+- [企业微信集成说明](./WECHAT_INTEGRATION.md)
 - [README](./README.md)
 
 ---
 
-**立即开始 → `./start_test.sh`** 🚀
+**立即开始 → 配置环境变量并运行 `./start_test.sh`** 🚀

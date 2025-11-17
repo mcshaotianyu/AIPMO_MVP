@@ -6,6 +6,7 @@ import requests
 from flask import Flask, request, jsonify
 from core import process_user_query
 from conversation_manager import conversation_manager
+from wechat_adapter import wechat_adapter
 
 # 添加当前目录到路径以导入session_manager
 sys.path.append(os.path.dirname(os.path.abspath(__file__)))
@@ -13,9 +14,6 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from session_manager import session_manager
 
 app = Flask(__name__)
-
-# 用于存储回调通知（实际生产中应该使用数据库或消息队列）
-callback_notifications = {}
 
 # SubAgent服务URL
 SUBAGENT_URL = os.environ.get('SUBAGENT_URL', 'http://localhost:5000')
@@ -25,6 +23,82 @@ SUBAGENT_URL = os.environ.get('SUBAGENT_URL', 'http://localhost:5000')
 def health():
     """健康检查"""
     return jsonify({"status": "ok"})
+
+
+@app.route('/wechat/callback', methods=['POST', 'GET'])
+def wechat_callback():
+    """
+    企业微信回调接口（统一入口）
+    
+    GET: 验证回调URL（企业微信要求）
+    POST: 接收企业微信消息并处理
+    
+    请求格式（POST）:
+    企业微信推送的消息格式（需要根据企业微信文档实现解密）
+    
+    返回格式:
+    {
+        "status": "success" | "error"
+    }
+    """
+    if request.method == 'GET':
+        # 验证回调URL（企业微信要求）
+        msg_signature = request.args.get('msg_signature', '')
+        timestamp = request.args.get('timestamp', '')
+        nonce = request.args.get('nonce', '')
+        echostr = request.args.get('echostr', '')
+        
+        # 验证签名
+        verified_echostr = wechat_adapter.verify_callback_url(msg_signature, timestamp, nonce, echostr)
+        if verified_echostr:
+            return verified_echostr, 200
+        else:
+            return jsonify({"status": "error", "message": "签名验证失败"}), 403
+    
+    # POST: 接收消息
+    try:
+        data = request.json or request.form.to_dict()
+        
+        # 解析企业微信消息格式（需要根据企业微信文档实现消息解密）
+        message_data = wechat_adapter.parse_wechat_message(data)
+        
+        user_id = message_data.get("user_id")
+        message_content = message_data.get("message", "")
+        
+        if not user_id:
+            return jsonify({"status": "error", "message": "缺少user_id"}), 400
+        
+        print(f"\n[WECHAT] 收到企业微信消息")
+        print(f"  用户ID: {user_id}")
+        print(f"  消息内容: {message_content}")
+        
+        # 调用统一消息处理逻辑
+        result = handle_unified_message_internal({
+            "user_id": user_id,
+            "message": message_content
+        })
+        
+        # 【关键修改】根据路由结果决定推送给谁
+        # 1. 如果路由到subagent（有user_b_id），推送给user B（被联系的员工）
+        # 2. 如果路由到mainagent（没有user_b_id），推送给发送消息的人（user A）
+        if result.get("user_b_id"):
+            # 路由到subagent：推送给user B（被联系的员工，可能是CDEF）
+            target_user_id = result.get("user_b_id")
+            print(f"[INFO] 消息路由到subagent，推送给user B: {target_user_id}")
+        else:
+            # 路由到mainagent：推送给发送消息的人（user A）
+            target_user_id = user_id
+            print(f"[INFO] 消息路由到mainagent，推送给发送者: {target_user_id}")
+        
+        # 格式化响应并推送给正确的用户
+        response_text = wechat_adapter.format_response_for_wechat(result)
+        wechat_adapter.send_text_message(target_user_id, response_text)
+        
+        return jsonify({"status": "success"}), 200
+        
+    except Exception as e:
+        print(f"[ERROR] 企业微信回调处理失败: {str(e)}")
+        return jsonify({"status": "error", "message": str(e)}), 500
 
 
 @app.route('/session_callback', methods=['POST'])
@@ -69,24 +143,19 @@ def session_callback():
         else:
             print(f"[WARNING] 未能更新对话历史，可能session_id未注册或用户对话历史不存在")
         
-        # 存储回调通知（实际生产中应该推送给用户A）
-        callback_notifications[session_id] = {
-            "result": result,
-            "user_a": user_a,
-            "question": question,
-            "timestamp": os.popen('date +%Y-%m-%d_%H:%M:%S').read().strip()
-        }
+        # 直接推送到企业微信
+        notification_content = f"""关于您的问题：{question}
+
+相关人员回复：
+{result}"""
         
-        # TODO: 这里应该实际推送给用户A（通过企业微信API等）
-        print("\n" + "🔔" + "═" * 68 + "🔔")
-        print("                   ✨ 准备推送通知给用户A ✨")
-        print("═" * 70)
-        print(f"📌 目标用户: {user_a}")
-        print(f"📌 关于问题: {question}")
-        print(f"\n💡 推送内容:")
-        print(f"{result}")
-        print("═" * 70)
-        print(f"✅ 通知已记录到系统，用户A的终端会自动接收\n")
+        # 推送给用户A
+        success = wechat_adapter.send_text_message(user_a, notification_content)
+        
+        if success:
+            print(f"[INFO] 已推送通知给用户 {user_a}")
+        else:
+            print(f"[WARNING] 推送通知失败，用户 {user_a}")
         
         return jsonify({"status": "success", "message": "回调接收成功"})
         
@@ -95,144 +164,84 @@ def session_callback():
         return jsonify({"status": "error", "message": str(e)}), 500
 
 
-@app.route('/get_notifications', methods=['GET'])
-def get_notifications():
+def handle_unified_message_internal(data: dict) -> dict:
     """
-    查询所有回调通知（用于测试）
+    统一消息处理内部逻辑（企业微信回调使用）
     
-    返回格式:
-    {
-        "notifications": {...}
-    }
+    Args:
+        data: 消息数据字典，包含 user_id 和 message
+        
+    Returns:
+        dict: 处理结果
     """
-    return jsonify({"notifications": callback_notifications})
-
-
-@app.route('/message', methods=['POST'])
-def unified_message():
-    """
-    统一消息入口 - 用于企业微信集成
+    user_id = data.get('user_id')
+    message_content = data.get('message')
     
-    新的路由逻辑（基于user_id自动判断）：
-    1. 如果提供了session_id，使用明确路由（向后兼容）
-    2. 如果提供了user_id，查询该用户是否在sessions表中作为user_b_id存在且有未完成会话
-       - 如果有未完成会话 → 路由到subagent（用户B回复）
-       - 如果没有 → 路由到mainagent（用户A查询）
-    3. 如果没有user_id，使用原有字段组合方式（向后兼容）
+    if not user_id:
+        return {"status": "error", "error": "缺少user_id"}
     
-    请求格式:
-    {
-        "user_id": "...",  // 发送消息的用户ID（必需，用于路由判断）
-        "query": "...",  // 消息内容（可选，也支持message字段）
-        "message": "...",  // 消息内容（可选，与query等价）
-        "session_id": "...",  // 明确指定会话ID（向后兼容）
-        ...
-    }
+    if not message_content:
+        return {"status": "error", "error": "消息内容不能为空"}
     
-    注意：
-    - conversation_history不应由客户端传递，服务端会根据路由自动获取：
-      * 路由到mainagent → 从conversation_manager自动获取
-      * 路由到subagent → 从session自动获取
-    - 路由判断仅基于user_id查询pending sessions，不依赖message内容
-    
-    返回格式:
-    根据路由类型返回相应的结果
-    """
+    # 路由判断有且仅有一个依据：根据user_id查询是否有pending session
     try:
-        data = request.json
-        if not data:
-            return jsonify({"status": "error", "error": "请求体不能为空"}), 400
-        
-        # 【新路由逻辑】优先使用基于user_id的自动路由
-        user_id = data.get('user_id')
-        message_content = data.get('message') or data.get('query')  # 支持message和query字段
-        
-        # 路由判断有且仅有一个依据：根据user_id查询是否有pending session
-        if user_id:
-            # 查询该用户是否在sessions表中作为user_b_id存在，且有未完成会话
-            try:
-                # 支持"*"查询所有待处理会话（用于测试，模拟所有用户）
-                if user_id == "*":
-                    pending_sessions = session_manager.get_all_pending_sessions()
-                else:
-                    pending_sessions = session_manager.get_pending_sessions(user_id)
-            except Exception as e:
-                print(f"[ERROR] 查询待处理会话失败: {str(e)}")
-                # 查询失败，默认路由到mainagent
-                pending_sessions = []
-            
-            # 如果没有message_content，返回pending sessions列表（用于轮询查询）
-            if not message_content:
-                return jsonify({
-                    "status": "success",
-                    "sessions": pending_sessions
-                })
-            
-            # 根据pending_sessions决定路由（不依赖message_content）
-            if len(pending_sessions) > 0:
-                # 用户B：有未完成的会话 → 路由到subagent
-                # 判断条件：
-                # - 如果user_id是"*"（模拟所有用户），选择最新的会话（第一个）
-                # - 否则，如果有多个pending会话，取最先create的那一条（最旧的）
-                # TODO:如果有多个session，应该基于query用模型判断最相关的session
-                if len(pending_sessions) > 1:
-                    if user_id == "*":
-                        # 模拟所有用户时，优先选择最新的会话（用户通常想回复最新的问询）
-                        selected_session = pending_sessions[0]  # 第一个是最新的（按created_at DESC排序）
-                        session_id = selected_session['session_id']
-                        print(f"[INFO] 用户 {user_id} 有 {len(pending_sessions)} 个待处理会话，自动使用最新的: {session_id}")
-                    else:
-                        # 特定用户时，取最先create的（最旧的，即列表最后一个）
-                        selected_session = pending_sessions[-1]
-                        session_id = selected_session['session_id']
-                        print(f"[INFO] 用户 {user_id} 有 {len(pending_sessions)} 个待处理会话，自动使用最先创建的: {session_id}")
-                else:
-                    # 只有一个会话，直接使用
-                    selected_session = pending_sessions[0]
-                    session_id = selected_session['session_id']
-                    print(f"[INFO] 用户 {user_id} 有1个待处理会话，自动使用: {session_id}")
-                
-                # 如果user_id是"*"，使用选中session的真实user_b_id
-                actual_user_b_id = selected_session.get('user_b_id', user_id) if user_id == "*" else user_id
-                
-                # 转发到subagent的reply接口（subagent会自动从session获取对话历史）
-                try:
-                    response = requests.post(
-                        f"{SUBAGENT_URL}/reply",
-                        json={
-                            "session_id": session_id,
-                            "user_b_id": actual_user_b_id,
-                            "message": message_content
-                        },
-                        timeout=30
-                    )
-                    
-                    if response.status_code == 200:
-                        return jsonify(response.json())
-                    else:
-                        return jsonify({"status": "error", "error": f"SubAgent返回错误: {response.status_code}"}), response.status_code
-                        
-                except requests.exceptions.ConnectionError:
-                    return jsonify({"status": "error", "error": f"无法连接到SubAgent服务 ({SUBAGENT_URL})"}), 503
-                except Exception as e:
-                    return jsonify({"status": "error", "error": str(e)}), 500
-            else:
-                # 自动从conversation_manager获取对话历史，不依赖客户端传递
-                query = message_content
-                
-                # 不传递conversation_history，让process_user_query自动从conversation_manager获取
-                result = process_user_query(query, conversation_history=None, user_id=user_id)
-                return jsonify(result)
-        
-        # 无法识别
-        return jsonify({
-            "status": "error",
-            "error": "无法识别消息类型，请提供 user_id（推荐）或必要的参数字段（query、session_id或user_b_id）"
-        }), 400
-            
+        pending_sessions = session_manager.get_pending_sessions(user_id)
     except Exception as e:
-        print(f"[ERROR] 统一消息入口处理异常: {str(e)}")
-        return jsonify({"status": "error", "error": str(e)}), 500
+        print(f"[ERROR] 查询待处理会话失败: {str(e)}")
+        # 查询失败，默认路由到mainagent
+        pending_sessions = []
+    
+    # 根据pending_sessions决定路由（不依赖message_content）
+    if len(pending_sessions) > 0:
+        # 用户B：有未完成的会话 → 路由到subagent
+        # 选择最旧的session（最先创建的）
+        # 因为数据库查询按created_at DESC排序，所以列表最后一个是最旧的
+        if len(pending_sessions) > 1:
+            # 有多个会话时，选择最旧的（列表最后一个）
+            selected_session = pending_sessions[-1]
+            session_id = selected_session['session_id']
+            print(f"[INFO] 用户 {user_id} 有 {len(pending_sessions)} 个待处理会话，自动使用最旧的（最先创建的）: {session_id}")
+        else:
+            # 只有一个会话，直接使用
+            selected_session = pending_sessions[0]
+            session_id = selected_session['session_id']
+            print(f"[INFO] 用户 {user_id} 有1个待处理会话，自动使用: {session_id}")
+        
+        # 使用user_id作为user_b_id（生产环境中user_id就是真实的用户ID）
+        actual_user_b_id = user_id
+        
+        # 转发到subagent的reply接口（subagent会自动从session获取对话历史）
+        try:
+            response = requests.post(
+                f"{SUBAGENT_URL}/reply",
+                json={
+                    "session_id": session_id,
+                    "user_b_id": actual_user_b_id,
+                    "message": message_content
+                },
+                timeout=30
+            )
+            
+            if response.status_code == 200:
+                subagent_result = response.json()
+                # 【关键修改】在返回结果中添加user_b_id信息，以便wechat_callback知道推送给谁
+                subagent_result['user_b_id'] = actual_user_b_id
+                subagent_result['session_id'] = session_id
+                return subagent_result
+            else:
+                return {"status": "error", "error": f"SubAgent返回错误: {response.status_code}"}
+                
+        except requests.exceptions.ConnectionError:
+            return {"status": "error", "error": f"无法连接到SubAgent服务 ({SUBAGENT_URL})"}
+        except Exception as e:
+            return {"status": "error", "error": str(e)}
+    else:
+        # 自动从conversation_manager获取对话历史，不依赖客户端传递
+        query = message_content
+        
+        # 不传递conversation_history，让process_user_query自动从conversation_manager获取
+        result = process_user_query(query, conversation_history=None, user_id=user_id)
+        return result
 
 
 if __name__ == '__main__':

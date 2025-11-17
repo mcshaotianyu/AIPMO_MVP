@@ -13,3 +13,7 @@ psycopg2-binary>=2.9.0
 pandas>=2.0.0
 openpyxl>=3.1.0
 
+# 企业微信集成（可选，如果未配置环境变量则使用模拟模式）
+# 注意：企业微信SDK可选，当前使用requests直接调用API
+# 如需完整的企业微信功能，可安装: wechatpy>=1.8.0
+

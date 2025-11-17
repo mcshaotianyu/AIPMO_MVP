@@ -4,105 +4,88 @@
 
 ---
 
-## 🚀 快速测试（3步）
+## 🚀 快速开始
 
-### 第1步：启动服务
+### 1. 配置企业微信环境变量（必需）
+
+```bash
+export WECHAT_CORP_ID="your_corp_id"           # 企业ID（必需）
+export WECHAT_CORP_SECRET="your_corp_secret"   # 应用Secret（必需）
+export WECHAT_AGENT_ID="your_agent_id"         # 应用AgentID（必需）
+export WECHAT_TOKEN="your_token"               # 回调验证token（可选）
+export WECHAT_ENCODING_AES_KEY="your_key"      # 回调加密key（可选）
+export DEEPSEEK_API_KEY="your-api-key"         # DeepSeek API Key（必需）
+```
+
+### 2. 启动数据库
+
+```bash
+./start_database.sh
+```
+
+### 3. 启动服务
+
 ```bash
 ./start_test.sh
 ```
 
-### 第2步：打开新终端 - 启动用户B（员工）
-```bash
-cd /Users/shaotianyu/Desktop/teleai/aipmo/tianyu/myserver
-python user_b_terminal.py
-```
+### 4. 配置企业微信回调URL
 
-**交互：**
-```
-当前用户: *
-💡 等待新的问询请求...
-   (收到问询时会自动开始对话)
-   输入 'quit' 退出
-```
-
-**此时这个终端会自动等待，不要关闭它！**
-
-### 第3步：再打开一个新终端 - 启动用户A（提问者）
-```bash
-cd /Users/shaotianyu/Desktop/teleai/aipmo/tianyu/myserver
-python user_a_terminal.py
-```
-
----
-
-## 💬 测试对话流程
-
-### 在用户A终端输入：
-```
-健身房周末开门吗？
-```
-
-主Agent会回复并询问是否联系员工，继续输入：
-```
-需要
-```
-
-### 观察用户B终端：
-⏱️ **3-5秒后自动收到问询**，显示：
-```
-🔔════════════════════════════════════════════════════════════════════🔔
-                   ✨ 收到新的问询请求 ✨
-══════════════════════════════════════════════════════════════════════
-📌 来自用户: user_a_张三
-📌 原始问题: 健身房周末开门吗？
-📌 模拟员工: 刘超 (ID: *)
-══════════════════════════════════════════════════════════════════════
-
-💬 子Agent: [自动显示问题]
-
-[*] 您的回复: [直接输入回复]
-```
-
-**直接输入回复**，无需任何菜单操作：
-```
-[*] 您的回复: 周末8:00-20:00开放
-
-💬 子Agent: [继续提问]
-
-[*] 您的回复: 对的
-```
-
-### 观察用户A终端：
-⏱️ **对话完成后3-5秒自动收到推送**：
-```
-🔔════════════════════════════════════════════════════════════════════🔔
-                   ✨ 收到新的推送通知 ✨
-══════════════════════════════════════════════════════════════════════
-📌 关于您的问题:
-   健身房周末开门吗？
-
-💡 我们已经为您咨询了相关人员，得到以下答复:
-
-健身房周末8:00-20:00开放
-
-⏰ 时间: 2024-01-01_12:00:00
-══════════════════════════════════════════════════════════════════════
-```
+在企业微信管理后台配置回调URL: `https://your-domain.com/wechat/callback`
 
 ---
 
 ## 🎯 核心特性
 
-✅ **用户A提问** → 主Agent处理  
+✅ **企业微信集成** → 通过 `/wechat/callback` 统一接收消息  
+✅ **自动路由** → 根据 `user_id` 自动判断路由到 MainAgent 或 SubAgent  
 ✅ **RAG检索** → 搜索文档/员工  
-✅ **触发联系** → 启动子Agent  
-✅ **用户B自动收到通知** → 3-5秒内，自动进入对话  
-✅ **直接对话** → 无需菜单、无需输入会话ID  
-✅ **自动完成** → 子Agent自动回调主Agent  
-✅ **用户A自动收到推送** → 3-5秒内显示最终答案  
+✅ **异步咨询** → 启动子Agent联系员工  
+✅ **自动推送** → 所有消息自动推送给正确的用户  
 ✅ **完全异步** → 互不阻塞  
-✅ **统一入口** → 所有消息通过 `/message` 统一接口  
-✅ **自动路由** → 根据 `user_id` 自动判断路由  
+
+---
+
+## 🏗️ 系统架构
+
+```
+企业微信用户A
+    ↓ (POST /wechat/callback)
+主Agent (端口5001)
+    ├→ process_user_query
+    ├→ search_doc       # RAG文档检索
+    ├→ search_employee  # 查找员工
+    └→ contact_employee # 联系员工
+         ↓
+    子Agent (端口5000)
+         ├→ /start_session → 推送给User B
+         └→ /reply
+         ↓
+    企业微信用户B ← 🔔 自动推送
+         ↓ (POST /wechat/callback)
+    主Agent自动路由到SubAgent
+         ↓
+    多轮对话
+         ↓
+    完成 → 回调主Agent
+         ↓
+    企业微信用户A ← 🔔 自动推送
+```
+
+---
+
+## 🌐 接口说明
+
+### 企业微信回调接口
+
+**URL**: `POST /wechat/callback`
+
+**功能**: 接收企业微信推送的消息（统一入口）
+
+**说明**:
+- 企业微信会通过此接口推送用户消息
+- 系统会自动处理消息并推送给正确的用户
+- 支持GET请求用于URL验证（企业微信要求）
 
 ---
 
@@ -122,34 +105,17 @@ tail -f logs/subagent.log
 
 ---
 
-## 🐛 故障排查
+## ⚙️ 环境要求
 
-### 问题1：端口被占用
 ```bash
-# 杀死占用端口的进程
-kill -9 $(lsof -ti:5000)  # 子Agent
-kill -9 $(lsof -ti:5001)  # 主Agent
-kill -9 $(lsof -ti:5004)  # 代码Agent
-```
+# Python 3.8+
+pip install -r requirements.txt
 
-### 问题2：用户B没收到通知
-**原因：** Python缓存问题
-
-**解决：**
-```bash
-# 清理缓存后重启
-rm -rf __pycache__ mainagent/__pycache__ subagent/__pycache__
-./start_test.sh
-```
-
-### 问题3：服务启动失败
-```bash
-# 查看具体错误
-cat logs/mainagent.log
-cat logs/subagent.log
-
-# 检查API Key
-echo $DEEPSEEK_API_KEY
+# 必需环境变量
+export WECHAT_CORP_ID="your_corp_id"
+export WECHAT_CORP_SECRET="your_corp_secret"
+export WECHAT_AGENT_ID="your_agent_id"
+export DEEPSEEK_API_KEY="your-api-key"
 ```
 
 ---
@@ -159,9 +125,10 @@ echo $DEEPSEEK_API_KEY
 ```
 myserver/
 ├── mainagent/              # 主Agent服务
-│   ├── server.py          # Flask服务（统一入口/message）
+│   ├── server.py          # Flask服务（企业微信回调接口）
 │   ├── core.py            # 核心逻辑（process_user_query）
 │   ├── tools.py           # 工具定义
+│   ├── wechat_adapter.py  # 企业微信适配层
 │   └── prompts.py         # 提示词
 ├── subagent/              # 子Agent服务
 │   ├── server.py          # Flask服务（/start_session, /reply）
@@ -174,60 +141,26 @@ myserver/
 │   ├── db.py              # 数据库操作
 │   └── init.sql           # 初始化脚本
 ├── session_manager.py     # 会话管理
-├── user_a_terminal.py     # 用户A终端
-├── user_b_terminal.py     # 用户B终端
-├── start_test.sh          # ⭐ 测试启动脚本
+├── start_test.sh          # 启动脚本
 ├── stop_services.sh       # 停止服务
 └── check_status.sh        # 状态检查
 ```
 
 ---
 
-## 🏗️ 系统架构
-
-```
-用户A终端
-    ↓ (user_id + query)
-主Agent (端口5001)
-    ├→ /message (统一入口)
-    ├→ search_doc       # RAG文档检索
-    ├→ search_employee  # 查找员工
-    └→ contact_employee # 联系员工
-         ↓
-    子Agent (端口5000)
-         ├→ /start_session
-         └→ /reply
-         ↓
-    用户B终端 ← 🔔 自动通知
-         ↓ (user_id + message)
-    主Agent /message
-         ↓ (自动路由到subagent)
-    多轮对话
-         ↓
-    完成 → 回调主Agent
-         ↓
-    用户A终端 ← 🔔 自动推送
-```
-
----
-
-## ⚙️ 环境要求
-
-```bash
-# Python 3.8+
-pip install -r requirements.txt
-
-# 设置API Key
-export DEEPSEEK_API_KEY="your-api-key"
-```
-
----
-
 ## 📖 详细文档
 
-- [统一消息入口说明](./UNIFIED_ENTRY.md)
-- [使用说明](./HOW_TO_USE.md)
+- [企业微信集成说明](./WECHAT_INTEGRATION.md)
 
 ---
 
-**立即开始测试 → 运行 `./start_test.sh`** 🚀
+## ⚠️ 重要提示
+
+1. **必须配置企业微信环境变量**: 未配置必需环境变量时，服务无法启动
+2. **回调URL配置**: 在企业微信管理后台配置回调URL: `https://your-domain.com/wechat/callback`
+3. **HTTPS要求**: 回调URL必须支持HTTPS协议
+4. **签名验证**: 需要根据企业微信文档实现完整的签名验证逻辑
+
+---
+
+**立即开始 → 配置环境变量并运行 `./start_test.sh`** 🚀

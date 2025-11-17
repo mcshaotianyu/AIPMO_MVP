@@ -224,6 +224,33 @@ class ContactEmployeeTool:
                     if result.get("status") == "success":
                         # 会话创建成功
                         first_question = result.get("first_question", "")
+                        
+                        # 【关键修改】推送给user B（employee_id），而不是user A
+                        # 因为subagent的消息应该发送给被联系的员工（user B/CDEF），而不是发起问询的用户A
+                        try:
+                            # 导入wechat_adapter（延迟导入避免循环依赖）
+                            from wechat_adapter import wechat_adapter
+                            
+                            # 构造推送给user B的消息
+                            notification_content = f"""您收到一个新的问询请求：
+
+来自：{user_a}
+问题：{question}
+
+{first_question}
+
+请回复此消息继续对话。"""
+                            
+                            # 推送给user B（employee_id）
+                            success = wechat_adapter.send_text_message(employee_id, notification_content)
+                            if success:
+                                print(f"[INFO] 已推送问询请求给用户B: {employee_id} ({employee_name})")
+                            else:
+                                print(f"[WARNING] 推送问询请求失败，用户B: {employee_id} ({employee_name})")
+                        except Exception as e:
+                            print(f"[ERROR] 推送消息给user B失败: {str(e)}")
+                            # 即使推送失败，也继续执行，不影响主流程
+                        
                         results.append(f"已成功联系{employee_name}（ID: {employee_id}），子agent已向其提问：{first_question}\n会话ID: {session_id}")
                     else:
                         results.append(f"联系{employee_name}失败：{result.get('error', '未知错误')}")

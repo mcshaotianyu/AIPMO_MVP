@@ -157,22 +157,6 @@ class Database:
                 """)
                 return [dict(row) for row in cur.fetchall()]
     
-    def get_all_pending_sessions(self) -> List[Dict]:
-        """获取所有待处理会话（用于测试，模拟所有用户）"""
-        with self.get_connection() as conn:
-            with conn.cursor(cursor_factory=RealDictCursor) as cur:
-                cur.execute("""
-                    SELECT s.*, 
-                           (SELECT content FROM session_messages 
-                            WHERE session_id = s.session_id AND role = 'assistant' 
-                            ORDER BY created_at DESC LIMIT 1) as latest_question,
-                           (SELECT COUNT(*) FROM session_messages WHERE session_id = s.session_id) / 2 as conversation_turns
-                    FROM sessions s
-                    WHERE s.status IN ('pending', 'in_progress')
-                    ORDER BY s.created_at DESC
-                """)
-                return [dict(row) for row in cur.fetchall()]
-    
     # ==================== 会话消息（Session Messages）相关操作 ====================
     
     def add_session_message(self, session_id: str, role: str, content: str):
