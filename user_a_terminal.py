@@ -52,18 +52,17 @@ class UserATerminal:
             response = requests.post(
                 f"{MAINAGENT_URL}/message",
                 json={
-                    # 不指定type，由服务端根据字段自动路由
-                    "query": query,
-                    "conversation_history": self.conversation_history,
-                    "user_id": self.user_id  # 传递用户ID
+                    # 统一接口：只传递user_id和query/message，服务端自动路由和获取对话历史
+                    "user_id": self.user_id,
+                    "query": query  # 也支持message字段
                 },
-                timeout=60
+                timeout=600
             )
             
             if response.status_code == 200:
                 result = response.json()
                 
-                # 更新对话历史
+                # 更新对话历史（从服务端返回的结果中获取）
                 self.conversation_history = result.get("conversation_history")
                 
                 return result
@@ -115,6 +114,7 @@ class UserATerminal:
                 
                 # 检查新通知
                 for session_id, notification in notifications.items():
+                    # 不在已读消息中
                     if session_id not in self.known_notifications:
                         self.known_notifications.add(session_id)
                         self.display_notification(notification)
@@ -146,7 +146,7 @@ class UserATerminal:
         """运行交互终端"""
         self.print_banner()
         
-        # 启动通知监控线程
+        # 启动通知监控线程，每三秒轮询一次，检查是否有新的推送通知，模拟用户A接收消息
         monitor_thread = threading.Thread(target=self.notification_monitor)
         monitor_thread.daemon = True
         monitor_thread.start()

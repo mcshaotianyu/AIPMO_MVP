@@ -5,442 +5,719 @@
 
  * Serving Flask app 'server'
  * Debug mode: off
-[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
  * Running on all addresses (0.0.0.0)
  * Running on http://127.0.0.1:5001
- * Running on http://10.2.111.64:5001
-[33mPress CTRL+C to quit[0m
-127.0.0.1 - - [07/Nov/2025 16:22:47] "GET /health HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:24:36] "GET /health HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:24:39] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:24:42] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:24:45] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:24:48] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:24:51] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:24:54] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:24:57] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:25:00] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:25:03] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:25:06] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:25:09] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:25:12] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:25:15] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:25:18] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:25:21] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:25:24] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:25:27] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:25:30] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:25:33] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:25:36] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:25:39] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:25:42] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:25:45] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:25:48] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:25:51] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:25:54] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:25:57] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:26:00] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:26:03] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:26:06] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:26:09] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:26:12] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:26:15] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:26:18] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:26:21] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:26:24] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:26:27] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:26:30] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:26:33] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:26:36] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:26:39] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:26:42] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:26:45] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:26:48] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:26:51] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:26:54] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:26:57] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:27:00] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:27:03] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:27:06] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:27:09] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:27:13] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:27:16] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:27:19] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:27:22] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:27:25] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:27:28] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:27:31] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:27:34] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:27:37] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:27:40] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:27:43] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:27:46] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:27:49] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:27:52] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:27:55] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:27:58] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:28:01] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:28:04] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:28:07] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:28:10] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:28:13] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:28:16] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:28:19] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:28:22] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:28:25] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:28:28] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:28:31] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:28:34] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:28:37] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:28:40] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:28:43] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:28:46] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:28:49] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:28:52] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:28:55] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:28:58] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:29:01] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:29:04] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:29:07] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:29:10] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:29:13] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:29:16] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:29:19] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:29:22] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:29:25] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:29:28] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:29:31] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:29:34] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:29:37] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:29:40] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:29:43] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:29:46] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:29:49] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:29:52] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:29:55] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:29:58] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:30:01] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:30:04] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:30:07] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:30:10] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:30:13] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:30:16] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:30:19] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:30:22] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:30:25] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:30:28] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:30:31] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:30:34] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:30:37] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:30:40] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:30:43] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:30:46] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:30:49] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:30:52] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:30:55] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:30:58] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:31:01] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:31:04] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:31:07] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:31:10] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:31:13] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:31:16] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:31:19] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:31:22] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:31:26] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:31:29] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:31:32] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:31:35] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:31:38] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:31:41] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:31:44] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:31:47] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:31:50] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:31:53] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:31:56] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:31:59] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:32:02] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:32:05] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:32:08] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:32:11] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:32:14] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:32:17] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:32:20] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:32:23] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:32:26] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:32:29] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:32:32] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:32:35] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:32:38] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:32:41] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:32:44] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:32:47] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:32:50] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:32:53] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:32:56] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:32:59] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:33:02] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:33:05] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:33:08] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:33:11] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:33:14] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:33:17] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:33:20] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:33:23] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:33:26] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:33:29] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:33:32] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:33:35] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:33:38] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:33:41] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:33:44] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:33:47] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:33:50] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:33:53] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:33:56] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:33:59] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:34:02] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:34:05] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:34:08] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:34:11] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:34:14] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:34:17] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:34:20] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:34:23] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:34:26] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:34:29] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:34:32] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:34:35] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:34:38] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:34:41] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:34:44] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:34:47] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:34:50] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:34:53] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:34:57] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:35:00] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:35:03] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:35:06] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:35:09] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:35:12] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:35:15] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:35:18] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:35:21] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:35:24] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:35:27] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:35:30] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:35:33] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:35:36] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:35:39] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:35:42] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:35:45] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:35:48] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:35:51] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:35:54] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:35:57] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:36:00] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:36:03] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:36:06] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:36:09] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:36:12] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:36:15] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:36:18] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:36:21] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:36:24] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:36:27] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:36:30] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:36:33] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:36:36] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:36:39] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:36:42] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:36:45] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:36:48] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:36:51] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:36:54] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:36:57] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:37:00] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:37:03] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:37:06] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:37:09] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:37:12] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:37:15] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:37:18] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:37:21] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:37:24] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:37:27] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:37:30] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:37:33] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:37:36] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:37:39] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:37:42] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:37:45] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:37:48] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:37:51] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:37:54] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:37:57] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:38:00] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:38:03] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:38:06] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:38:09] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:38:12] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:38:15] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:38:18] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:38:21] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:38:24] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:38:27] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:38:30] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:38:33] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:38:36] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:38:39] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:38:42] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:38:46] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:38:49] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:38:52] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:38:55] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:38:58] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:39:01] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:39:04] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:39:07] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:39:10] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:39:13] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:39:16] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:39:19] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:39:22] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:39:25] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:39:28] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:39:31] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:39:34] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:39:37] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:39:40] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:39:43] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:39:46] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:39:49] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:39:52] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:39:55] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:39:58] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:40:01] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:40:04] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:40:07] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:40:10] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:40:13] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:40:16] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:40:19] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:40:22] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:40:25] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:40:28] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:40:31] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:40:34] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:40:37] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:40:40] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:40:43] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:40:46] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:40:49] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:40:52] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:40:55] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:40:58] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:41:01] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:41:04] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:41:07] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:41:10] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:41:13] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:41:16] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:41:19] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:41:22] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:41:25] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:41:28] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:41:31] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:41:34] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:41:37] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:41:40] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:41:43] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:41:46] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:41:49] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:41:52] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:41:55] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:41:58] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:42:01] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:42:04] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:42:07] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:42:08] "POST /message HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:42:10] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:42:13] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:42:16] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:42:19] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:42:23] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:42:26] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:42:29] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:42:32] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:42:35] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:42:38] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:42:41] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:42:44] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:42:47] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:42:50] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:42:53] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:42:56] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:42:59] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:43:02] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:43:05] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:43:08] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:43:11] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:43:14] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:43:17] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:43:20] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:43:23] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:43:26] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:43:29] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:43:32] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:43:35] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:43:38] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:43:41] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:43:44] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:43:47] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:43:50] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:43:53] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:43:56] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:43:59] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:44:02] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:44:05] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:44:08] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:44:11] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:44:14] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:44:17] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:44:20] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:44:23] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:44:26] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:44:29] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:44:32] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:44:35] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:44:38] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:44:41] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:44:44] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:44:48] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:44:51] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:44:54] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:44:57] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:45:00] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:45:03] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:45:06] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:45:09] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:45:12] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:45:15] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:45:18] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:45:21] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:45:24] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:45:27] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:45:30] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:45:33] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:45:36] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:45:39] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:45:42] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:45:45] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:45:48] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:45:51] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:45:54] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:45:57] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:46:00] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:46:03] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:46:06] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:46:09] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:46:12] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [07/Nov/2025 16:46:15] "GET /get_notifications HTTP/1.1" 200 -
+ * Running on http://198.18.0.1:5001
+Press CTRL+C to quit
+127.0.0.1 - - [13/Nov/2025 15:46:04] "GET /health HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:46:06] "GET /health HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:46:09] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:46:10] "GET /health HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:46:12] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:46:13] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:46:15] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:46:18] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:46:21] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:46:24] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:46:27] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:46:30] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:46:33] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:46:34] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:46:36] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:46:39] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:46:42] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:46:45] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:46:48] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:46:50] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:46:50] "POST /session_callback HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:46:51] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:46:52] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:46:55] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:46:55] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:46:58] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:46:58] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:47:01] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:47:01] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:47:04] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:47:04] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:47:07] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:47:07] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:47:10] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:47:10] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:47:13] "GET /get_notifications HTTP/1.1" 200 -
+[INFO] 从conversation_manager加载用户 user_a_张三 的对话历史（包含最新SubAgent结果）
+[INFO] 处理查询: 公司有健身房吗
+
+[INFO] === ReAct 迭代 1 ===
+[DEBUG] 原始大模型响应: ChatCompletion(id='75cc7221-a523-46c7-a083-58db4ed2fc1a', choices=[Choice(finish_reason='tool_calls', index=0, logprobs=None, message=ChatCompletionMessage(content='我来帮您查询公司是否有健身房的相关信息。', role='assistant', function_call=None, tool_calls=[ChatCompletionMessageToolCall(id='call_00_VKjiXgUJvaK0XiA3JhsVCU0B', function=Function(arguments='{"query": "健身房 健身 运动 体育设施 健身器材"}', name='search_doc'), type='function', index=0)]))], created=1763019985, model='deepseek-chat', object='chat.completion', system_fingerprint='fp_ffc7281d48_prod0820_fp8_kvcache', usage=CompletionUsage(completion_tokens=34, prompt_tokens=5379, total_tokens=5413, prompt_tokens_details={'cached_tokens': 5184}, prompt_cache_hit_tokens=5184, prompt_cache_miss_tokens=195))
+[DEBUG] 响应对象类型: <class 'openai.types.chat.chat_completion.ChatCompletion'>
+[DEBUG] 消息对象: ChatCompletionMessage(content='我来帮您查询公司是否有健身房的相关信息。', role='assistant', function_call=None, tool_calls=[ChatCompletionMessageToolCall(id='call_00_VKjiXgUJvaK0XiA3JhsVCU0B', function=Function(arguments='{"query": "健身房 健身 运动 体育设施 健身器材"}', name='search_doc'), type='function', index=0)])
+[DEBUG] 消息内容: 我来帮您查询公司是否有健身房的相关信息。
+[DEBUG] 工具调用: [ChatCompletionMessageToolCall(id='call_00_VKjiXgUJvaK0XiA3JhsVCU0B', function=Function(arguments='{"query": "健身房 健身 运动 体育设施 健身器材"}', name='search_doc'), type='function', index=0)]
+[INFO] LLM决定调用工具，共 1 个工具调用
+[INFO] 处理工具调用: search_doc (ID: call_00_VKjiXgUJvaK0XiA3JhsVCU0B)
+[INFO] 工具参数: {'query': '健身房 健身 运动 体育设施 健身器材'}
+[INFO] 工具执行完成: search_doc
+[INFO] 工具结果预览: {"序号":"8","部门名称":"市场部","问题":"数字人产线产品材料","相似问法":"数字人产线","答案":"数字人产线\nhttps://drive.weixin.qq.com/s?k=ACoAuwc-AF8yOQpYH5","责任人":"李冰"}
+
+{"序号":"3","部门名称":"市场部","问题":"2C2H硬件产品线产品材料","相似问法":"2C2H硬件产品线","答案"...
+[INFO] 所有工具调用完成，继续下一轮判断...
+
+[INFO] === ReAct 迭代 2 ===
+[DEBUG] 原始大模型响应: ChatCompletion(id='f8da3ae3-c5a3-4f5c-af8e-d7aea18cfee2', choices=[Choice(finish_reason='tool_calls', index=0, logprobs=None, message=ChatCompletionMessage(content='从知识库中没有找到健身房的相关信息。让我联系行政后勤部的刘超询问：', role='assistant', function_call=None, tool_calls=[ChatCompletionMessageToolCall(id='call_00_1XNMIBDs9JhPMEJftk28rAgV', function=Function(arguments='{"employee_info": [{"id": "AI3468", "name": "刘超", "question": "您好，想咨询一下公司是否有健身房？如果有的话，具体的开放时间和使用规则是什么？"}]}', name='contact_employee'), type='function', index=0)]))], created=1763019989, model='deepseek-chat', object='chat.completion', system_fingerprint='fp_ffc7281d48_prod0820_fp8_kvcache', usage=CompletionUsage(completion_tokens=72, prompt_tokens=6093, total_tokens=6165, prompt_tokens_details={'cached_tokens': 5376}, prompt_cache_hit_tokens=5376, prompt_cache_miss_tokens=717))
+[DEBUG] 响应对象类型: <class 'openai.types.chat.chat_completion.ChatCompletion'>
+[DEBUG] 消息对象: ChatCompletionMessage(content='从知识库中没有找到健身房的相关信息。让我联系行政后勤部的刘超询问：', role='assistant', function_call=None, tool_calls=[ChatCompletionMessageToolCall(id='call_00_1XNMIBDs9JhPMEJftk28rAgV', function=Function(arguments='{"employee_info": [{"id": "AI3468", "name": "刘超", "question": "您好，想咨询一下公司是否有健身房？如果有的话，具体的开放时间和使用规则是什么？"}]}', name='contact_employee'), type='function', index=0)])
+[DEBUG] 消息内容: 从知识库中没有找到健身房的相关信息。让我联系行政后勤部的刘超询问：
+[DEBUG] 工具调用: [ChatCompletionMessageToolCall(id='call_00_1XNMIBDs9JhPMEJftk28rAgV', function=Function(arguments='{"employee_info": [{"id": "AI3468", "name": "刘超", "question": "您好，想咨询一下公司是否有健身房？如果有的话，具体的开放时间和使用规则是什么？"}]}', name='contact_employee'), type='function', index=0)]
+[INFO] LLM决定调用工具，共 1 个工具调用
+[INFO] 处理工具调用: contact_employee (ID: call_00_1XNMIBDs9JhPMEJftk28rAgV)
+[INFO] contact_employee工具参数: {'employee_info': [{'id': 'AI3468', 'name': '刘超', 'question': '您好，想咨询一下公司是否有健身房？如果有的话，具体的开放时间和使用规则是什么？'}]}
+[INFO] contact_employee工具已启动
+[INFO] 提取到 1 个session_id: ['4103d7dd-532f-4f42-a48b-f2bb6349b0f8']
+[INFO] 已注册session_id映射: 4103d7dd-532f-4f42-a48b-f2bb6349b0f8 -> tool_call_id=call_00_1XNMIBDs9JhPMEJftk28rAgV, user_id=user_a_张三
+[INFO] 检测到contact_employee工具，执行特殊处理
+[INFO] 已保存用户 user_a_张三 的对话历史
+[INFO] contact_employee特殊处理完成，直接返回回复
+[INFO] 最终回复内容: 从知识库中没有找到健身房的相关信息。让我联系行政后勤部的刘超询问：
+[INFO] 总共进行了 2 轮ReAct，调用了工具: ['search_doc', 'contact_employee']
+[INFO] 用户 * 有 2 个待处理会话，自动使用最新的: 4103d7dd-532f-4f42-a48b-f2bb6349b0f8
+
+[CALLBACK] 收到子agent回调通知
+  会话ID: 4103d7dd-532f-4f42-a48b-f2bb6349b0f8
+  用户A: user_a_张三
+  原始问题: 您好，想咨询一下公司是否有健身房？如果有的话，具体的开放时间和使用规则是什么？
+  子agent结果: 公司没有健身房。
+[DEBUG] 更新tool消息内容，tool_call_id=call_00_1XNMIBDs9JhPMEJftk28rAgV
+[DEBUG] 更新后的内容预览: 已成功联系刘超（ID: AI3468），子agent已向其提问：您好，想咨询一下公司是否有健身房？如果有的话，具体的开放时间和使用规则是什么？
+会话ID: 4103d7dd-532f-4f42-a48b-f2bb6349b0f8
+
+所有会话ID: 4103d7dd-532f-4f42-a48b-f2bb6349b0f8
+我会在收到完整回复后通知您。
+
+【已收到回复】
+公司没有健身房。...
+[INFO] 已更新用户 user_a_张三 的对话历史，tool消息已包含SubAgent结果
+[INFO] 已更新用户 user_a_张三 的对话历史，添加SubAgent结果
+
+🔔════════════════════════════════════════════════════════════════════🔔
+                   ✨ 准备推送通知给用户A ✨
+══════════════════════════════════════════════════════════════════════
+📌 目标用户: user_a_张三
+📌 关于问题: 您好，想咨询一下公司是否有健身房？如果有的话，具体的开放时间和使用规则是什么？
+
+💡 推送内容:
+公司没有健身房。
+══════════════════════════════════════════════════════════════════════
+✅ 通知已记录到系统，用户A的终端会自动接收
+
+[INFO] 从conversation_manager加载用户 user_a_张三 的对话历史（包含最新SubAgent结果）
+[INFO] 处理查询: ok，那台球厅有吗？
+
+[INFO] === ReAct 迭代 1 ===
+[DEBUG] 原始大模型响应: ChatCompletion(id='3a6aad1d-7578-4d55-887c-81a742144e5e', choices=[Choice(finish_reason='tool_calls', index=0, logprobs=None, message=ChatCompletionMessage(content='我来帮您查询公司是否有台球厅的相关信息。', role='assistant', function_call=None, tool_calls=[ChatCompletionMessageToolCall(id='call_00_WkSwrycQ3daOyKqVc6qdFR2k', function=Function(arguments='{"employee_info": [{"id": "AI3468", "name": "刘超", "question": "您好，想咨询一下公司是否有台球厅或台球设施？如果有的话，具体的开放时间和使用规则是什么？"}]}', name='contact_employee'), type='function', index=0)]))], created=1763020029, model='deepseek-chat', object='chat.completion', system_fingerprint='fp_ffc7281d48_prod0820_fp8_kvcache', usage=CompletionUsage(completion_tokens=72, prompt_tokens=6313, total_tokens=6385, prompt_tokens_details={'cached_tokens': 6144}, prompt_cache_hit_tokens=6144, prompt_cache_miss_tokens=169))127.0.0.1 - - [13/Nov/2025 15:47:13] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:47:15] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:47:16] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:47:19] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:47:22] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:47:25] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:47:28] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:47:31] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:47:32] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:47:32] "POST /session_callback HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:47:34] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:47:34] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:47:37] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:47:37] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:47:40] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:47:40] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:47:43] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:47:43] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:47:46] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:47:46] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:47:49] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:47:49] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:47:52] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:47:52] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:47:55] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:47:55] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:47:58] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:47:58] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:48:01] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:48:01] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:48:04] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:48:04] "POST /message HTTP/1.1" 200 -
+
+[DEBUG] 响应对象类型: <class 'openai.types.chat.chat_completion.ChatCompletion'>
+[DEBUG] 消息对象: ChatCompletionMessage(content='我来帮您查询公司是否有台球厅的相关信息。', role='assistant', function_call=None, tool_calls=[ChatCompletionMessageToolCall(id='call_00_WkSwrycQ3daOyKqVc6qdFR2k', function=Function(arguments='{"employee_info": [{"id": "AI3468", "name": "刘超", "question": "您好，想咨询一下公司是否有台球厅或台球设施？如果有的话，具体的开放时间和使用规则是什么？"}]}', name='contact_employee'), type='function', index=0)])
+[DEBUG] 消息内容: 我来帮您查询公司是否有台球厅的相关信息。
+[DEBUG] 工具调用: [ChatCompletionMessageToolCall(id='call_00_WkSwrycQ3daOyKqVc6qdFR2k', function=Function(arguments='{"employee_info": [{"id": "AI3468", "name": "刘超", "question": "您好，想咨询一下公司是否有台球厅或台球设施？如果有的话，具体的开放时间和使用规则是什么？"}]}', name='contact_employee'), type='function', index=0)]
+[INFO] LLM决定调用工具，共 1 个工具调用
+[INFO] 处理工具调用: contact_employee (ID: call_00_WkSwrycQ3daOyKqVc6qdFR2k)
+[INFO] contact_employee工具参数: {'employee_info': [{'id': 'AI3468', 'name': '刘超', 'question': '您好，想咨询一下公司是否有台球厅或台球设施？如果有的话，具体的开放时间和使用规则是什么？'}]}
+[INFO] contact_employee工具已启动
+[INFO] 提取到 1 个session_id: ['3785a4d3-1a22-4260-9013-755f2a7f8ef7']
+[INFO] 已注册session_id映射: 3785a4d3-1a22-4260-9013-755f2a7f8ef7 -> tool_call_id=call_00_WkSwrycQ3daOyKqVc6qdFR2k, user_id=user_a_张三
+[INFO] 检测到contact_employee工具，执行特殊处理
+[INFO] 已保存用户 user_a_张三 的对话历史
+[INFO] contact_employee特殊处理完成，直接返回回复
+[INFO] 最终回复内容: 我来帮您查询公司是否有台球厅的相关信息。
+[INFO] 总共进行了 1 轮ReAct，调用了工具: ['contact_employee']
+[INFO] 用户 * 有 2 个待处理会话，自动使用最新的: 3785a4d3-1a22-4260-9013-755f2a7f8ef7
+
+[CALLBACK] 收到子agent回调通知
+  会话ID: 3785a4d3-1a22-4260-9013-755f2a7f8ef7
+  用户A: user_a_张三
+  原始问题: 您好，想咨询一下公司是否有台球厅或台球设施？如果有的话，具体的开放时间和使用规则是什么？
+  子agent结果: 公司目前没有台球厅或台球设施。
+[DEBUG] 更新tool消息内容，tool_call_id=call_00_WkSwrycQ3daOyKqVc6qdFR2k
+[DEBUG] 更新后的内容预览: 已成功联系刘超（ID: AI3468），子agent已向其提问：您好，想咨询一下公司是否有台球厅或台球设施？如果有的话，具体的开放时间和使用规则是什么？
+会话ID: 3785a4d3-1a22-4260-9013-755f2a7f8ef7
+
+所有会话ID: 3785a4d3-1a22-4260-9013-755f2a7f8ef7
+我会在收到完整回复后通知您。
+
+【已收到回复】
+公司目前没有台球厅或...
+[INFO] 已更新用户 user_a_张三 的对话历史，tool消息已包含SubAgent结果
+[INFO] 已更新用户 user_a_张三 的对话历史，添加SubAgent结果
+
+🔔════════════════════════════════════════════════════════════════════🔔
+                   ✨ 准备推送通知给用户A ✨
+══════════════════════════════════════════════════════════════════════
+📌 目标用户: user_a_张三
+📌 关于问题: 您好，想咨询一下公司是否有台球厅或台球设施？如果有的话，具体的开放时间和使用规则是什么？
+
+💡 推送内容:
+公司目前没有台球厅或台球设施。
+══════════════════════════════════════════════════════════════════════
+✅ 通知已记录到系统，用户A的终端会自动接收
+
+[INFO] 从conversation_manager加载用户 user_a_张三 的对话历史（包含最新SubAgent结果）
+[INFO] 处理查询: 好吧，那帮我看下什么是内蒙A节点？
+
+[INFO] === ReAct 迭代 1 ===
+[DEBUG] 原始大模型响应: ChatCompletion(id='7198e993-9cdf-472f-9535-62d048036a77', choices=[Choice(finish_reason='tool_calls', index=0, logprobs=None, message=ChatCompletionMessage(content='我来帮您查询"内蒙A节点"的相关信息。', role='assistant', function_call=None, tool_calls=[ChatCompletionMessageToolCall(id='call_00_hMqu6KCGsXCAL8rsjWNjgTNa', function=Function(arguments='{"query": "内蒙A节点 内蒙古A节点 节点 数据中心 机房"}', name='search_doc'), type='function', index=0)]))], created=1763020071, model='deepseek-chat', object='chat.completion', system_fingerprint='fp_ffc7281d48_prod0820_fp8_kvcache', usage=CompletionUsage(completion_tokens=40, prompt_tokens=6547, total_tokens=6587, prompt_tokens_details={'cached_tokens': 6336}, prompt_cache_hit_tokens=6336, prompt_cache_miss_tokens=211))
+[DEBUG] 响应对象类型: <class 'openai.types.chat.chat_completion.ChatCompletion'>
+[DEBUG] 消息对象: ChatCompletionMessage(content='我来帮您查询"内蒙A节点"的相关信息。', role='assistant', function_call=None, tool_calls=[ChatCompletionMessageToolCall(id='call_00_hMqu6KCGsXCAL8rsjWNjgTNa', function=Function(arguments='{"query": "内蒙A节点 内蒙古A节点 节点 数据中心 机房"}', name='search_doc'), type='function', index=0)])
+[DEBUG] 消息内容: 我来帮您查询"内蒙A节点"的相关信息。
+[DEBUG] 工具调用: [ChatCompletionMessageToolCall(id='call_00_hMqu6KCGsXCAL8rsjWNjgTNa', function=Function(arguments='{"query": "内蒙A节点 内蒙古A节点 节点 数据中心 机房"}', name='search_doc'), type='function', index=0)]
+[INFO] LLM决定调用工具，共 1 个工具调用
+[INFO] 处理工具调用: search_doc (ID: call_00_hMqu6KCGsXCAL8rsjWNjgTNa)
+[INFO] 工具参数: {'query': '内蒙A节点 内蒙古A节点 节点 数据中心 机房'}
+[INFO] 工具执行完成: search_doc
+[INFO] 工具结果预览: {"序号":"3","部门名称":"规划建设部","问题":"AB整合节点是什么","相似问法":"什么是内蒙AB整合节点","答案":"原内蒙A\\B节点网络相互独立，我公司主要服务器资源集中分布在内蒙A\\B两个节点，无法直接互通。2022年根据业务需要，由云公司立项、ICNOC配合，将我公司分布在内蒙A\\B两个节点的服务器网络进行整合和连通，主要建设内容包含服务器间东西方向内外网整合、整体...
+[INFO] 所有工具调用完成，继续下一轮判断...
+
+[INFO] === ReAct 迭代 2 ===
+[DEBUG] 原始大模型响应: ChatCompletion(id='fab8c604-9a61-4b52-b970-bf5f0c48f39c', choices=[Choice(finish_reason='stop', index=0, logprobs=None, message=ChatCompletionMessage(content='根据检索到的信息，我找到了关于"内蒙A节点"的相关说明：\n\n**内蒙A节点**是由天翼云科技有限公司统一管理的服务器裸金属集群节点。根据文档中的信息：\n\n- 内蒙A节点和内蒙B节点原本是相互独立的网络\n- 公司的主要服务器资源集中分布在内蒙A、B两个节点\n- 2022年根据业务需要，将内蒙A、B两个节点的服务器网络进行了整合和连通\n- 2023年3月31日，内蒙AB节点已完成内网核心平面的东西方向打通\n- AB间内网带宽达到800G，内网延迟小于1ms\n\n简单来说，**内蒙A节点**是公司重要的服务器基础设施之一，与内蒙B节点共同构成了公司的主要计算资源池，现在两个节点已经实现了网络互通。\n\n如果您需要更详细的技术信息或操作指导，建议联系规划建设部的高煜昕。', role='assistant', function_call=None, tool_calls=None))], created=1763020076, model='deepseek-chat', object='chat.completion', system_fingerprint='fp_ffc7281d48_prod0820_fp8_kvcache', usage=CompletionUsage(completion_tokens=193, prompt_tokens=7704, total_tokens=7897, prompt_tokens_details={'cached_tokens': 6528}, prompt_cache_hit_tokens=6528, prompt_cache_miss_tokens=1176))127.0.0.1 - - [13/Nov/2025 15:48:06] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:48:07] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:48:07] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:48:10] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:48:10] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:48:13] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:48:13] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:48:16] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:48:16] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:48:19] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:48:19] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:48:22] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:48:23] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:48:25] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:48:26] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:48:28] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:48:29] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:48:31] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:48:32] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:48:34] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:48:35] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:48:37] "GET /get_notifications HTTP/1.1" 200 -
+
+[DEBUG] 响应对象类型: <class 'openai.types.chat.chat_completion.ChatCompletion'>
+[DEBUG] 消息对象: ChatCompletionMessage(content='根据检索到的信息，我找到了关于"内蒙A节点"的相关说明：\n\n**内蒙A节点**是由天翼云科技有限公司统一管理的服务器裸金属集群节点。根据文档中的信息：\n\n- 内蒙A节点和内蒙B节点原本是相互独立的网络\n- 公司的主要服务器资源集中分布在内蒙A、B两个节点\n- 2022年根据业务需要，将内蒙A、B两个节点的服务器网络进行了整合和连通\n- 2023年3月31日，内蒙AB节点已完成内网核心平面的东西方向打通\n- AB间内网带宽达到800G，内网延迟小于1ms\n\n简单来说，**内蒙A节点**是公司重要的服务器基础设施之一，与内蒙B节点共同构成了公司的主要计算资源池，现在两个节点已经实现了网络互通。\n\n如果您需要更详细的技术信息或操作指导，建议联系规划建设部的高煜昕。', role='assistant', function_call=None, tool_calls=None)
+[DEBUG] 消息内容: 根据检索到的信息，我找到了关于"内蒙A节点"的相关说明：
+
+**内蒙A节点**是由天翼云科技有限公司统一管理的服务器裸金属集群节点。根据文档中的信息：
+
+- 内蒙A节点和内蒙B节点原本是相互独立的网络
+- 公司的主要服务器资源集中分布在内蒙A、B两个节点
+- 2022年根据业务需要，将内蒙A、B两个节点的服务器网络进行了整合和连通
+- 2023年3月31日，内蒙AB节点已完成内网核心平面的东西方向打通
+- AB间内网带宽达到800G，内网延迟小于1ms
+
+简单来说，**内蒙A节点**是公司重要的服务器基础设施之一，与内蒙B节点共同构成了公司的主要计算资源池，现在两个节点已经实现了网络互通。
+
+如果您需要更详细的技术信息或操作指导，建议联系规划建设部的高煜昕。
+[DEBUG] 工具调用: None
+[INFO] LLM决定给出最终回复
+[INFO] 最终回复内容: 根据检索到的信息，我找到了关于"内蒙A节点"的相关说明：
+
+**内蒙A节点**是由天翼云科技有限公司统一管理的服务器裸金属集群节点。根据文档中的信息：
+
+- 内蒙A节点和内蒙B节点原本是相互独立的网络
+- 公司的主要服务器资源集中分布在内蒙A、B两个节点
+- 2022年根据业务需要，将内蒙A、B两个节点的服务器网络进行了整合和连通
+- 2023年3月31日，内蒙AB节点已完成内网核心平面的东西方向打通
+- AB间内网带宽达到800G，内网延迟小于1ms
+
+简单来说，**内蒙A节点**是公司重要的服务器基础设施之一，与内蒙B节点共同构成了公司的主要计算资源池，现在两个节点已经实现了网络互通。
+
+如果您需要更详细的技术信息或操作指导，建议联系规划建设部的高煜昕。
+[INFO] 总共进行了 2 轮ReAct，调用了工具: ['search_doc']
+[INFO] 从conversation_manager加载用户 user_a_张三 的对话历史（包含最新SubAgent结果）
+[INFO] 处理查询: 好的，那我想问下公司附近有什么能停车的地方吗
+
+[INFO] === ReAct 迭代 1 ===
+[DEBUG] 原始大模型响应: ChatCompletion(id='37df46d1-0d5b-411e-ba9d-250c7c65261a', choices=[Choice(finish_reason='tool_calls', index=0, logprobs=None, message=ChatCompletionMessage(content='我来帮您查询公司附近停车相关的信息。', role='assistant', function_call=None, tool_calls=[ChatCompletionMessageToolCall(id='call_00_LD4bVSBiPNmXVKSSN6FL3D2r', function=Function(arguments='{"query": "停车 停车场 停车位 停车费 停车管理"}', name='search_doc'), type='function', index=0)]))], created=1763020107, model='deepseek-chat', object='chat.completion', system_fingerprint='fp_ffc7281d48_prod0820_fp8_kvcache', usage=CompletionUsage(completion_tokens=35, prompt_tokens=7914, total_tokens=7949, prompt_tokens_details={'cached_tokens': 7872}, prompt_cache_hit_tokens=7872, prompt_cache_miss_tokens=42))
+[DEBUG] 响应对象类型: <class 'openai.types.chat.chat_completion.ChatCompletion'>
+[DEBUG] 消息对象: ChatCompletionMessage(content='我来帮您查询公司附近停车相关的信息。', role='assistant', function_call=None, tool_calls=[ChatCompletionMessageToolCall(id='call_00_LD4bVSBiPNmXVKSSN6FL3D2r', function=Function(arguments='{"query": "停车 停车场 停车位 停车费 停车管理"}', name='search_doc'), type='function', index=0)])
+[DEBUG] 消息内容: 我来帮您查询公司附近停车相关的信息。
+[DEBUG] 工具调用: [ChatCompletionMessageToolCall(id='call_00_LD4bVSBiPNmXVKSSN6FL3D2r', function=Function(arguments='{"query": "停车 停车场 停车位 停车费 停车管理"}', name='search_doc'), type='function', index=0)]
+[INFO] LLM决定调用工具，共 1 个工具调用
+[INFO] 处理工具调用: search_doc (ID: call_00_LD4bVSBiPNmXVKSSN6FL3D2r)
+[INFO] 工具参数: {'query': '停车 停车场 停车位 停车费 停车管理'}
+[INFO] 工具执行完成: search_doc
+[INFO] 工具结果预览: {"序号":"","部门名称":"人力资源","问题":"公积金提取","相似问法":"公积金提取、公积金购房","答案":"公司缴存公积金：中央国家机关住房资金管理中心 （公众号同名）\n公众号可查询或办理32项业务，具体详见：https://mp.weixin.qq.com/s/THUPeiAIk0JrA-azCPZgxA","责任人":"孙铭"}
+
+{"序号":"21","部门名称":"法律...
+[INFO] 所有工具调用完成，继续下一轮判断...
+
+[INFO] === ReAct 迭代 2 ===
+[DEBUG] 原始大模型响应: ChatCompletion(id='52af22e3-6f17-480a-9270-8de81ef36719', choices=[Choice(finish_reason='tool_calls', index=0, logprobs=None, message=ChatCompletionMessage(content='从知识库中没有找到公司附近停车场的具体信息。让我联系行政后勤部的刘超询问：', role='assistant', function_call=None, tool_calls=[ChatCompletionMessageToolCall(id='call_00_eAUCMVvIGYIaIrmBou9p21ka', function=Function(arguments='{"employee_info": [{"id": "AI3468", "name": "刘超", "question": "您好，想咨询一下公司附近有什么可以停车的地方吗？包括公司内部停车场、周边公共停车场、停车费用等信息。"}]}', name='contact_employee'), type='function', index=0)]))], created=1763020113, model='deepseek-chat', object='chat.completion', system_fingerprint='fp_ffc7281d48_prod0820_fp8_kvcache', usage=CompletionUsage(completion_tokens=81, prompt_tokens=8701, total_tokens=8782, prompt_tokens_details={'cached_tokens': 7936}, prompt_cache_hit_tokens=7936, prompt_cache_miss_tokens=765))
+[DEBUG] 响应对象类型: <class 'openai.types.chat.chat_completion.ChatCompletion'>
+[DEBUG] 消息对象: ChatCompletionMessage(content='从知识库中没有找到公司附近停车场的具体信息。让我联系行政后勤部的刘超询问：', role='assistant', function_call=None, tool_calls=[ChatCompletionMessageToolCall(id='call_00_eAUCMVvIGYIaIrmBou9p21ka', function=Function(arguments='{"employee_info": [{"id": "AI3468", "name": "刘超", "question": "您好，想咨询一下公司附近有什么可以停车的地方吗？包括公司内部停车场、周边公共停车场、停车费用等信息。"}]}', name='contact_employee'), type='function', index=0)])
+[DEBUG] 消息内容: 从知识库中没有找到公司附近停车场的具体信息。让我联系行政后勤部的刘超询问：
+[DEBUG] 工具调用: [ChatCompletionMessageToolCall(id='call_00_eAUCMVvIGYIaIrmBou9p21ka', function=Function(arguments='{"employee_info": [{"id": "AI3468", "name": "刘超", "question": "您好，想咨询一下公司附近有什么可以停车的地方吗？包括公司内部停车场、周边公共停车场、停车费用等信息。"}]}', name='contact_employee'), type='function', index=0)]
+[INFO] LLM决定调用工具，共 1 个工具调用
+[INFO] 处理工具调用: contact_employee (ID: call_00_eAUCMVvIGYIaIrmBou9p21ka)
+[INFO] contact_employee工具参数: {'employee_info': [{'id': 'AI3468', 'name': '刘超', 'question': '您好，想咨询一下公司附近有什么可以停车的地方吗？包括公司内部停车场、周边公共停车场、停车费用等信息。'}]}127.0.0.1 - - [13/Nov/2025 15:48:38] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:48:40] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:48:40] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:48:43] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:48:46] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:48:49] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:48:52] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:48:55] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:48:58] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:49:01] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:49:04] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:49:07] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:49:10] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:49:13] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:49:16] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:49:19] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:49:22] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:49:25] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:49:27] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:49:28] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:49:31] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:49:34] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:49:37] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:49:40] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:49:43] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:49:46] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:49:49] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:49:52] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:49:55] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:49:57] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:49:58] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:50:01] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:50:03] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:50:04] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:50:07] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:50:10] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:50:13] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:50:16] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:50:19] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:50:22] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:50:24] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:50:25] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:50:28] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:50:31] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:50:34] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:50:37] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:50:40] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:50:40] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:50:43] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:50:46] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:50:49] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:50:52] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:50:55] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:50:58] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:51:01] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:51:04] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:51:07] "GET /get_notifications HTTP/1.1" 200 -
+
+[INFO] contact_employee工具已启动
+[INFO] 提取到 1 个session_id: ['5bae3623-d8d1-4cf0-96a2-45237ed77299']
+[INFO] 已注册session_id映射: 5bae3623-d8d1-4cf0-96a2-45237ed77299 -> tool_call_id=call_00_eAUCMVvIGYIaIrmBou9p21ka, user_id=user_a_张三
+[INFO] 检测到contact_employee工具，执行特殊处理
+[INFO] 已保存用户 user_a_张三 的对话历史
+[INFO] contact_employee特殊处理完成，直接返回回复
+[INFO] 最终回复内容: 从知识库中没有找到公司附近停车场的具体信息。让我联系行政后勤部的刘超询问：
+[INFO] 总共进行了 2 轮ReAct，调用了工具: ['search_doc', 'contact_employee']
+[INFO] 用户 * 有 2 个待处理会话，自动使用最新的: 5bae3623-d8d1-4cf0-96a2-45237ed77299
+[INFO] 用户 * 有 2 个待处理会话，自动使用最新的: 5bae3623-d8d1-4cf0-96a2-45237ed77299
+[INFO] 用户 * 有 2 个待处理会话，自动使用最新的: 5bae3623-d8d1-4cf0-96a2-45237ed77299
+[INFO] 用户 * 有 2 个待处理会话，自动使用最新的: 5bae3623-d8d1-4cf0-96a2-45237ed77299
+[INFO] 从conversation_manager加载用户 user_a_张三 的对话历史（包含最新SubAgent结果）
+[INFO] 处理查询: 还没结束吗？
+
+[INFO] === ReAct 迭代 1 ===
+[DEBUG] 原始大模型响应: ChatCompletion(id='5f64b96a-9a00-42ab-ba23-4de03370d19c', choices=[Choice(finish_reason='tool_calls', index=0, logprobs=None, message=ChatCompletionMessage(content='我还在等待刘超的回复。让我检查一下联系状态：', role='assistant', function_call=None, tool_calls=[ChatCompletionMessageToolCall(id='call_00_00VnG4tXChvBGjbLk2xExLFQ', function=Function(arguments='{"employee_info": [{"id": "AI3468", "name": "刘超", "question": "您好，想确认一下关于公司附近停车信息的回复情况。"}]}', name='contact_employee'), type='function', index=0)]))], created=1763020235, model='deepseek-chat', object='chat.completion', system_fingerprint='fp_ffc7281d48_prod0820_fp8_kvcache', usage=CompletionUsage(completion_tokens=61, prompt_tokens=8924, total_tokens=8985, prompt_tokens_details={'cached_tokens': 8768}, prompt_cache_hit_tokens=8768, prompt_cache_miss_tokens=156))
+[DEBUG] 响应对象类型: <class 'openai.types.chat.chat_completion.ChatCompletion'>
+[DEBUG] 消息对象: ChatCompletionMessage(content='我还在等待刘超的回复。让我检查一下联系状态：', role='assistant', function_call=None, tool_calls=[ChatCompletionMessageToolCall(id='call_00_00VnG4tXChvBGjbLk2xExLFQ', function=Function(arguments='{"employee_info": [{"id": "AI3468", "name": "刘超", "question": "您好，想确认一下关于公司附近停车信息的回复情况。"}]}', name='contact_employee'), type='function', index=0)])
+[DEBUG] 消息内容: 我还在等待刘超的回复。让我检查一下联系状态：
+[DEBUG] 工具调用: [ChatCompletionMessageToolCall(id='call_00_00VnG4tXChvBGjbLk2xExLFQ', function=Function(arguments='{"employee_info": [{"id": "AI3468", "name": "刘超", "question": "您好，想确认一下关于公司附近停车信息的回复情况。"}]}', name='contact_employee'), type='function', index=0)]
+[INFO] LLM决定调用工具，共 1 个工具调用
+[INFO] 处理工具调用: contact_employee (ID: call_00_00VnG4tXChvBGjbLk2xExLFQ)
+[INFO] contact_employee工具参数: {'employee_info': [{'id': 'AI3468', 'name': '刘超', 'question': '您好，想确认一下关于公司附近停车信息的回复情况。'}]}
+[INFO] contact_employee工具已启动
+[INFO] 提取到 1 个session_id: ['6d181fd5-f8ab-4eab-8337-3da21cdf62cc']
+[INFO] 已注册session_id映射: 6d181fd5-f8ab-4eab-8337-3da21cdf62cc -> tool_call_id=call_00_00VnG4tXChvBGjbLk2xExLFQ, user_id=user_a_张三
+[INFO] 检测到contact_employee工具，执行特殊处理
+[INFO] 已保存用户 user_a_张三 的对话历史
+[INFO] contact_employee特殊处理完成，直接返回回复
+[INFO] 最终回复内容: 我还在等待刘超的回复。让我检查一下联系状态：
+[INFO] 总共进行了 1 轮ReAct，调用了工具: ['contact_employee']
+[INFO] 从conversation_manager加载用户 user_a_张三 的对话历史（包含最新SubAgent结果）
+[INFO] 处理查询: 你帮我问问别人吧
+
+[INFO] === ReAct 迭代 1 ===
+[DEBUG] 原始大模型响应: ChatCompletion(id='13fc688b-05f3-4a40-94f6-78f9e2e3e266', choices=[Choice(finish_reason='tool_calls', index=0, logprobs=None, message=ChatCompletionMessage(content='好的，我来帮您查找其他可能了解停车信息的员工。让我搜索一下负责行政或后勤管理的其他人员：', role='assistant', function_call=None, tool_calls=[ChatCompletionMessageToolCall(id='call_00_HpTG9mLBBD51LkLrojHLEkOz', function=Function(arguments='{"query": "行政 后勤 综合中心 办公室管理"}', name='search_employee'), type='function', index=0)]))], created=1763020257, model='deepseek-chat', object='chat.completion', system_fingerprint='fp_ffc7281d48_prod0820_fp8_kvcache', usage=CompletionUsage(completion_tokens=46, prompt_tokens=9113, total_tokens=9159, prompt_tokens_details={'cached_tokens': 8960}, prompt_cache_hit_tokens=8960, prompt_cache_miss_tokens=153))
+[DEBUG] 响应对象类型: <class 'openai.types.chat.chat_completion.ChatCompletion'>
+[DEBUG] 消息对象: ChatCompletionMessage(content='好的，我来帮您查找其他可能了解停车信息的员工。让我搜索一下负责行政或后勤管理的其他人员：', role='assistant', function_call=None, tool_calls=[ChatCompletionMessageToolCall(id='call_00_HpTG9mLBBD51LkLrojHLEkOz', function=Function(arguments='{"query": "行政 后勤 综合中心 办公室管理"}', name='search_employee'), type='function', index=0)])
+[DEBUG] 消息内容: 好的，我来帮您查找其他可能了解停车信息的员工。让我搜索一下负责行政或后勤管理的其他人员：
+[DEBUG] 工具调用: [ChatCompletionMessageToolCall(id='call_00_HpTG9mLBBD51LkLrojHLEkOz', function=Function(arguments='{"query": "行政 后勤 综合中心 办公室管理"}', name='search_employee'), type='function', index=0)]
+[INFO] LLM决定调用工具，共 1 个工具调用
+[INFO] 处理工具调用: search_employee (ID: call_00_HpTG9mLBBD51LkLrojHLEkOz)
+[INFO] 工具参数: {'query': '行政 后勤 综合中心 办公室管理'}
+[INFO] 工具执行完成: search_employee
+[INFO] 工具结果预览: The user is asking about administrative, logistics, and general office management, which typically falls under the responsibilities of the administrative or general affairs department. I will search f...
+[INFO] 所有工具调用完成，继续下一轮判断...
+
+[INFO] === ReAct 迭代 2 ===
+[DEBUG] 原始大模型响应: ChatCompletion(id='fc4e3fde-b307-49e8-a742-baa8e99b1bff', choices=[Choice(finish_reason='tool_calls', index=0, logprobs=None, message=ChatCompletionMessage(content='目前系统中只找到了刘超这一位行政后勤部的联系人。让我尝试查找综合中心的其他人员：', role='assistant', function_call=None, tool_calls=[ChatCompletionMessageToolCall(id='call_00_jDmoLaoKHAVIZNUuc8aphq3m', function=Function(arguments='{"query": "综合中心 党委办公室"}', name='search_employee'), type='function', index=0)]))], created=1763020268, model='deepseek-chat', object='chat.completion', system_fingerprint='fp_ffc7281d48_prod0820_fp8_kvcache', usage=CompletionUsage(completion_tokens=39, prompt_tokens=9280, total_tokens=9319, prompt_tokens_details={'cached_tokens': 9152}, prompt_cache_hit_tokens=9152, prompt_cache_miss_tokens=128))
+[DEBUG] 响应对象类型: <class 'openai.types.chat.chat_completion.ChatCompletion'>
+[DEBUG] 消息对象: ChatCompletionMessage(content='目前系统中只找到了刘超这一位行政后勤部的联系人。让我尝试查找综合中心的其他人员：', role='assistant', function_call=None, tool_calls=[ChatCompletionMessageToolCall(id='call_00_jDmoLaoKHAVIZNUuc8aphq3m', function=Function(arguments='{"query": "综合中心 党委办公室"}', name='search_employee'), type='function', index=0)])
+[DEBUG] 消息内容: 目前系统中只找到了刘超这一位行政后勤部的联系人。让我尝试查找综合中心的其他人员：
+[DEBUG] 工具调用: [ChatCompletionMessageToolCall(id='call_00_jDmoLaoKHAVIZNUuc8aphq3m', function=Function(arguments='{"query": "综合中心 党委办公室"}', name='search_employee'), type='function', index=0)]127.0.0.1 - - [13/Nov/2025 15:51:10] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:51:13] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:51:16] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:51:19] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:51:22] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:51:23] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:51:25] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:51:28] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:51:31] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:51:32] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:51:34] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:51:37] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:51:39] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:51:39] "POST /session_callback HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:51:40] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:51:41] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:51:43] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:51:46] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:51:49] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:51:52] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:51:55] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:51:58] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:52:01] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:52:01] "GET /get_notifications HTTP/1.1" 200 -
+
+[INFO] LLM决定调用工具，共 1 个工具调用
+[INFO] 处理工具调用: search_employee (ID: call_00_jDmoLaoKHAVIZNUuc8aphq3m)
+[INFO] 工具参数: {'query': '综合中心 党委办公室'}
+[INFO] 工具执行完成: search_employee
+[INFO] 工具结果预览: The user is asking for an employee from the "综合中心" (Comprehensive Center) and "党委办公室" (Party Committee Office). I need to search the employee records for someone who belongs to either of these departm...
+[INFO] 所有工具调用完成，继续下一轮判断...
+
+[INFO] === ReAct 迭代 3 ===
+[DEBUG] 原始大模型响应: ChatCompletion(id='17040c2c-771d-45a7-a049-38879a641e13', choices=[Choice(finish_reason='tool_calls', index=0, logprobs=None, message=ChatCompletionMessage(content='找到了综合中心的张三，让我联系他询问停车信息：', role='assistant', function_call=None, tool_calls=[ChatCompletionMessageToolCall(id='call_00_YwY76Wd9n1SB3WQkQPD7enI0', function=Function(arguments='{"employee_info": [{"id": "12345", "name": "张三", "question": "您好，想咨询一下公司附近有什么可以停车的地方吗？包括公司内部停车场、周边公共停车场、停车费用等信息。"}]}', name='contact_employee'), type='function', index=0)]))], created=1763020277, model='deepseek-chat', object='chat.completion', system_fingerprint='fp_ffc7281d48_prod0820_fp8_kvcache', usage=CompletionUsage(completion_tokens=70, prompt_tokens=9390, total_tokens=9460, prompt_tokens_details={'cached_tokens': 9280}, prompt_cache_hit_tokens=9280, prompt_cache_miss_tokens=110))
+[DEBUG] 响应对象类型: <class 'openai.types.chat.chat_completion.ChatCompletion'>
+[DEBUG] 消息对象: ChatCompletionMessage(content='找到了综合中心的张三，让我联系他询问停车信息：', role='assistant', function_call=None, tool_calls=[ChatCompletionMessageToolCall(id='call_00_YwY76Wd9n1SB3WQkQPD7enI0', function=Function(arguments='{"employee_info": [{"id": "12345", "name": "张三", "question": "您好，想咨询一下公司附近有什么可以停车的地方吗？包括公司内部停车场、周边公共停车场、停车费用等信息。"}]}', name='contact_employee'), type='function', index=0)])
+[DEBUG] 消息内容: 找到了综合中心的张三，让我联系他询问停车信息：
+[DEBUG] 工具调用: [ChatCompletionMessageToolCall(id='call_00_YwY76Wd9n1SB3WQkQPD7enI0', function=Function(arguments='{"employee_info": [{"id": "12345", "name": "张三", "question": "您好，想咨询一下公司附近有什么可以停车的地方吗？包括公司内部停车场、周边公共停车场、停车费用等信息。"}]}', name='contact_employee'), type='function', index=0)]
+[INFO] LLM决定调用工具，共 1 个工具调用
+[INFO] 处理工具调用: contact_employee (ID: call_00_YwY76Wd9n1SB3WQkQPD7enI0)
+[INFO] contact_employee工具参数: {'employee_info': [{'id': '12345', 'name': '张三', 'question': '您好，想咨询一下公司附近有什么可以停车的地方吗？包括公司内部停车场、周边公共停车场、停车费用等信息。'}]}
+[INFO] contact_employee工具已启动
+[INFO] 提取到 1 个session_id: ['6624abc9-2450-4425-906b-d7c1fb9ad269']
+[INFO] 已注册session_id映射: 6624abc9-2450-4425-906b-d7c1fb9ad269 -> tool_call_id=call_00_YwY76Wd9n1SB3WQkQPD7enI0, user_id=user_a_张三
+[INFO] 检测到contact_employee工具，执行特殊处理
+[INFO] 已保存用户 user_a_张三 的对话历史
+[INFO] contact_employee特殊处理完成，直接返回回复
+[INFO] 最终回复内容: 找到了综合中心的张三，让我联系他询问停车信息：
+[INFO] 总共进行了 3 轮ReAct，调用了工具: ['search_employee', 'search_employee', 'contact_employee']
+[INFO] 从conversation_manager加载用户 user_a_张三 的对话历史（包含最新SubAgent结果）
+[INFO] 处理查询: 好的。
+
+[INFO] === ReAct 迭代 1 ===
+[DEBUG] 原始大模型响应: ChatCompletion(id='0bfbeb9e-21d0-4b2f-8337-6c1b72f520bd', choices=[Choice(finish_reason='stop', index=0, logprobs=None, message=ChatCompletionMessage(content='已联系综合中心的张三询问公司附近停车信息，有结果后我会及时通知您。\n\n如果您还有其他问题需要咨询，也可以随时告诉我。', role='assistant', function_call=None, tool_calls=None))], created=1763020289, model='deepseek-chat', object='chat.completion', system_fingerprint='fp_ffc7281d48_prod0820_fp8_kvcache', usage=CompletionUsage(completion_tokens=29, prompt_tokens=9586, total_tokens=9615, prompt_tokens_details={'cached_tokens': 9408}, prompt_cache_hit_tokens=9408, prompt_cache_miss_tokens=178))
+[DEBUG] 响应对象类型: <class 'openai.types.chat.chat_completion.ChatCompletion'>
+[DEBUG] 消息对象: ChatCompletionMessage(content='已联系综合中心的张三询问公司附近停车信息，有结果后我会及时通知您。\n\n如果您还有其他问题需要咨询，也可以随时告诉我。', role='assistant', function_call=None, tool_calls=None)
+[DEBUG] 消息内容: 已联系综合中心的张三询问公司附近停车信息，有结果后我会及时通知您。
+
+如果您还有其他问题需要咨询，也可以随时告诉我。
+[DEBUG] 工具调用: None
+[INFO] LLM决定给出最终回复
+[INFO] 最终回复内容: 已联系综合中心的张三询问公司附近停车信息，有结果后我会及时通知您。
+
+如果您还有其他问题需要咨询，也可以随时告诉我。
+[INFO] 总共进行了 1 轮ReAct，调用了工具: []
+[INFO] 用户 * 有 4 个待处理会话，自动使用最新的: 6624abc9-2450-4425-906b-d7c1fb9ad269
+
+[CALLBACK] 收到子agent回调通知
+  会话ID: 6624abc9-2450-4425-906b-d7c1fb9ad269
+  用户A: user_a_张三
+  原始问题: 您好，想咨询一下公司附近有什么可以停车的地方吗？包括公司内部停车场、周边公共停车场、停车费用等信息。
+  子agent结果: 用户未提供任何关于公司附近停车场所的信息，无法获取公司内部停车场、周边公共停车场或停车费用等细节。建议用户后续通过其他渠道（如公司行政或本地地图应用）查询。
+[DEBUG] 更新tool消息内容，tool_call_id=call_00_YwY76Wd9n1SB3WQkQPD7enI0
+[DEBUG] 更新后的内容预览: 已成功联系张三（ID: 12345），子agent已向其提问：您好，想咨询一下公司附近有什么可以停车的地方吗？包括公司内部停车场、周边公共停车场、停车费用等信息。
+会话ID: 6624abc9-2450-4425-906b-d7c1fb9ad269
+
+所有会话ID: 6624abc9-2450-4425-906b-d7c1fb9ad269
+我会在收到完整回复后通知您。
+
+【已收到回复】
+用户未提供...
+[INFO] 已更新用户 user_a_张三 的对话历史，tool消息已包含SubAgent结果
+[INFO] 已更新用户 user_a_张三 的对话历史，添加SubAgent结果
+
+🔔════════════════════════════════════════════════════════════════════🔔
+                   ✨ 准备推送通知给用户A ✨
+══════════════════════════════════════════════════════════════════════
+📌 目标用户: user_a_张三
+📌 关于问题: 您好，想咨询一下公司附近有什么可以停车的地方吗？包括公司内部停车场、周边公共停车场、停车费用等信息。
+
+💡 推送内容:
+用户未提供任何关于公司附近停车场所的信息，无法获取公司内部停车场、周边公共停车场或停车费用等细节。建议用户后续通过其他渠道（如公司行政或本地地图应用）查询。
+══════════════════════════════════════════════════════════════════════
+✅ 通知已记录到系统，用户A的终端会自动接收
+
+[INFO] 用户 * 有 3 个待处理会话，自动使用最新的: 6d181fd5-f8ab-4eab-8337-3da21cdf62cc
+[INFO] 用户 * 有 3 个待处理会话，自动使用最新的: 6d181fd5-f8ab-4eab-8337-3da21cdf62cc127.0.0.1 - - [13/Nov/2025 15:52:04] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:52:07] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:52:07] "POST /session_callback HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:52:07] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:52:08] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:52:10] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:52:11] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:52:13] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:52:14] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:52:16] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:52:17] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:52:17] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:52:19] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:52:20] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:52:22] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:52:23] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:52:25] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:52:26] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:52:28] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:52:29] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:52:31] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:52:32] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:52:35] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:52:35] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:52:38] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:52:38] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:52:41] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:52:41] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:52:44] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:52:44] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:52:47] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:52:47] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:52:50] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:52:50] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:52:53] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:52:53] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:52:56] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:52:56] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:52:59] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:52:59] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:53:02] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:53:02] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:53:05] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:53:05] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:53:08] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:53:08] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:53:11] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:53:11] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:53:14] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:53:14] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:53:17] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:53:17] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:53:20] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:53:20] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:53:23] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:53:23] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:53:26] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:53:26] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:53:29] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:53:29] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:53:32] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:53:32] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:53:35] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:53:35] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:53:38] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:53:38] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:53:41] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:53:41] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:53:44] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:53:44] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:53:47] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:53:47] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:53:50] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:53:50] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:53:53] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:53:53] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:53:56] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:53:56] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:53:59] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:53:59] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:54:02] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:54:02] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:54:05] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:54:05] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:54:08] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:54:08] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:54:11] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:54:11] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:54:14] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:54:14] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:54:17] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:54:17] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:54:20] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:54:20] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:54:23] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:54:23] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:54:26] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:54:26] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:54:29] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:54:29] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:54:32] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:54:32] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:54:35] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:54:35] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:54:38] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:54:38] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:54:41] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:54:41] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:54:44] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:54:44] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:54:47] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:54:47] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:54:50] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:54:50] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:54:53] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:54:53] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:54:56] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:54:56] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:54:59] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:55:00] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:55:02] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:55:03] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:55:05] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:55:06] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:55:08] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:55:09] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:55:11] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:55:12] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:55:14] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:55:15] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:55:17] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:55:18] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:55:20] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:55:21] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:55:23] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:55:24] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:55:26] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:55:27] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:55:29] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:55:30] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:55:32] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:55:33] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:55:35] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:55:36] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:55:38] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:55:39] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:55:41] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:55:42] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:55:44] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:55:45] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:55:47] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:55:48] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:55:50] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:55:51] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:55:53] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:55:54] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:55:56] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:55:57] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:55:59] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:56:00] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:56:02] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:56:03] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:56:05] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:56:06] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:56:08] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:56:09] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:56:11] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:56:12] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:56:14] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:56:15] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:56:17] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:56:18] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:56:20] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:56:21] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:56:23] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:56:24] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:56:27] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:56:27] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:56:30] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:56:30] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:56:33] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:56:33] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:56:36] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:56:36] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:56:39] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:56:39] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:56:42] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:56:42] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:56:45] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:56:45] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:56:48] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:56:48] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:56:51] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:56:51] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:56:54] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:56:54] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:56:57] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:56:57] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:57:00] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:57:00] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:57:03] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:57:03] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:57:06] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:57:06] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:57:09] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:57:09] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:57:12] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:57:12] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:57:15] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:57:15] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:57:18] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:57:18] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:57:21] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:57:21] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:57:24] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:57:24] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:57:27] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:57:27] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:57:30] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:57:30] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:57:33] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:57:33] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:57:36] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [13/Nov/2025 15:57:39] "POST /message HTTP/1.1" 200 -

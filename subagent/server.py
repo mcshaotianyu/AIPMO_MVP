@@ -74,46 +74,6 @@ def health():
     return jsonify({"status": "ok"})
 
 
-@app.route('/ask', methods=['POST'])
-def ask():
-    """
-    问询接口（保留原有功能）
-    
-    请求格式:
-    {
-        "task": "子任务描述",
-        "person": "问询对象",
-        "replies": ["回复1", "回复2", ...]  // 可选，如果提供则使用这些回复完成对话
-    }
-    
-    返回格式:
-    {
-        "status": "completed" | "waiting" | "error",
-        "completed_info": "...",  // 任务完成时返回
-        "question": "...",  // 等待回复时返回
-        "error": "..."  // 错误时返回
-    }
-    """
-    try:
-        data = request.json
-        if not data:
-            return jsonify({"status": "error", "error": "请求体不能为空"}), 400
-        
-        task = data.get('task')
-        person = data.get('person')
-        replies = data.get('replies', [])
-        
-        if not task or not person:
-            return jsonify({"status": "error", "error": "task 和 person 参数必填"}), 400
-        
-        # 如果提供了回复列表（非空），使用它们；否则传递 None
-        result = execute_task(task, person, replies if replies else None)
-        return jsonify(result)
-        
-    except Exception as e:
-        return jsonify({"status": "error", "error": str(e)}), 500
-
-
 @app.route('/start_session', methods=['POST'])
 def start_session():
     """
@@ -288,73 +248,6 @@ def reply():
         return jsonify({"status": "error", "error": str(e)}), 500
 
 
-@app.route('/get_status', methods=['GET'])
-def get_status():
-    """
-    查询会话状态接口
-    
-    请求参数:
-    - session_id: 会话ID
-    
-    返回格式:
-    {
-        "status": "success" | "error",
-        "session": {...},  // 会话信息
-        "error": "..."
-    }
-    """
-    try:
-        session_id = request.args.get('session_id')
-        if not session_id:
-            return jsonify({"status": "error", "error": "缺少session_id参数"}), 400
-        
-        session = session_manager.get_session(session_id)
-        if not session:
-            return jsonify({"status": "error", "error": "会话不存在"}), 404
-        
-        return jsonify({
-            "status": "success",
-            "session": session.to_dict()
-        })
-        
-    except Exception as e:
-        return jsonify({"status": "error", "error": str(e)}), 500
-
-
-@app.route('/get_pending_sessions', methods=['GET'])
-def get_pending_sessions():
-    """
-    获取用户B的待处理会话列表
-    
-    请求参数:
-    - user_b_id: 用户B的ID（如果为"*"或"all"，则返回所有待处理会话）
-    
-    返回格式:
-    {
-        "status": "success",
-        "sessions": [...]
-    }
-    """
-    try:
-        user_b_id = request.args.get('user_b_id')
-        if not user_b_id:
-            return jsonify({"status": "error", "error": "缺少user_b_id参数"}), 400
-        
-        # 支持"*"或"all"查询所有待处理会话（用于测试）
-        if user_b_id in ["*", "all"]:
-            sessions = session_manager.get_all_pending_sessions()
-        else:
-            sessions = session_manager.get_pending_sessions(user_b_id)
-        
-        return jsonify({
-            "status": "success",
-            "sessions": sessions
-        })
-        
-    except Exception as e:
-        return jsonify({"status": "error", "error": str(e)}), 500
-
-
 def trigger_callback_if_needed(session_id: str):
     """触发回调（如果配置了callback_url）"""
     session = session_manager.get_session(session_id)
@@ -364,7 +257,7 @@ def trigger_callback_if_needed(session_id: str):
     # 在后台线程中触发回调
     def do_callback():
         try:
-            print(f"[INFO] 触发回调: {session.callback_url}")
+            print(f"[INFO] 触发回调: {session.callback_url}")  # /session_callback
             response = requests.post(
                 session.callback_url,
                 json={

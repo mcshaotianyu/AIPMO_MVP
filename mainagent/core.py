@@ -5,7 +5,7 @@ import json
 import re
 from openai import OpenAI
 from prompts import SYSTEM_PROMPT
-from tools import ToolManager, get_function_definitions, get_tools_definitions
+from tools import ToolManager, get_tools_definitions
 from conversation_manager import conversation_manager
 
 
@@ -16,128 +16,6 @@ def init_client():
         api_key=api_key,
         base_url="https://api.deepseek.com"
     )
-
-
-def execute_function_call_agent(user_query: str, max_iterations: int = 10) -> dict:
-    """
-    执行Function Call主Agent
-    
-    Args:
-        user_query: 用户查询
-        max_iterations: 最大迭代次数
-        
-    Returns:
-        dict: 执行结果
-    """
-    client = init_client()
-    tool_manager = ToolManager()
-    
-    # 获取工具定义（新格式）
-    tools = get_tools_definitions()
-    
-    # 初始化对话历史
-    messages = [
-        {"role": "system", "content": SYSTEM_PROMPT},
-        {"role": "user", "content": user_query}
-    ]
-    
-    iteration = 0
-    execution_log = []
-    
-    try:
-        while iteration < max_iterations:
-            iteration += 1
-            execution_log.append(f"=== 迭代 {iteration} ===")
-            
-            # 调用LLM with Tools
-            response = client.chat.completions.create(
-                model="deepseek-chat",
-                messages=messages,
-                tools=tools,
-                stream=False
-            )
-            
-            # 打印原始响应
-            print(f"[DEBUG] 原始大模型响应: {response}")
-            print(f"[DEBUG] 响应对象类型: {type(response)}")
-            
-            message = response.choices[0].message
-            print(f"[DEBUG] 消息对象: {message}")
-            print(f"[DEBUG] 消息内容: {message.content}")
-            print(f"[DEBUG] 工具调用: {message.tool_calls}")
-            
-            # 检查是否有工具调用
-            if message.tool_calls:
-                execution_log.append(f"LLM决定调用工具")
-                # 添加助手消息到历史（转换为字典格式）
-                messages.append({
-                    "role": "assistant",
-                    "content": message.content,
-                    "tool_calls": [
-                        {
-                            "id": tc.id,
-                            "type": "function",
-                            "function": {
-                                "name": tc.function.name,
-                                "arguments": tc.function.arguments
-                            }
-                        } for tc in message.tool_calls
-                    ]
-                })
-                
-                # 处理每个工具调用
-                for tool_call in message.tool_calls:
-                    function_name = tool_call.function.name
-                    function_args_str = tool_call.function.arguments
-                    tool_call_id = tool_call.id
-                    
-                    execution_log.append(f"调用工具: {function_name}({function_args_str})")
-                    
-                    try:
-                        function_args = json.loads(function_args_str)
-                    except json.JSONDecodeError as e:
-                        function_result = f"错误：函数参数解析失败: {str(e)}"
-                    else:
-                        # 执行函数
-                        function_result = tool_manager.execute_tool(function_name, function_args)
-                    
-                    execution_log.append(f"工具结果: {function_result[:100]}{'...' if len(function_result) > 100 else ''}")
-                    
-                    # 添加工具调用结果到消息历史
-                    messages.append({
-                        "role": "tool",
-                        "tool_call_id": tool_call_id,
-                        "content": function_result
-                    })
-                
-            else:
-                # 没有工具调用，说明LLM给出了最终回复
-                final_answer = message.content
-                execution_log.append(f"LLM直接回复: {final_answer[:100]}{'...' if len(final_answer) > 100 else ''}")
-                
-                return {
-                    "status": "completed",
-                    "final_answer": final_answer,
-                    "iterations": iteration,
-                    "execution_log": execution_log
-                }
-        
-        # 达到最大迭代次数
-        return {
-            "status": "max_iterations_reached",
-            "final_answer": "达到最大迭代次数，未能完成任务",
-            "iterations": iteration,
-            "execution_log": execution_log
-        }
-        
-    except Exception as e:
-        execution_log.append(f"执行异常: {str(e)}")
-        return {
-            "status": "error",
-            "error": str(e),
-            "iterations": iteration,
-            "execution_log": execution_log
-        }
 
 
 def process_user_query(user_query: str, conversation_history: list = None, user_id: str = "user_a") -> dict:
@@ -218,7 +96,7 @@ def process_user_query(user_query: str, conversation_history: list = None, user_
             
             # 检查是否有工具调用
             if message.tool_calls:
-                print(f"[INFO] LLM决定调用工具")
+                print(f"[INFO] LLM决定调用工具，共 {len(message.tool_calls)} 个工具调用")
                 # 添加助手消息到历史（转换为字典格式）
                 messages.append({
                     "role": "assistant",
@@ -235,110 +113,124 @@ def process_user_query(user_query: str, conversation_history: list = None, user_
                     ]
                 })
                 
-                # 处理工具调用
-                tool_call = message.tool_calls[0]  # 取第一个工具调用
-                function_name = tool_call.function.name
-                function_args_str = tool_call.function.arguments
-                tool_call_id = tool_call.id
+                # 处理所有工具调用（确保每个tool_call都有对应的tool响应）
+                has_contact_employee = False
+                contact_employee_result = None
+                contact_employee_session_id = None
+                contact_employee_tool_call_id = None
                 
-                print(f"[INFO] 调用工具: {function_name}")
-                called_functions.append(function_name)
-                
-                # 特殊处理：如果是contact_employee工具，并行返回response的content并跳出循环
-                if function_name == "contact_employee":
-                    print(f"[INFO] 检测到contact_employee工具，执行特殊处理")
+                for tool_call in message.tool_calls:
+                    function_name = tool_call.function.name
+                    function_args_str = tool_call.function.arguments
+                    tool_call_id = tool_call.id
                     
-                    try:
-                        function_args = json.loads(function_args_str)
-                        print(f"[INFO] 工具参数: {function_args}")
+                    print(f"[INFO] 处理工具调用: {function_name} (ID: {tool_call_id})")
+                    called_functions.append(function_name)
+                    
+                    # 特殊处理：如果是contact_employee工具，记录信息但不立即返回
+                    if function_name == "contact_employee":
+                        has_contact_employee = True
+                        contact_employee_tool_call_id = tool_call_id
                         
-                        # 并行执行工具（不等待完成）
-                        function_result = tool_manager.execute_tool(function_name, function_args)
-                        print(f"[INFO] contact_employee工具已启动")
+                        try:
+                            function_args = json.loads(function_args_str)
+                            print(f"[INFO] contact_employee工具参数: {function_args}")
+                            
+                            # 并行执行工具（不等待完成）
+                            contact_employee_result = tool_manager.execute_tool(function_name, function_args)
+                            print(f"[INFO] contact_employee工具已启动")
+                            
+                            # 从function_result中提取所有session_id（格式：会话ID: xxx-xxx-xxx 或 所有会话ID: xxx, xxx, xxx）
+                            # 先尝试提取"所有会话ID"格式
+                            all_session_ids_match = re.search(r'所有会话ID:\s*([a-f0-9\-\s,]+)', contact_employee_result)
+                            if all_session_ids_match:
+                                # 提取所有session_id
+                                session_ids_str = all_session_ids_match.group(1)
+                                session_ids = [s.strip() for s in session_ids_str.split(',') if s.strip()]
+                                print(f"[INFO] 提取到 {len(session_ids)} 个session_id: {session_ids}")
+                                # 注册每个session_id到tool_call_id和user_id的映射
+                                for session_id in session_ids:
+                                    conversation_manager.register_session(session_id, tool_call_id, user_id)
+                                    print(f"[INFO] 已注册session_id映射: {session_id} -> tool_call_id={tool_call_id}, user_id={user_id}")
+                            else:
+                                # 如果没有"所有会话ID"格式，尝试提取单个会话ID（向后兼容）
+                                session_id_match = re.search(r'会话ID:\s*([a-f0-9\-]+)', contact_employee_result)
+                                if session_id_match:
+                                    contact_employee_session_id = session_id_match.group(1)
+                                    print(f"[INFO] 提取到session_id: {contact_employee_session_id}")
+                                    # 注册session_id到tool_call_id和user_id的映射
+                                    conversation_manager.register_session(contact_employee_session_id, tool_call_id, user_id)
+                                    print(f"[INFO] 已注册session_id映射: {contact_employee_session_id} -> tool_call_id={tool_call_id}, user_id={user_id}")
+                            
+                            # 添加工具调用结果到消息历史
+                            messages.append({
+                                "role": "tool",
+                                "tool_call_id": tool_call_id,
+                                "content": contact_employee_result
+                            })
+                            
+                        except json.JSONDecodeError as e:
+                            contact_employee_result = f"错误：函数参数解析失败: {str(e)}"
+                            print(f"[ERROR] contact_employee参数解析失败: {str(e)}")
+                            messages.append({
+                                "role": "tool",
+                                "tool_call_id": tool_call_id,
+                                "content": contact_employee_result
+                            })
+                    else:
+                        # 普通工具处理
+                        function_result = None
+                        try:
+                            function_args = json.loads(function_args_str)
+                            print(f"[INFO] 工具参数: {function_args}")
+                            # 执行函数
+                            function_result = tool_manager.execute_tool(function_name, function_args)
+                            print(f"[INFO] 工具执行完成: {function_name}")
+                            print(f"[INFO] 工具结果预览: {function_result[:200]}{'...' if len(function_result) > 200 else ''}")
+                        except json.JSONDecodeError as e:
+                            function_result = f"错误：函数参数解析失败: {str(e)}"
+                            print(f"[ERROR] 参数解析失败: {str(e)}")
+                        except Exception as e:
+                            function_result = f"错误：工具执行异常: {str(e)}"
+                            print(f"[ERROR] 工具执行异常: {str(e)}")
                         
-                        # 从function_result中提取session_id（格式：会话ID: xxx-xxx-xxx）
-                        session_id = None
-                        session_id_match = re.search(r'会话ID:\s*([a-f0-9\-]+)', function_result)
-                        if session_id_match:
-                            session_id = session_id_match.group(1)
-                            print(f"[INFO] 提取到session_id: {session_id}")
-                            # 注册session_id到tool_call_id和user_id的映射
-                            conversation_manager.register_session(session_id, tool_call_id, user_id)
-                            print(f"[INFO] 已注册session_id映射: {session_id} -> tool_call_id={tool_call_id}, user_id={user_id}")
-                        
-                        # 添加工具调用结果到消息历史（保持对话格式完整）
+                        # 添加工具调用结果到消息历史
                         messages.append({
                             "role": "tool",
                             "tool_call_id": tool_call_id,
                             "content": function_result
                         })
-                        
-                        # 立即返回LLM的content作为最终回复
-                        final_answer = message.content or "好的，我已联系相关员工，有结果后我会通知您。"
-                        
-                        # 添加助手回复到历史
-                        messages.append({
-                            "role": "assistant", 
-                            "content": final_answer
-                        })
-                        
-                        # 保存对话历史到conversation_manager
-                        conversation_manager.set_conversation(user_id, messages)
-                        print(f"[INFO] 已保存用户 {user_id} 的对话历史")
-                        
-                        print(f"[INFO] contact_employee特殊处理完成，直接返回回复")
-                        print(f"[INFO] 最终回复内容: {final_answer}")
-                        print(f"[INFO] 总共进行了 {iteration} 轮ReAct，调用了工具: {called_functions}")
-                        
-                        return {
-                            "status": "completed",
-                            "answer": final_answer,
-                            "function_called": called_functions,
-                            "function_result": function_result,
-                            "iterations": iteration,
-                            "conversation_history": messages
-                        }
-                        
-                    except json.JSONDecodeError as e:
-                        function_result = f"错误：函数参数解析失败: {str(e)}"
-                        print(f"[ERROR] 参数解析失败: {str(e)}")
-                        final_answer = "抱歉，联系员工时出现参数错误。"
-                        
-                        messages.append({
-                            "role": "assistant",
-                            "content": final_answer
-                        })
-                        
-                        return {
-                            "status": "error",
-                            "answer": final_answer,
-                            "function_called": called_functions,
-                            "function_result": function_result,
-                            "iterations": iteration,
-                            "conversation_history": messages
-                        }
                 
-                # 普通工具处理
-                try:
-                    function_args = json.loads(function_args_str)
-                    print(f"[INFO] 工具参数: {function_args}")
-                except json.JSONDecodeError as e:
-                    function_result = f"错误：函数参数解析失败: {str(e)}"
-                    print(f"[ERROR] 参数解析失败: {str(e)}")
-                else:
-                    # 执行函数
-                    function_result = tool_manager.execute_tool(function_name, function_args)
-                    print(f"[INFO] 工具执行完成")
-                    print(f"[INFO] 工具结果预览: {function_result[:200]}{'...' if len(function_result) > 200 else ''}")
+                # 如果调用了contact_employee工具，需要特殊处理（立即返回）
+                if has_contact_employee:
+                    print(f"[INFO] 检测到contact_employee工具，执行特殊处理")
+                    # 立即返回LLM的content作为最终回复
+                    final_answer = message.content or "好的，我已联系相关员工，有结果后我会通知您。"
+                    
+                    # 添加助手回复到历史
+                    messages.append({
+                        "role": "assistant", 
+                        "content": final_answer
+                    })
+                    
+                    # 保存对话历史到conversation_manager
+                    conversation_manager.set_conversation(user_id, messages)
+                    print(f"[INFO] 已保存用户 {user_id} 的对话历史")
+                    
+                    print(f"[INFO] contact_employee特殊处理完成，直接返回回复")
+                    print(f"[INFO] 最终回复内容: {final_answer}")
+                    print(f"[INFO] 总共进行了 {iteration} 轮ReAct，调用了工具: {called_functions}")
+                    
+                    return {
+                        "status": "completed",
+                        "answer": final_answer,
+                        "function_called": called_functions,
+                        "function_result": contact_employee_result,
+                        "iterations": iteration,
+                        "conversation_history": messages
+                    }
                 
-                # 添加工具调用结果到消息历史
-                messages.append({
-                    "role": "tool",
-                    "tool_call_id": tool_call_id,
-                    "content": function_result
-                })
-                
-                print(f"[INFO] 工具调用完成，继续下一轮判断...")
+                print(f"[INFO] 所有工具调用完成，继续下一轮判断...")
                 
             else:
                 # 没有工具调用，LLM给出最终回复
@@ -373,6 +265,7 @@ def process_user_query(user_query: str, conversation_history: list = None, user_
             "content": "请基于以上信息给出最终回复"
         })
         
+        print(f"[INFO] 调用LLM进行最终回复，检查这里是否存在问题：{messages}")
         final_response = client.chat.completions.create(
             model="deepseek-chat",
             messages=messages,
