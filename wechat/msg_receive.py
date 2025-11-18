@@ -391,8 +391,8 @@ def process_incoming_message(message_data: Dict[str, Any]) -> None:
         content = message_data.get('Content', '')
         sender_id = message_data.get('FromUserName')
 
-
-
+        # 1. 主动问问题 没有过往问题
+        # 2. 回答别人的问题
 
         """发送查询到主agent（使用统一入口/message）"""
         try:
@@ -401,7 +401,6 @@ def process_incoming_message(message_data: Dict[str, Any]) -> None:
                 json={
                     # 不指定type，由服务端根据字段自动路由
                     "query": content,
-                    "conversation_history": None,
                     "user_id": sender_id  # 传递用户ID
                 },
                 timeout=60
