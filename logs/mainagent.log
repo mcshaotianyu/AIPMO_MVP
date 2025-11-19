@@ -10,478 +10,517 @@ WARNING: This is a development server. Do not use it in a production deployment.
  * Running on http://127.0.0.1:5001
  * Running on http://198.18.0.1:5001
 Press CTRL+C to quit
-127.0.0.1 - - [13/Nov/2025 15:46:04] "GET /health HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:46:06] "GET /health HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:46:09] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:46:10] "GET /health HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:46:12] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:46:13] "POST /message HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:46:15] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:46:18] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:46:21] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:46:24] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:46:27] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:46:30] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:46:33] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:46:34] "POST /message HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:46:36] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:46:39] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:46:42] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:46:45] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:46:48] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:46:50] "POST /message HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:46:50] "POST /session_callback HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:46:51] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:46:52] "POST /message HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:46:55] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:46:55] "POST /message HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:46:58] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:46:58] "POST /message HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:47:01] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:47:01] "POST /message HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:47:04] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:47:04] "POST /message HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:47:07] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:47:07] "POST /message HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:47:10] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:47:10] "POST /message HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:47:13] "GET /get_notifications HTTP/1.1" 200 -
-[INFO] 从conversation_manager加载用户 user_a_张三 的对话历史（包含最新SubAgent结果）
-[INFO] 处理查询: 公司有健身房吗
+127.0.0.1 - - [19/Nov/2025 17:18:45] "GET /health HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:18:52] "GET /health HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:18:55] "GET /health HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:18:55] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:18:58] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:18:58] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:19:01] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:19:01] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:19:04] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:19:04] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:19:07] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:19:07] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:19:10] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:19:10] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:19:13] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:19:13] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:19:16] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:19:16] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:19:19] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:19:19] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:19:22] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:19:22] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:19:25] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:19:25] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:19:28] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:19:28] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:19:31] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:19:31] "POST /message HTTP/1.1" 200 -
+[INFO] 用户 user_a_张三 没有历史对话，创建新对话
+[INFO] 处理查询: 二次报销流程应该找谁啊？
 
 [INFO] === ReAct 迭代 1 ===
-[DEBUG] 原始大模型响应: ChatCompletion(id='75cc7221-a523-46c7-a083-58db4ed2fc1a', choices=[Choice(finish_reason='tool_calls', index=0, logprobs=None, message=ChatCompletionMessage(content='我来帮您查询公司是否有健身房的相关信息。', role='assistant', function_call=None, tool_calls=[ChatCompletionMessageToolCall(id='call_00_VKjiXgUJvaK0XiA3JhsVCU0B', function=Function(arguments='{"query": "健身房 健身 运动 体育设施 健身器材"}', name='search_doc'), type='function', index=0)]))], created=1763019985, model='deepseek-chat', object='chat.completion', system_fingerprint='fp_ffc7281d48_prod0820_fp8_kvcache', usage=CompletionUsage(completion_tokens=34, prompt_tokens=5379, total_tokens=5413, prompt_tokens_details={'cached_tokens': 5184}, prompt_cache_hit_tokens=5184, prompt_cache_miss_tokens=195))
+[DEBUG] 原始大模型响应: ChatCompletion(id='f33628b6-3dba-43e7-a26b-3ddfd908b86e', choices=[Choice(finish_reason='tool_calls', index=0, logprobs=None, message=ChatCompletionMessage(content='我来帮您查询二次报销流程的相关负责人。', role='assistant', function_call=None, tool_calls=[ChatCompletionMessageToolCall(id='call_00_O0HKQY0zmB2011hhCybO1wEX', function=Function(arguments='{"query": "二次报销流程 负责人"}', name='search_doc'), type='function', index=0)]))], created=1763543956, model='deepseek-chat', object='chat.completion', system_fingerprint='fp_ffc7281d48_prod0820_fp8_kvcache', usage=CompletionUsage(completion_tokens=28, prompt_tokens=1413, total_tokens=1441, prompt_tokens_details={'cached_tokens': 448}, prompt_cache_hit_tokens=448, prompt_cache_miss_tokens=965))
 [DEBUG] 响应对象类型: <class 'openai.types.chat.chat_completion.ChatCompletion'>
-[DEBUG] 消息对象: ChatCompletionMessage(content='我来帮您查询公司是否有健身房的相关信息。', role='assistant', function_call=None, tool_calls=[ChatCompletionMessageToolCall(id='call_00_VKjiXgUJvaK0XiA3JhsVCU0B', function=Function(arguments='{"query": "健身房 健身 运动 体育设施 健身器材"}', name='search_doc'), type='function', index=0)])
-[DEBUG] 消息内容: 我来帮您查询公司是否有健身房的相关信息。
-[DEBUG] 工具调用: [ChatCompletionMessageToolCall(id='call_00_VKjiXgUJvaK0XiA3JhsVCU0B', function=Function(arguments='{"query": "健身房 健身 运动 体育设施 健身器材"}', name='search_doc'), type='function', index=0)]
+[DEBUG] 消息对象: ChatCompletionMessage(content='我来帮您查询二次报销流程的相关负责人。', role='assistant', function_call=None, tool_calls=[ChatCompletionMessageToolCall(id='call_00_O0HKQY0zmB2011hhCybO1wEX', function=Function(arguments='{"query": "二次报销流程 负责人"}', name='search_doc'), type='function', index=0)])
+[DEBUG] 消息内容: 我来帮您查询二次报销流程的相关负责人。
+[DEBUG] 工具调用: [ChatCompletionMessageToolCall(id='call_00_O0HKQY0zmB2011hhCybO1wEX', function=Function(arguments='{"query": "二次报销流程 负责人"}', name='search_doc'), type='function', index=0)]
 [INFO] LLM决定调用工具，共 1 个工具调用
-[INFO] 处理工具调用: search_doc (ID: call_00_VKjiXgUJvaK0XiA3JhsVCU0B)
-[INFO] 工具参数: {'query': '健身房 健身 运动 体育设施 健身器材'}
+[INFO] 处理工具调用: search_doc (ID: call_00_O0HKQY0zmB2011hhCybO1wEX)
+[INFO] 工具参数: {'query': '二次报销流程 负责人'}
 [INFO] 工具执行完成: search_doc
-[INFO] 工具结果预览: {"序号":"8","部门名称":"市场部","问题":"数字人产线产品材料","相似问法":"数字人产线","答案":"数字人产线\nhttps://drive.weixin.qq.com/s?k=ACoAuwc-AF8yOQpYH5","责任人":"李冰"}
-
-{"序号":"3","部门名称":"市场部","问题":"2C2H硬件产品线产品材料","相似问法":"2C2H硬件产品线","答案"...
+[INFO] 工具结果预览: {"序号":"","部门名称":"人力资源","问题":"生育津贴怎么报销","相似问法":"生育津贴\n生育报销","答案":"需要相关资料如下：   生育服务单两份（外埠户籍参保职工不在本市长期居住无法办理“北京市生育登记服务单”的，由户籍所在地街道（乡镇）以上计划生育行政部门出具此证明）；   门诊发票原件（明细小票不要遗失、如有处方药请提供处方）；   出生证明原件和复印件两份；   出院...
 [INFO] 所有工具调用完成，继续下一轮判断...
 
 [INFO] === ReAct 迭代 2 ===
-[DEBUG] 原始大模型响应: ChatCompletion(id='f8da3ae3-c5a3-4f5c-af8e-d7aea18cfee2', choices=[Choice(finish_reason='tool_calls', index=0, logprobs=None, message=ChatCompletionMessage(content='从知识库中没有找到健身房的相关信息。让我联系行政后勤部的刘超询问：', role='assistant', function_call=None, tool_calls=[ChatCompletionMessageToolCall(id='call_00_1XNMIBDs9JhPMEJftk28rAgV', function=Function(arguments='{"employee_info": [{"id": "AI3468", "name": "刘超", "question": "您好，想咨询一下公司是否有健身房？如果有的话，具体的开放时间和使用规则是什么？"}]}', name='contact_employee'), type='function', index=0)]))], created=1763019989, model='deepseek-chat', object='chat.completion', system_fingerprint='fp_ffc7281d48_prod0820_fp8_kvcache', usage=CompletionUsage(completion_tokens=72, prompt_tokens=6093, total_tokens=6165, prompt_tokens_details={'cached_tokens': 5376}, prompt_cache_hit_tokens=5376, prompt_cache_miss_tokens=717))
+[DEBUG] 原始大模型响应: ChatCompletion(id='a190ba7e-b369-4057-823a-d7e83752d8cc', choices=[Choice(finish_reason='tool_calls', index=0, logprobs=None, message=ChatCompletionMessage(content='根据文档检索结果，我找到了二次报销的相关信息。从检索结果看，二次报销主要涉及医疗报销和特需金报销，相关的负责人是孙铭。\n\n让我进一步查询孙铭的具体联系方式：', role='assistant', function_call=None, tool_calls=[ChatCompletionMessageToolCall(id='call_00_0wz8TmN356CBcBhouGTemxrX', function=Function(arguments='{"query": "孙铭 人力资源 报销"}', name='search_employee'), type='function', index=0)]))], created=1763543962, model='deepseek-chat', object='chat.completion', system_fingerprint='fp_ffc7281d48_prod0820_fp8_kvcache', usage=CompletionUsage(completion_tokens=62, prompt_tokens=3452, total_tokens=3514, prompt_tokens_details={'cached_tokens': 1408}, prompt_cache_hit_tokens=1408, prompt_cache_miss_tokens=2044))
 [DEBUG] 响应对象类型: <class 'openai.types.chat.chat_completion.ChatCompletion'>
-[DEBUG] 消息对象: ChatCompletionMessage(content='从知识库中没有找到健身房的相关信息。让我联系行政后勤部的刘超询问：', role='assistant', function_call=None, tool_calls=[ChatCompletionMessageToolCall(id='call_00_1XNMIBDs9JhPMEJftk28rAgV', function=Function(arguments='{"employee_info": [{"id": "AI3468", "name": "刘超", "question": "您好，想咨询一下公司是否有健身房？如果有的话，具体的开放时间和使用规则是什么？"}]}', name='contact_employee'), type='function', index=0)])
-[DEBUG] 消息内容: 从知识库中没有找到健身房的相关信息。让我联系行政后勤部的刘超询问：
-[DEBUG] 工具调用: [ChatCompletionMessageToolCall(id='call_00_1XNMIBDs9JhPMEJftk28rAgV', function=Function(arguments='{"employee_info": [{"id": "AI3468", "name": "刘超", "question": "您好，想咨询一下公司是否有健身房？如果有的话，具体的开放时间和使用规则是什么？"}]}', name='contact_employee'), type='function', index=0)]
+[DEBUG] 消息对象: ChatCompletionMessage(content='根据文档检索结果，我找到了二次报销的相关信息。从检索结果看，二次报销主要涉及医疗报销和特需金报销，相关的负责人是孙铭。\n\n让我进一步查询孙铭的具体联系方式：', role='assistant', function_call=None, tool_calls=[ChatCompletionMessageToolCall(id='call_00_0wz8TmN356CBcBhouGTemxrX', function=Function(arguments='{"query": "孙铭 人力资源 报销"}', name='search_employee'), type='function', index=0)])
+[DEBUG] 消息内容: 根据文档检索结果，我找到了二次报销的相关信息。从检索结果看，二次报销主要涉及医疗报销和特需金报销，相关的负责人是孙铭。
+
+让我进一步查询孙铭的具体联系方式：
+[DEBUG] 工具调用: [ChatCompletionMessageToolCall(id='call_00_0wz8TmN356CBcBhouGTemxrX', function=Function(arguments='{"query": "孙铭 人力资源 报销"}', name='search_employee'), type='function', index=0)]
 [INFO] LLM决定调用工具，共 1 个工具调用
-[INFO] 处理工具调用: contact_employee (ID: call_00_1XNMIBDs9JhPMEJftk28rAgV)
-[INFO] contact_employee工具参数: {'employee_info': [{'id': 'AI3468', 'name': '刘超', 'question': '您好，想咨询一下公司是否有健身房？如果有的话，具体的开放时间和使用规则是什么？'}]}
-[INFO] contact_employee工具已启动
-[INFO] 提取到 1 个session_id: ['4103d7dd-532f-4f42-a48b-f2bb6349b0f8']
-[INFO] 已注册session_id映射: 4103d7dd-532f-4f42-a48b-f2bb6349b0f8 -> tool_call_id=call_00_1XNMIBDs9JhPMEJftk28rAgV, user_id=user_a_张三
-[INFO] 检测到contact_employee工具，执行特殊处理
-[INFO] 已保存用户 user_a_张三 的对话历史
-[INFO] contact_employee特殊处理完成，直接返回回复
-[INFO] 最终回复内容: 从知识库中没有找到健身房的相关信息。让我联系行政后勤部的刘超询问：
-[INFO] 总共进行了 2 轮ReAct，调用了工具: ['search_doc', 'contact_employee']
-[INFO] 用户 * 有 2 个待处理会话，自动使用最新的: 4103d7dd-532f-4f42-a48b-f2bb6349b0f8
-
-[CALLBACK] 收到子agent回调通知
-  会话ID: 4103d7dd-532f-4f42-a48b-f2bb6349b0f8
-  用户A: user_a_张三
-  原始问题: 您好，想咨询一下公司是否有健身房？如果有的话，具体的开放时间和使用规则是什么？
-  子agent结果: 公司没有健身房。
-[DEBUG] 更新tool消息内容，tool_call_id=call_00_1XNMIBDs9JhPMEJftk28rAgV
-[DEBUG] 更新后的内容预览: 已成功联系刘超（ID: AI3468），子agent已向其提问：您好，想咨询一下公司是否有健身房？如果有的话，具体的开放时间和使用规则是什么？
-会话ID: 4103d7dd-532f-4f42-a48b-f2bb6349b0f8
-
-所有会话ID: 4103d7dd-532f-4f42-a48b-f2bb6349b0f8
-我会在收到完整回复后通知您。
-
-【已收到回复】
-公司没有健身房。...
-[INFO] 已更新用户 user_a_张三 的对话历史，tool消息已包含SubAgent结果
-[INFO] 已更新用户 user_a_张三 的对话历史，添加SubAgent结果
-
-🔔════════════════════════════════════════════════════════════════════🔔
-                   ✨ 准备推送通知给用户A ✨
-══════════════════════════════════════════════════════════════════════
-📌 目标用户: user_a_张三
-📌 关于问题: 您好，想咨询一下公司是否有健身房？如果有的话，具体的开放时间和使用规则是什么？
-
-💡 推送内容:
-公司没有健身房。
-══════════════════════════════════════════════════════════════════════
-✅ 通知已记录到系统，用户A的终端会自动接收
-
-[INFO] 从conversation_manager加载用户 user_a_张三 的对话历史（包含最新SubAgent结果）
-[INFO] 处理查询: ok，那台球厅有吗？
-
-[INFO] === ReAct 迭代 1 ===
-[DEBUG] 原始大模型响应: ChatCompletion(id='3a6aad1d-7578-4d55-887c-81a742144e5e', choices=[Choice(finish_reason='tool_calls', index=0, logprobs=None, message=ChatCompletionMessage(content='我来帮您查询公司是否有台球厅的相关信息。', role='assistant', function_call=None, tool_calls=[ChatCompletionMessageToolCall(id='call_00_WkSwrycQ3daOyKqVc6qdFR2k', function=Function(arguments='{"employee_info": [{"id": "AI3468", "name": "刘超", "question": "您好，想咨询一下公司是否有台球厅或台球设施？如果有的话，具体的开放时间和使用规则是什么？"}]}', name='contact_employee'), type='function', index=0)]))], created=1763020029, model='deepseek-chat', object='chat.completion', system_fingerprint='fp_ffc7281d48_prod0820_fp8_kvcache', usage=CompletionUsage(completion_tokens=72, prompt_tokens=6313, total_tokens=6385, prompt_tokens_details={'cached_tokens': 6144}, prompt_cache_hit_tokens=6144, prompt_cache_miss_tokens=169))127.0.0.1 - - [13/Nov/2025 15:47:13] "POST /message HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:47:15] "POST /message HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:47:16] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:47:19] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:47:22] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:47:25] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:47:28] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:47:31] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:47:32] "POST /message HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:47:32] "POST /session_callback HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:47:34] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:47:34] "POST /message HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:47:37] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:47:37] "POST /message HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:47:40] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:47:40] "POST /message HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:47:43] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:47:43] "POST /message HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:47:46] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:47:46] "POST /message HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:47:49] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:47:49] "POST /message HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:47:52] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:47:52] "POST /message HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:47:55] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:47:55] "POST /message HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:47:58] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:47:58] "POST /message HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:48:01] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:48:01] "POST /message HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:48:04] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:48:04] "POST /message HTTP/1.1" 200 -
-
-[DEBUG] 响应对象类型: <class 'openai.types.chat.chat_completion.ChatCompletion'>
-[DEBUG] 消息对象: ChatCompletionMessage(content='我来帮您查询公司是否有台球厅的相关信息。', role='assistant', function_call=None, tool_calls=[ChatCompletionMessageToolCall(id='call_00_WkSwrycQ3daOyKqVc6qdFR2k', function=Function(arguments='{"employee_info": [{"id": "AI3468", "name": "刘超", "question": "您好，想咨询一下公司是否有台球厅或台球设施？如果有的话，具体的开放时间和使用规则是什么？"}]}', name='contact_employee'), type='function', index=0)])
-[DEBUG] 消息内容: 我来帮您查询公司是否有台球厅的相关信息。
-[DEBUG] 工具调用: [ChatCompletionMessageToolCall(id='call_00_WkSwrycQ3daOyKqVc6qdFR2k', function=Function(arguments='{"employee_info": [{"id": "AI3468", "name": "刘超", "question": "您好，想咨询一下公司是否有台球厅或台球设施？如果有的话，具体的开放时间和使用规则是什么？"}]}', name='contact_employee'), type='function', index=0)]
-[INFO] LLM决定调用工具，共 1 个工具调用
-[INFO] 处理工具调用: contact_employee (ID: call_00_WkSwrycQ3daOyKqVc6qdFR2k)
-[INFO] contact_employee工具参数: {'employee_info': [{'id': 'AI3468', 'name': '刘超', 'question': '您好，想咨询一下公司是否有台球厅或台球设施？如果有的话，具体的开放时间和使用规则是什么？'}]}
-[INFO] contact_employee工具已启动
-[INFO] 提取到 1 个session_id: ['3785a4d3-1a22-4260-9013-755f2a7f8ef7']
-[INFO] 已注册session_id映射: 3785a4d3-1a22-4260-9013-755f2a7f8ef7 -> tool_call_id=call_00_WkSwrycQ3daOyKqVc6qdFR2k, user_id=user_a_张三
-[INFO] 检测到contact_employee工具，执行特殊处理
-[INFO] 已保存用户 user_a_张三 的对话历史
-[INFO] contact_employee特殊处理完成，直接返回回复
-[INFO] 最终回复内容: 我来帮您查询公司是否有台球厅的相关信息。
-[INFO] 总共进行了 1 轮ReAct，调用了工具: ['contact_employee']
-[INFO] 用户 * 有 2 个待处理会话，自动使用最新的: 3785a4d3-1a22-4260-9013-755f2a7f8ef7
-
-[CALLBACK] 收到子agent回调通知
-  会话ID: 3785a4d3-1a22-4260-9013-755f2a7f8ef7
-  用户A: user_a_张三
-  原始问题: 您好，想咨询一下公司是否有台球厅或台球设施？如果有的话，具体的开放时间和使用规则是什么？
-  子agent结果: 公司目前没有台球厅或台球设施。
-[DEBUG] 更新tool消息内容，tool_call_id=call_00_WkSwrycQ3daOyKqVc6qdFR2k
-[DEBUG] 更新后的内容预览: 已成功联系刘超（ID: AI3468），子agent已向其提问：您好，想咨询一下公司是否有台球厅或台球设施？如果有的话，具体的开放时间和使用规则是什么？
-会话ID: 3785a4d3-1a22-4260-9013-755f2a7f8ef7
-
-所有会话ID: 3785a4d3-1a22-4260-9013-755f2a7f8ef7
-我会在收到完整回复后通知您。
-
-【已收到回复】
-公司目前没有台球厅或...
-[INFO] 已更新用户 user_a_张三 的对话历史，tool消息已包含SubAgent结果
-[INFO] 已更新用户 user_a_张三 的对话历史，添加SubAgent结果
-
-🔔════════════════════════════════════════════════════════════════════🔔
-                   ✨ 准备推送通知给用户A ✨
-══════════════════════════════════════════════════════════════════════
-📌 目标用户: user_a_张三
-📌 关于问题: 您好，想咨询一下公司是否有台球厅或台球设施？如果有的话，具体的开放时间和使用规则是什么？
-
-💡 推送内容:
-公司目前没有台球厅或台球设施。
-══════════════════════════════════════════════════════════════════════
-✅ 通知已记录到系统，用户A的终端会自动接收
-
-[INFO] 从conversation_manager加载用户 user_a_张三 的对话历史（包含最新SubAgent结果）
-[INFO] 处理查询: 好吧，那帮我看下什么是内蒙A节点？
-
-[INFO] === ReAct 迭代 1 ===
-[DEBUG] 原始大模型响应: ChatCompletion(id='7198e993-9cdf-472f-9535-62d048036a77', choices=[Choice(finish_reason='tool_calls', index=0, logprobs=None, message=ChatCompletionMessage(content='我来帮您查询"内蒙A节点"的相关信息。', role='assistant', function_call=None, tool_calls=[ChatCompletionMessageToolCall(id='call_00_hMqu6KCGsXCAL8rsjWNjgTNa', function=Function(arguments='{"query": "内蒙A节点 内蒙古A节点 节点 数据中心 机房"}', name='search_doc'), type='function', index=0)]))], created=1763020071, model='deepseek-chat', object='chat.completion', system_fingerprint='fp_ffc7281d48_prod0820_fp8_kvcache', usage=CompletionUsage(completion_tokens=40, prompt_tokens=6547, total_tokens=6587, prompt_tokens_details={'cached_tokens': 6336}, prompt_cache_hit_tokens=6336, prompt_cache_miss_tokens=211))
-[DEBUG] 响应对象类型: <class 'openai.types.chat.chat_completion.ChatCompletion'>
-[DEBUG] 消息对象: ChatCompletionMessage(content='我来帮您查询"内蒙A节点"的相关信息。', role='assistant', function_call=None, tool_calls=[ChatCompletionMessageToolCall(id='call_00_hMqu6KCGsXCAL8rsjWNjgTNa', function=Function(arguments='{"query": "内蒙A节点 内蒙古A节点 节点 数据中心 机房"}', name='search_doc'), type='function', index=0)])
-[DEBUG] 消息内容: 我来帮您查询"内蒙A节点"的相关信息。
-[DEBUG] 工具调用: [ChatCompletionMessageToolCall(id='call_00_hMqu6KCGsXCAL8rsjWNjgTNa', function=Function(arguments='{"query": "内蒙A节点 内蒙古A节点 节点 数据中心 机房"}', name='search_doc'), type='function', index=0)]
-[INFO] LLM决定调用工具，共 1 个工具调用
-[INFO] 处理工具调用: search_doc (ID: call_00_hMqu6KCGsXCAL8rsjWNjgTNa)
-[INFO] 工具参数: {'query': '内蒙A节点 内蒙古A节点 节点 数据中心 机房'}
-[INFO] 工具执行完成: search_doc
-[INFO] 工具结果预览: {"序号":"3","部门名称":"规划建设部","问题":"AB整合节点是什么","相似问法":"什么是内蒙AB整合节点","答案":"原内蒙A\\B节点网络相互独立，我公司主要服务器资源集中分布在内蒙A\\B两个节点，无法直接互通。2022年根据业务需要，由云公司立项、ICNOC配合，将我公司分布在内蒙A\\B两个节点的服务器网络进行整合和连通，主要建设内容包含服务器间东西方向内外网整合、整体...
-[INFO] 所有工具调用完成，继续下一轮判断...
-
-[INFO] === ReAct 迭代 2 ===
-[DEBUG] 原始大模型响应: ChatCompletion(id='fab8c604-9a61-4b52-b970-bf5f0c48f39c', choices=[Choice(finish_reason='stop', index=0, logprobs=None, message=ChatCompletionMessage(content='根据检索到的信息，我找到了关于"内蒙A节点"的相关说明：\n\n**内蒙A节点**是由天翼云科技有限公司统一管理的服务器裸金属集群节点。根据文档中的信息：\n\n- 内蒙A节点和内蒙B节点原本是相互独立的网络\n- 公司的主要服务器资源集中分布在内蒙A、B两个节点\n- 2022年根据业务需要，将内蒙A、B两个节点的服务器网络进行了整合和连通\n- 2023年3月31日，内蒙AB节点已完成内网核心平面的东西方向打通\n- AB间内网带宽达到800G，内网延迟小于1ms\n\n简单来说，**内蒙A节点**是公司重要的服务器基础设施之一，与内蒙B节点共同构成了公司的主要计算资源池，现在两个节点已经实现了网络互通。\n\n如果您需要更详细的技术信息或操作指导，建议联系规划建设部的高煜昕。', role='assistant', function_call=None, tool_calls=None))], created=1763020076, model='deepseek-chat', object='chat.completion', system_fingerprint='fp_ffc7281d48_prod0820_fp8_kvcache', usage=CompletionUsage(completion_tokens=193, prompt_tokens=7704, total_tokens=7897, prompt_tokens_details={'cached_tokens': 6528}, prompt_cache_hit_tokens=6528, prompt_cache_miss_tokens=1176))127.0.0.1 - - [13/Nov/2025 15:48:06] "POST /message HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:48:07] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:48:07] "POST /message HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:48:10] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:48:10] "POST /message HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:48:13] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:48:13] "POST /message HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:48:16] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:48:16] "POST /message HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:48:19] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:48:19] "POST /message HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:48:22] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:48:23] "POST /message HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:48:25] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:48:26] "POST /message HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:48:28] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:48:29] "POST /message HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:48:31] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:48:32] "POST /message HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:48:34] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:48:35] "POST /message HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:48:37] "GET /get_notifications HTTP/1.1" 200 -
-
-[DEBUG] 响应对象类型: <class 'openai.types.chat.chat_completion.ChatCompletion'>
-[DEBUG] 消息对象: ChatCompletionMessage(content='根据检索到的信息，我找到了关于"内蒙A节点"的相关说明：\n\n**内蒙A节点**是由天翼云科技有限公司统一管理的服务器裸金属集群节点。根据文档中的信息：\n\n- 内蒙A节点和内蒙B节点原本是相互独立的网络\n- 公司的主要服务器资源集中分布在内蒙A、B两个节点\n- 2022年根据业务需要，将内蒙A、B两个节点的服务器网络进行了整合和连通\n- 2023年3月31日，内蒙AB节点已完成内网核心平面的东西方向打通\n- AB间内网带宽达到800G，内网延迟小于1ms\n\n简单来说，**内蒙A节点**是公司重要的服务器基础设施之一，与内蒙B节点共同构成了公司的主要计算资源池，现在两个节点已经实现了网络互通。\n\n如果您需要更详细的技术信息或操作指导，建议联系规划建设部的高煜昕。', role='assistant', function_call=None, tool_calls=None)
-[DEBUG] 消息内容: 根据检索到的信息，我找到了关于"内蒙A节点"的相关说明：
-
-**内蒙A节点**是由天翼云科技有限公司统一管理的服务器裸金属集群节点。根据文档中的信息：
-
-- 内蒙A节点和内蒙B节点原本是相互独立的网络
-- 公司的主要服务器资源集中分布在内蒙A、B两个节点
-- 2022年根据业务需要，将内蒙A、B两个节点的服务器网络进行了整合和连通
-- 2023年3月31日，内蒙AB节点已完成内网核心平面的东西方向打通
-- AB间内网带宽达到800G，内网延迟小于1ms
-
-简单来说，**内蒙A节点**是公司重要的服务器基础设施之一，与内蒙B节点共同构成了公司的主要计算资源池，现在两个节点已经实现了网络互通。
-
-如果您需要更详细的技术信息或操作指导，建议联系规划建设部的高煜昕。
-[DEBUG] 工具调用: None
-[INFO] LLM决定给出最终回复
-[INFO] 最终回复内容: 根据检索到的信息，我找到了关于"内蒙A节点"的相关说明：
-
-**内蒙A节点**是由天翼云科技有限公司统一管理的服务器裸金属集群节点。根据文档中的信息：
-
-- 内蒙A节点和内蒙B节点原本是相互独立的网络
-- 公司的主要服务器资源集中分布在内蒙A、B两个节点
-- 2022年根据业务需要，将内蒙A、B两个节点的服务器网络进行了整合和连通
-- 2023年3月31日，内蒙AB节点已完成内网核心平面的东西方向打通
-- AB间内网带宽达到800G，内网延迟小于1ms
-
-简单来说，**内蒙A节点**是公司重要的服务器基础设施之一，与内蒙B节点共同构成了公司的主要计算资源池，现在两个节点已经实现了网络互通。
-
-如果您需要更详细的技术信息或操作指导，建议联系规划建设部的高煜昕。
-[INFO] 总共进行了 2 轮ReAct，调用了工具: ['search_doc']
-[INFO] 从conversation_manager加载用户 user_a_张三 的对话历史（包含最新SubAgent结果）
-[INFO] 处理查询: 好的，那我想问下公司附近有什么能停车的地方吗
-
-[INFO] === ReAct 迭代 1 ===
-[DEBUG] 原始大模型响应: ChatCompletion(id='37df46d1-0d5b-411e-ba9d-250c7c65261a', choices=[Choice(finish_reason='tool_calls', index=0, logprobs=None, message=ChatCompletionMessage(content='我来帮您查询公司附近停车相关的信息。', role='assistant', function_call=None, tool_calls=[ChatCompletionMessageToolCall(id='call_00_LD4bVSBiPNmXVKSSN6FL3D2r', function=Function(arguments='{"query": "停车 停车场 停车位 停车费 停车管理"}', name='search_doc'), type='function', index=0)]))], created=1763020107, model='deepseek-chat', object='chat.completion', system_fingerprint='fp_ffc7281d48_prod0820_fp8_kvcache', usage=CompletionUsage(completion_tokens=35, prompt_tokens=7914, total_tokens=7949, prompt_tokens_details={'cached_tokens': 7872}, prompt_cache_hit_tokens=7872, prompt_cache_miss_tokens=42))
-[DEBUG] 响应对象类型: <class 'openai.types.chat.chat_completion.ChatCompletion'>
-[DEBUG] 消息对象: ChatCompletionMessage(content='我来帮您查询公司附近停车相关的信息。', role='assistant', function_call=None, tool_calls=[ChatCompletionMessageToolCall(id='call_00_LD4bVSBiPNmXVKSSN6FL3D2r', function=Function(arguments='{"query": "停车 停车场 停车位 停车费 停车管理"}', name='search_doc'), type='function', index=0)])
-[DEBUG] 消息内容: 我来帮您查询公司附近停车相关的信息。
-[DEBUG] 工具调用: [ChatCompletionMessageToolCall(id='call_00_LD4bVSBiPNmXVKSSN6FL3D2r', function=Function(arguments='{"query": "停车 停车场 停车位 停车费 停车管理"}', name='search_doc'), type='function', index=0)]
-[INFO] LLM决定调用工具，共 1 个工具调用
-[INFO] 处理工具调用: search_doc (ID: call_00_LD4bVSBiPNmXVKSSN6FL3D2r)
-[INFO] 工具参数: {'query': '停车 停车场 停车位 停车费 停车管理'}
-[INFO] 工具执行完成: search_doc
-[INFO] 工具结果预览: {"序号":"","部门名称":"人力资源","问题":"公积金提取","相似问法":"公积金提取、公积金购房","答案":"公司缴存公积金：中央国家机关住房资金管理中心 （公众号同名）\n公众号可查询或办理32项业务，具体详见：https://mp.weixin.qq.com/s/THUPeiAIk0JrA-azCPZgxA","责任人":"孙铭"}
-
-{"序号":"21","部门名称":"法律...
-[INFO] 所有工具调用完成，继续下一轮判断...
-
-[INFO] === ReAct 迭代 2 ===
-[DEBUG] 原始大模型响应: ChatCompletion(id='52af22e3-6f17-480a-9270-8de81ef36719', choices=[Choice(finish_reason='tool_calls', index=0, logprobs=None, message=ChatCompletionMessage(content='从知识库中没有找到公司附近停车场的具体信息。让我联系行政后勤部的刘超询问：', role='assistant', function_call=None, tool_calls=[ChatCompletionMessageToolCall(id='call_00_eAUCMVvIGYIaIrmBou9p21ka', function=Function(arguments='{"employee_info": [{"id": "AI3468", "name": "刘超", "question": "您好，想咨询一下公司附近有什么可以停车的地方吗？包括公司内部停车场、周边公共停车场、停车费用等信息。"}]}', name='contact_employee'), type='function', index=0)]))], created=1763020113, model='deepseek-chat', object='chat.completion', system_fingerprint='fp_ffc7281d48_prod0820_fp8_kvcache', usage=CompletionUsage(completion_tokens=81, prompt_tokens=8701, total_tokens=8782, prompt_tokens_details={'cached_tokens': 7936}, prompt_cache_hit_tokens=7936, prompt_cache_miss_tokens=765))
-[DEBUG] 响应对象类型: <class 'openai.types.chat.chat_completion.ChatCompletion'>
-[DEBUG] 消息对象: ChatCompletionMessage(content='从知识库中没有找到公司附近停车场的具体信息。让我联系行政后勤部的刘超询问：', role='assistant', function_call=None, tool_calls=[ChatCompletionMessageToolCall(id='call_00_eAUCMVvIGYIaIrmBou9p21ka', function=Function(arguments='{"employee_info": [{"id": "AI3468", "name": "刘超", "question": "您好，想咨询一下公司附近有什么可以停车的地方吗？包括公司内部停车场、周边公共停车场、停车费用等信息。"}]}', name='contact_employee'), type='function', index=0)])
-[DEBUG] 消息内容: 从知识库中没有找到公司附近停车场的具体信息。让我联系行政后勤部的刘超询问：
-[DEBUG] 工具调用: [ChatCompletionMessageToolCall(id='call_00_eAUCMVvIGYIaIrmBou9p21ka', function=Function(arguments='{"employee_info": [{"id": "AI3468", "name": "刘超", "question": "您好，想咨询一下公司附近有什么可以停车的地方吗？包括公司内部停车场、周边公共停车场、停车费用等信息。"}]}', name='contact_employee'), type='function', index=0)]
-[INFO] LLM决定调用工具，共 1 个工具调用
-[INFO] 处理工具调用: contact_employee (ID: call_00_eAUCMVvIGYIaIrmBou9p21ka)
-[INFO] contact_employee工具参数: {'employee_info': [{'id': 'AI3468', 'name': '刘超', 'question': '您好，想咨询一下公司附近有什么可以停车的地方吗？包括公司内部停车场、周边公共停车场、停车费用等信息。'}]}127.0.0.1 - - [13/Nov/2025 15:48:38] "POST /message HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:48:40] "POST /message HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:48:40] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:48:43] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:48:46] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:48:49] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:48:52] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:48:55] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:48:58] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:49:01] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:49:04] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:49:07] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:49:10] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:49:13] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:49:16] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:49:19] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:49:22] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:49:25] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:49:27] "POST /message HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:49:28] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:49:31] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:49:34] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:49:37] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:49:40] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:49:43] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:49:46] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:49:49] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:49:52] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:49:55] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:49:57] "POST /message HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:49:58] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:50:01] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:50:03] "POST /message HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:50:04] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:50:07] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:50:10] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:50:13] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:50:16] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:50:19] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:50:22] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:50:24] "POST /message HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:50:25] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:50:28] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:50:31] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:50:34] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:50:37] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:50:40] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:50:40] "POST /message HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:50:43] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:50:46] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:50:49] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:50:52] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:50:55] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:50:58] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:51:01] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:51:04] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:51:07] "GET /get_notifications HTTP/1.1" 200 -
-
-[INFO] contact_employee工具已启动
-[INFO] 提取到 1 个session_id: ['5bae3623-d8d1-4cf0-96a2-45237ed77299']
-[INFO] 已注册session_id映射: 5bae3623-d8d1-4cf0-96a2-45237ed77299 -> tool_call_id=call_00_eAUCMVvIGYIaIrmBou9p21ka, user_id=user_a_张三
-[INFO] 检测到contact_employee工具，执行特殊处理
-[INFO] 已保存用户 user_a_张三 的对话历史
-[INFO] contact_employee特殊处理完成，直接返回回复
-[INFO] 最终回复内容: 从知识库中没有找到公司附近停车场的具体信息。让我联系行政后勤部的刘超询问：
-[INFO] 总共进行了 2 轮ReAct，调用了工具: ['search_doc', 'contact_employee']
-[INFO] 用户 * 有 2 个待处理会话，自动使用最新的: 5bae3623-d8d1-4cf0-96a2-45237ed77299
-[INFO] 用户 * 有 2 个待处理会话，自动使用最新的: 5bae3623-d8d1-4cf0-96a2-45237ed77299
-[INFO] 用户 * 有 2 个待处理会话，自动使用最新的: 5bae3623-d8d1-4cf0-96a2-45237ed77299
-[INFO] 用户 * 有 2 个待处理会话，自动使用最新的: 5bae3623-d8d1-4cf0-96a2-45237ed77299
-[INFO] 从conversation_manager加载用户 user_a_张三 的对话历史（包含最新SubAgent结果）
-[INFO] 处理查询: 还没结束吗？
-
-[INFO] === ReAct 迭代 1 ===
-[DEBUG] 原始大模型响应: ChatCompletion(id='5f64b96a-9a00-42ab-ba23-4de03370d19c', choices=[Choice(finish_reason='tool_calls', index=0, logprobs=None, message=ChatCompletionMessage(content='我还在等待刘超的回复。让我检查一下联系状态：', role='assistant', function_call=None, tool_calls=[ChatCompletionMessageToolCall(id='call_00_00VnG4tXChvBGjbLk2xExLFQ', function=Function(arguments='{"employee_info": [{"id": "AI3468", "name": "刘超", "question": "您好，想确认一下关于公司附近停车信息的回复情况。"}]}', name='contact_employee'), type='function', index=0)]))], created=1763020235, model='deepseek-chat', object='chat.completion', system_fingerprint='fp_ffc7281d48_prod0820_fp8_kvcache', usage=CompletionUsage(completion_tokens=61, prompt_tokens=8924, total_tokens=8985, prompt_tokens_details={'cached_tokens': 8768}, prompt_cache_hit_tokens=8768, prompt_cache_miss_tokens=156))
-[DEBUG] 响应对象类型: <class 'openai.types.chat.chat_completion.ChatCompletion'>
-[DEBUG] 消息对象: ChatCompletionMessage(content='我还在等待刘超的回复。让我检查一下联系状态：', role='assistant', function_call=None, tool_calls=[ChatCompletionMessageToolCall(id='call_00_00VnG4tXChvBGjbLk2xExLFQ', function=Function(arguments='{"employee_info": [{"id": "AI3468", "name": "刘超", "question": "您好，想确认一下关于公司附近停车信息的回复情况。"}]}', name='contact_employee'), type='function', index=0)])
-[DEBUG] 消息内容: 我还在等待刘超的回复。让我检查一下联系状态：
-[DEBUG] 工具调用: [ChatCompletionMessageToolCall(id='call_00_00VnG4tXChvBGjbLk2xExLFQ', function=Function(arguments='{"employee_info": [{"id": "AI3468", "name": "刘超", "question": "您好，想确认一下关于公司附近停车信息的回复情况。"}]}', name='contact_employee'), type='function', index=0)]
-[INFO] LLM决定调用工具，共 1 个工具调用
-[INFO] 处理工具调用: contact_employee (ID: call_00_00VnG4tXChvBGjbLk2xExLFQ)
-[INFO] contact_employee工具参数: {'employee_info': [{'id': 'AI3468', 'name': '刘超', 'question': '您好，想确认一下关于公司附近停车信息的回复情况。'}]}
-[INFO] contact_employee工具已启动
-[INFO] 提取到 1 个session_id: ['6d181fd5-f8ab-4eab-8337-3da21cdf62cc']
-[INFO] 已注册session_id映射: 6d181fd5-f8ab-4eab-8337-3da21cdf62cc -> tool_call_id=call_00_00VnG4tXChvBGjbLk2xExLFQ, user_id=user_a_张三
-[INFO] 检测到contact_employee工具，执行特殊处理
-[INFO] 已保存用户 user_a_张三 的对话历史
-[INFO] contact_employee特殊处理完成，直接返回回复
-[INFO] 最终回复内容: 我还在等待刘超的回复。让我检查一下联系状态：
-[INFO] 总共进行了 1 轮ReAct，调用了工具: ['contact_employee']
-[INFO] 从conversation_manager加载用户 user_a_张三 的对话历史（包含最新SubAgent结果）
-[INFO] 处理查询: 你帮我问问别人吧
-
-[INFO] === ReAct 迭代 1 ===
-[DEBUG] 原始大模型响应: ChatCompletion(id='13fc688b-05f3-4a40-94f6-78f9e2e3e266', choices=[Choice(finish_reason='tool_calls', index=0, logprobs=None, message=ChatCompletionMessage(content='好的，我来帮您查找其他可能了解停车信息的员工。让我搜索一下负责行政或后勤管理的其他人员：', role='assistant', function_call=None, tool_calls=[ChatCompletionMessageToolCall(id='call_00_HpTG9mLBBD51LkLrojHLEkOz', function=Function(arguments='{"query": "行政 后勤 综合中心 办公室管理"}', name='search_employee'), type='function', index=0)]))], created=1763020257, model='deepseek-chat', object='chat.completion', system_fingerprint='fp_ffc7281d48_prod0820_fp8_kvcache', usage=CompletionUsage(completion_tokens=46, prompt_tokens=9113, total_tokens=9159, prompt_tokens_details={'cached_tokens': 8960}, prompt_cache_hit_tokens=8960, prompt_cache_miss_tokens=153))
-[DEBUG] 响应对象类型: <class 'openai.types.chat.chat_completion.ChatCompletion'>
-[DEBUG] 消息对象: ChatCompletionMessage(content='好的，我来帮您查找其他可能了解停车信息的员工。让我搜索一下负责行政或后勤管理的其他人员：', role='assistant', function_call=None, tool_calls=[ChatCompletionMessageToolCall(id='call_00_HpTG9mLBBD51LkLrojHLEkOz', function=Function(arguments='{"query": "行政 后勤 综合中心 办公室管理"}', name='search_employee'), type='function', index=0)])
-[DEBUG] 消息内容: 好的，我来帮您查找其他可能了解停车信息的员工。让我搜索一下负责行政或后勤管理的其他人员：
-[DEBUG] 工具调用: [ChatCompletionMessageToolCall(id='call_00_HpTG9mLBBD51LkLrojHLEkOz', function=Function(arguments='{"query": "行政 后勤 综合中心 办公室管理"}', name='search_employee'), type='function', index=0)]
-[INFO] LLM决定调用工具，共 1 个工具调用
-[INFO] 处理工具调用: search_employee (ID: call_00_HpTG9mLBBD51LkLrojHLEkOz)
-[INFO] 工具参数: {'query': '行政 后勤 综合中心 办公室管理'}
+[INFO] 处理工具调用: search_employee (ID: call_00_0wz8TmN356CBcBhouGTemxrX)
+[INFO] 工具参数: {'query': '孙铭 人力资源 报销'}
 [INFO] 工具执行完成: search_employee
-[INFO] 工具结果预览: The user is asking about administrative, logistics, and general office management, which typically falls under the responsibilities of the administrative or general affairs department. I will search f...
-[INFO] 所有工具调用完成，继续下一轮判断...
-
-[INFO] === ReAct 迭代 2 ===
-[DEBUG] 原始大模型响应: ChatCompletion(id='fc4e3fde-b307-49e8-a742-baa8e99b1bff', choices=[Choice(finish_reason='tool_calls', index=0, logprobs=None, message=ChatCompletionMessage(content='目前系统中只找到了刘超这一位行政后勤部的联系人。让我尝试查找综合中心的其他人员：', role='assistant', function_call=None, tool_calls=[ChatCompletionMessageToolCall(id='call_00_jDmoLaoKHAVIZNUuc8aphq3m', function=Function(arguments='{"query": "综合中心 党委办公室"}', name='search_employee'), type='function', index=0)]))], created=1763020268, model='deepseek-chat', object='chat.completion', system_fingerprint='fp_ffc7281d48_prod0820_fp8_kvcache', usage=CompletionUsage(completion_tokens=39, prompt_tokens=9280, total_tokens=9319, prompt_tokens_details={'cached_tokens': 9152}, prompt_cache_hit_tokens=9152, prompt_cache_miss_tokens=128))
-[DEBUG] 响应对象类型: <class 'openai.types.chat.chat_completion.ChatCompletion'>
-[DEBUG] 消息对象: ChatCompletionMessage(content='目前系统中只找到了刘超这一位行政后勤部的联系人。让我尝试查找综合中心的其他人员：', role='assistant', function_call=None, tool_calls=[ChatCompletionMessageToolCall(id='call_00_jDmoLaoKHAVIZNUuc8aphq3m', function=Function(arguments='{"query": "综合中心 党委办公室"}', name='search_employee'), type='function', index=0)])
-[DEBUG] 消息内容: 目前系统中只找到了刘超这一位行政后勤部的联系人。让我尝试查找综合中心的其他人员：
-[DEBUG] 工具调用: [ChatCompletionMessageToolCall(id='call_00_jDmoLaoKHAVIZNUuc8aphq3m', function=Function(arguments='{"query": "综合中心 党委办公室"}', name='search_employee'), type='function', index=0)]127.0.0.1 - - [13/Nov/2025 15:51:10] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:51:13] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:51:16] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:51:19] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:51:22] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:51:23] "POST /message HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:51:25] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:51:28] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:51:31] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:51:32] "POST /message HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:51:34] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:51:37] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:51:39] "POST /message HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:51:39] "POST /session_callback HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:51:40] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:51:41] "POST /message HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:51:43] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:51:46] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:51:49] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:51:52] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:51:55] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:51:58] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:52:01] "POST /message HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:52:01] "GET /get_notifications HTTP/1.1" 200 -
-
-[INFO] LLM决定调用工具，共 1 个工具调用
-[INFO] 处理工具调用: search_employee (ID: call_00_jDmoLaoKHAVIZNUuc8aphq3m)
-[INFO] 工具参数: {'query': '综合中心 党委办公室'}
-[INFO] 工具执行完成: search_employee
-[INFO] 工具结果预览: The user is asking for an employee from the "综合中心" (Comprehensive Center) and "党委办公室" (Party Committee Office). I need to search the employee records for someone who belongs to either of these departm...
+[INFO] 工具结果预览: The user is looking for someone named "孙铭" in the human resources department related to reimbursement. I will search for this specific employee in the dataset.
 [INFO] 所有工具调用完成，继续下一轮判断...
 
 [INFO] === ReAct 迭代 3 ===
-[DEBUG] 原始大模型响应: ChatCompletion(id='17040c2c-771d-45a7-a049-38879a641e13', choices=[Choice(finish_reason='tool_calls', index=0, logprobs=None, message=ChatCompletionMessage(content='找到了综合中心的张三，让我联系他询问停车信息：', role='assistant', function_call=None, tool_calls=[ChatCompletionMessageToolCall(id='call_00_YwY76Wd9n1SB3WQkQPD7enI0', function=Function(arguments='{"employee_info": [{"id": "12345", "name": "张三", "question": "您好，想咨询一下公司附近有什么可以停车的地方吗？包括公司内部停车场、周边公共停车场、停车费用等信息。"}]}', name='contact_employee'), type='function', index=0)]))], created=1763020277, model='deepseek-chat', object='chat.completion', system_fingerprint='fp_ffc7281d48_prod0820_fp8_kvcache', usage=CompletionUsage(completion_tokens=70, prompt_tokens=9390, total_tokens=9460, prompt_tokens_details={'cached_tokens': 9280}, prompt_cache_hit_tokens=9280, prompt_cache_miss_tokens=110))
+[DEBUG] 原始大模型响应: ChatCompletion(id='669b6023-439d-45d1-b427-df59cf7f93aa', choices=[Choice(finish_reason='stop', index=0, logprobs=None, message=ChatCompletionMessage(content='根据搜索结果，我找到了二次报销流程的负责人信息：\n\n**二次报销流程负责人：孙铭**\n\n从文档中可以看到，孙铭负责以下相关报销事项：\n- 生育津贴报销\n- 医疗手工报销  \n- 子女医药费报销\n- 平安补充医疗理赔\n- 泰康特需金理赔\n\n特别需要注意的是，在生育津贴报销中提到："请将所有资料拍照留存，以便特需金二次报销使用"，这说明二次报销通常是在完成第一次报销后进行的补充报销。\n\n由于我无法获取到孙铭的手机号码，建议您可以通过企业微信或公司内部通讯录直接联系孙铭咨询具体的二次报销流程和操作细节。', role='assistant', function_call=None, tool_calls=None))], created=1763543970, model='deepseek-chat', object='chat.completion', system_fingerprint='fp_ffc7281d48_prod0820_fp8_kvcache', usage=CompletionUsage(completion_tokens=138, prompt_tokens=3548, total_tokens=3686, prompt_tokens_details={'cached_tokens': 3456}, prompt_cache_hit_tokens=3456, prompt_cache_miss_tokens=92))
 [DEBUG] 响应对象类型: <class 'openai.types.chat.chat_completion.ChatCompletion'>
-[DEBUG] 消息对象: ChatCompletionMessage(content='找到了综合中心的张三，让我联系他询问停车信息：', role='assistant', function_call=None, tool_calls=[ChatCompletionMessageToolCall(id='call_00_YwY76Wd9n1SB3WQkQPD7enI0', function=Function(arguments='{"employee_info": [{"id": "12345", "name": "张三", "question": "您好，想咨询一下公司附近有什么可以停车的地方吗？包括公司内部停车场、周边公共停车场、停车费用等信息。"}]}', name='contact_employee'), type='function', index=0)])
-[DEBUG] 消息内容: 找到了综合中心的张三，让我联系他询问停车信息：
-[DEBUG] 工具调用: [ChatCompletionMessageToolCall(id='call_00_YwY76Wd9n1SB3WQkQPD7enI0', function=Function(arguments='{"employee_info": [{"id": "12345", "name": "张三", "question": "您好，想咨询一下公司附近有什么可以停车的地方吗？包括公司内部停车场、周边公共停车场、停车费用等信息。"}]}', name='contact_employee'), type='function', index=0)]
+[DEBUG] 消息对象: ChatCompletionMessage(content='根据搜索结果，我找到了二次报销流程的负责人信息：\n\n**二次报销流程负责人：孙铭**\n\n从文档中可以看到，孙铭负责以下相关报销事项：\n- 生育津贴报销\n- 医疗手工报销  \n- 子女医药费报销\n- 平安补充医疗理赔\n- 泰康特需金理赔\n\n特别需要注意的是，在生育津贴报销中提到："请将所有资料拍照留存，以便特需金二次报销使用"，这说明二次报销通常是在完成第一次报销后进行的补充报销。\n\n由于我无法获取到孙铭的手机号码，建议您可以通过企业微信或公司内部通讯录直接联系孙铭咨询具体的二次报销流程和操作细节。', role='assistant', function_call=None, tool_calls=None)
+[DEBUG] 消息内容: 根据搜索结果，我找到了二次报销流程的负责人信息：
+
+**二次报销流程负责人：孙铭**
+
+从文档中可以看到，孙铭负责以下相关报销事项：
+- 生育津贴报销
+- 医疗手工报销  
+- 子女医药费报销
+- 平安补充医疗理赔
+- 泰康特需金理赔
+
+特别需要注意的是，在生育津贴报销中提到："请将所有资料拍照留存，以便特需金二次报销使用"，这说明二次报销通常是在完成第一次报销后进行的补充报销。
+
+由于我无法获取到孙铭的手机号码，建议您可以通过企业微信或公司内部通讯录直接联系孙铭咨询具体的二次报销流程和操作细节。
+[DEBUG] 工具调用: None
+[INFO] LLM决定给出最终回复
+[INFO] 最终回复内容: 根据搜索结果，我找到了二次报销流程的负责人信息：
+
+**二次报销流程负责人：孙铭**
+
+从文档中可以看到，孙铭负责以下相关报销事项：
+- 生育津贴报销
+- 医疗手工报销  
+- 子女医药费报销
+- 平安补充医疗理赔
+- 泰康特需金理赔
+
+特别需要注意的是，在生育津贴报销中提到："请将所有资料拍照留存，以便特需金二次报销使用"，这说明二次报销通常是在完成第一次报销后进行的补充报销。
+
+由于我无法获取到孙铭的手机号码，建议您可以通过企业微信或公司内部通讯录直接联系孙铭咨询具体的二次报销流程和操作细节。127.0.0.1 - - [19/Nov/2025 17:19:34] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:19:34] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:19:34] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:19:37] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:19:37] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:19:40] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:19:40] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:19:43] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:19:43] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:19:46] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:19:46] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:19:49] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:19:49] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:19:52] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:19:52] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:19:55] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:19:55] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:19:58] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:19:58] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:20:01] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:20:01] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:20:04] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:20:04] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:20:07] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:20:07] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:20:10] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:20:10] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:20:13] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:20:13] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:20:16] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:20:16] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:20:19] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:20:19] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:20:22] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:20:22] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:20:25] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:20:25] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:20:28] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:20:28] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:20:31] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:20:31] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:20:33] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:20:34] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:20:34] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:20:37] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:20:37] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:20:40] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:20:40] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:20:43] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:20:43] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:20:46] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:20:46] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:20:49] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:20:49] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:20:52] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:20:52] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:20:55] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:20:55] "POST /message HTTP/1.1" 200 -
+
+[INFO] 总共进行了 3 轮ReAct，调用了工具: ['search_doc', 'search_employee']
+[INFO] 从conversation_manager加载用户 user_a_张三 的对话历史（包含最新SubAgent结果）
+[INFO] 处理查询: 好的，那公司福利啥的找谁咨询啊？
+
+[INFO] === ReAct 迭代 1 ===
+[DEBUG] 原始大模型响应: ChatCompletion(id='747a44dc-6582-483a-85d7-ec1794e4a3ec', choices=[Choice(finish_reason='tool_calls', index=0, logprobs=None, message=ChatCompletionMessage(content='我来帮您查询公司福利相关的负责人。', role='assistant', function_call=None, tool_calls=[ChatCompletionMessageToolCall(id='call_00_A1oQ8FpMifxPLb13hie6NB9i', function=Function(arguments='{"query": "公司福利 咨询 负责人"}', name='search_doc'), type='function', index=0)]))], created=1763544024, model='deepseek-chat', object='chat.completion', system_fingerprint='fp_ffc7281d48_prod0820_fp8_kvcache', usage=CompletionUsage(completion_tokens=28, prompt_tokens=3702, total_tokens=3730, prompt_tokens_details={'cached_tokens': 3648}, prompt_cache_hit_tokens=3648, prompt_cache_miss_tokens=54))
+[DEBUG] 响应对象类型: <class 'openai.types.chat.chat_completion.ChatCompletion'>
+[DEBUG] 消息对象: ChatCompletionMessage(content='我来帮您查询公司福利相关的负责人。', role='assistant', function_call=None, tool_calls=[ChatCompletionMessageToolCall(id='call_00_A1oQ8FpMifxPLb13hie6NB9i', function=Function(arguments='{"query": "公司福利 咨询 负责人"}', name='search_doc'), type='function', index=0)])
+[DEBUG] 消息内容: 我来帮您查询公司福利相关的负责人。
+[DEBUG] 工具调用: [ChatCompletionMessageToolCall(id='call_00_A1oQ8FpMifxPLb13hie6NB9i', function=Function(arguments='{"query": "公司福利 咨询 负责人"}', name='search_doc'), type='function', index=0)]
 [INFO] LLM决定调用工具，共 1 个工具调用
-[INFO] 处理工具调用: contact_employee (ID: call_00_YwY76Wd9n1SB3WQkQPD7enI0)
-[INFO] contact_employee工具参数: {'employee_info': [{'id': '12345', 'name': '张三', 'question': '您好，想咨询一下公司附近有什么可以停车的地方吗？包括公司内部停车场、周边公共停车场、停车费用等信息。'}]}
+[INFO] 处理工具调用: search_doc (ID: call_00_A1oQ8FpMifxPLb13hie6NB9i)
+[INFO] 工具参数: {'query': '公司福利 咨询 负责人'}
+[INFO] 工具执行完成: search_doc
+[INFO] 工具结果预览: {"序号":"","部门名称":"人力资源","问题":"薪酬福利负责人是谁？","相似问法":"薪酬、工资","答案":"薪酬福利负责人是孙铭 \n 联系方式：sunm7@chinatelecom.cn","责任人":"孙铭"}
+
+{"序号":"","部门名称":"人力资源","问题":"公司各类薪酬福利有哪些？","相似问法":"薪酬福利","答案":"请点击孙铭企微链接，或用企业微信（个人微...
+[INFO] 所有工具调用完成，继续下一轮判断...
+
+[INFO] === ReAct 迭代 2 ===
+[DEBUG] 原始大模型响应: ChatCompletion(id='8ced05c1-5bca-4a7b-8d3e-f0c76cec3b87', choices=[Choice(finish_reason='stop', index=0, logprobs=None, message=ChatCompletionMessage(content='根据文档检索结果，我找到了公司福利相关的负责人信息：\n\n**公司福利咨询负责人：孙铭**\n\n孙铭是薪酬福利负责人，负责以下福利相关事项：\n- 薪酬福利政策咨询\n- 公司各类薪酬福利介绍\n- 其他福利（集团工会积分、福利卡等）\n- 学习积分报销\n- 智慧学习平台使用\n- 企业年金个人账户权益\n- 子女医药费报销\n\n联系方式：sunm7@chinatelecom.cn\n\n由于我无法获取到孙铭的手机号码，建议您可以通过企业邮箱 sunm7@chinatelecom.cn 或企业微信直接联系孙铭咨询公司福利相关事宜。', role='assistant', function_call=None, tool_calls=None))], created=1763544029, model='deepseek-chat', object='chat.completion', system_fingerprint='fp_ffc7281d48_prod0820_fp8_kvcache', usage=CompletionUsage(completion_tokens=141, prompt_tokens=4258, total_tokens=4399, prompt_tokens_details={'cached_tokens': 3712}, prompt_cache_hit_tokens=3712, prompt_cache_miss_tokens=546))
+[DEBUG] 响应对象类型: <class 'openai.types.chat.chat_completion.ChatCompletion'>
+[DEBUG] 消息对象: ChatCompletionMessage(content='根据文档检索结果，我找到了公司福利相关的负责人信息：\n\n**公司福利咨询负责人：孙铭**\n\n孙铭是薪酬福利负责人，负责以下福利相关事项：\n- 薪酬福利政策咨询\n- 公司各类薪酬福利介绍\n- 其他福利（集团工会积分、福利卡等）\n- 学习积分报销\n- 智慧学习平台使用\n- 企业年金个人账户权益\n- 子女医药费报销\n\n联系方式：sunm7@chinatelecom.cn\n\n由于我无法获取到孙铭的手机号码，建议您可以通过企业邮箱 sunm7@chinatelecom.cn 或企业微信直接联系孙铭咨询公司福利相关事宜。', role='assistant', function_call=None, tool_calls=None)
+[DEBUG] 消息内容: 根据文档检索结果，我找到了公司福利相关的负责人信息：
+
+**公司福利咨询负责人：孙铭**
+
+孙铭是薪酬福利负责人，负责以下福利相关事项：
+- 薪酬福利政策咨询
+- 公司各类薪酬福利介绍
+- 其他福利（集团工会积分、福利卡等）
+- 学习积分报销
+- 智慧学习平台使用
+- 企业年金个人账户权益
+- 子女医药费报销
+
+联系方式：sunm7@chinatelecom.cn
+
+由于我无法获取到孙铭的手机号码，建议您可以通过企业邮箱 sunm7@chinatelecom.cn 或企业微信直接联系孙铭咨询公司福利相关事宜。
+[DEBUG] 工具调用: None
+[INFO] LLM决定给出最终回复
+[INFO] 最终回复内容: 根据文档检索结果，我找到了公司福利相关的负责人信息：
+
+**公司福利咨询负责人：孙铭**
+
+孙铭是薪酬福利负责人，负责以下福利相关事项：
+- 薪酬福利政策咨询
+- 公司各类薪酬福利介绍
+- 其他福利（集团工会积分、福利卡等）
+- 学习积分报销
+- 智慧学习平台使用
+- 企业年金个人账户权益
+- 子女医药费报销
+
+联系方式：sunm7@chinatelecom.cn
+
+由于我无法获取到孙铭的手机号码，建议您可以通过企业邮箱 sunm7@chinatelecom.cn 或企业微信直接联系孙铭咨询公司福利相关事宜。
+[INFO] 总共进行了 2 轮ReAct，调用了工具: ['search_doc']
+[INFO] 从conversation_manager加载用户 user_a_张三 的对话历史（包含最新SubAgent结果）
+[INFO] 处理查询: 食堂菜单呢？问谁？
+
+[INFO] === ReAct 迭代 1 ===
+[DEBUG] 原始大模型响应: ChatCompletion(id='2113e344-5fc8-409a-bc60-8d6431679869', choices=[Choice(finish_reason='tool_calls', index=0, logprobs=None, message=ChatCompletionMessage(content='我来帮您查询食堂菜单相关的负责人。', role='assistant', function_call=None, tool_calls=[ChatCompletionMessageToolCall(id='call_00_DZrkQasqnmXYTGtymlYNAEFM', function=Function(arguments='{"query": "食堂 菜单 负责人"}', name='search_doc'), type='function', index=0)]))], created=1763544053, model='deepseek-chat', object='chat.completion', system_fingerprint='fp_ffc7281d48_prod0820_fp8_kvcache', usage=CompletionUsage(completion_tokens=27, prompt_tokens=4410, total_tokens=4437, prompt_tokens_details={'cached_tokens': 4352}, prompt_cache_hit_tokens=4352, prompt_cache_miss_tokens=58))
+[DEBUG] 响应对象类型: <class 'openai.types.chat.chat_completion.ChatCompletion'>
+[DEBUG] 消息对象: ChatCompletionMessage(content='我来帮您查询食堂菜单相关的负责人。', role='assistant', function_call=None, tool_calls=[ChatCompletionMessageToolCall(id='call_00_DZrkQasqnmXYTGtymlYNAEFM', function=Function(arguments='{"query": "食堂 菜单 负责人"}', name='search_doc'), type='function', index=0)])
+[DEBUG] 消息内容: 我来帮您查询食堂菜单相关的负责人。
+[DEBUG] 工具调用: [ChatCompletionMessageToolCall(id='call_00_DZrkQasqnmXYTGtymlYNAEFM', function=Function(arguments='{"query": "食堂 菜单 负责人"}', name='search_doc'), type='function', index=0)]
+[INFO] LLM决定调用工具，共 1 个工具调用
+[INFO] 处理工具调用: search_doc (ID: call_00_DZrkQasqnmXYTGtymlYNAEFM)
+[INFO] 工具参数: {'query': '食堂 菜单 负责人'}
+[INFO] 工具执行完成: search_doc
+[INFO] 工具结果预览: {"序号":"25","部门名称":"规划建设部","问题":"如何申请食堂、门禁权限","相似问法":"食堂\n门禁","答案":"1  北京办公区\n（1）北京中汇办公区：\n大厦一层门禁卡：由综合中心（党委办公室）负责办理，由入职当天发给大家（经办人：古乐）；\n公司9层人脸门禁：入职后需上传个人近期证件照（小程序码见文档最后附件，使用本人名下电信号登录），如有问题，请联系A座9层前台重新录...127.0.0.1 - - [19/Nov/2025 17:20:58] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:20:58] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:21:01] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:21:01] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:21:04] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:21:04] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:21:07] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:21:07] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:21:10] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:21:10] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:21:10] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:21:13] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:21:13] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:21:16] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:21:16] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:21:19] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:21:19] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:21:22] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:21:23] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:21:25] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:21:26] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:21:28] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:21:29] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:21:31] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:21:32] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:21:34] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:21:35] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:21:37] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:21:38] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:21:40] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:21:41] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:21:43] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:21:44] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:21:46] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:21:47] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:21:49] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:21:50] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:21:52] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:21:53] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:21:55] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:21:56] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:21:58] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:21:59] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:22:01] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:22:02] "POST /message HTTP/1.1" 200 -
+
+[INFO] 所有工具调用完成，继续下一轮判断...
+
+[INFO] === ReAct 迭代 2 ===
+[DEBUG] 原始大模型响应: ChatCompletion(id='b4b53022-ffaa-458f-ba2d-9785593330a7', choices=[Choice(finish_reason='tool_calls', index=0, logprobs=None, message=ChatCompletionMessage(content='根据文档检索结果，我找到了食堂相关的负责人信息：\n\n**食堂相关事务负责人：综合中心**\n\n从文档中可以看到：\n- 食堂饭卡由综合中心（党委办公室）负责办理\n- 经办人：古乐\n- 餐补每月底通过翼支付充值\n\n但是文档中没有明确提到食堂菜单的具体负责人。让我进一步查询综合中心的相关人员：', role='assistant', function_call=None, tool_calls=[ChatCompletionMessageToolCall(id='call_00_doyPhuFvpokC7iEM7XdrsEgl', function=Function(arguments='{"query": "综合中心 食堂 菜单"}', name='search_employee'), type='function', index=0)]))], created=1763544058, model='deepseek-chat', object='chat.completion', system_fingerprint='fp_ffc7281d48_prod0820_fp8_kvcache', usage=CompletionUsage(completion_tokens=97, prompt_tokens=5508, total_tokens=5605, prompt_tokens_details={'cached_tokens': 4416}, prompt_cache_hit_tokens=4416, prompt_cache_miss_tokens=1092))
+[DEBUG] 响应对象类型: <class 'openai.types.chat.chat_completion.ChatCompletion'>
+[DEBUG] 消息对象: ChatCompletionMessage(content='根据文档检索结果，我找到了食堂相关的负责人信息：\n\n**食堂相关事务负责人：综合中心**\n\n从文档中可以看到：\n- 食堂饭卡由综合中心（党委办公室）负责办理\n- 经办人：古乐\n- 餐补每月底通过翼支付充值\n\n但是文档中没有明确提到食堂菜单的具体负责人。让我进一步查询综合中心的相关人员：', role='assistant', function_call=None, tool_calls=[ChatCompletionMessageToolCall(id='call_00_doyPhuFvpokC7iEM7XdrsEgl', function=Function(arguments='{"query": "综合中心 食堂 菜单"}', name='search_employee'), type='function', index=0)])
+[DEBUG] 消息内容: 根据文档检索结果，我找到了食堂相关的负责人信息：
+
+**食堂相关事务负责人：综合中心**
+
+从文档中可以看到：
+- 食堂饭卡由综合中心（党委办公室）负责办理
+- 经办人：古乐
+- 餐补每月底通过翼支付充值
+
+但是文档中没有明确提到食堂菜单的具体负责人。让我进一步查询综合中心的相关人员：
+[DEBUG] 工具调用: [ChatCompletionMessageToolCall(id='call_00_doyPhuFvpokC7iEM7XdrsEgl', function=Function(arguments='{"query": "综合中心 食堂 菜单"}', name='search_employee'), type='function', index=0)]
+[INFO] LLM决定调用工具，共 1 个工具调用
+[INFO] 处理工具调用: search_employee (ID: call_00_doyPhuFvpokC7iEM7XdrsEgl)
+[INFO] 工具参数: {'query': '综合中心 食堂 菜单'}
+[INFO] 工具执行完成: search_employee
+[INFO] 工具结果预览: The user is asking about the cafeteria menu in the comprehensive center. The relevant employee would likely be in the administrative or logistics department, possibly responsible for cafeteria managem...
+[INFO] 所有工具调用完成，继续下一轮判断...
+
+[INFO] === ReAct 迭代 3 ===
+[DEBUG] 原始大模型响应: ChatCompletion(id='6a78f7a9-ca60-4afc-8a96-f71e4cca1d63', choices=[Choice(finish_reason='stop', index=0, logprobs=None, message=ChatCompletionMessage(content='根据查询结果，食堂相关事务主要由**综合中心**负责，经办人是**古乐**。\n\n不过关于食堂菜单的具体信息，建议您：\n1. 可以联系综合中心古乐咨询\n2. 查看公司内部通知或公告，食堂菜单通常会定期更新发布\n3. 关注企业微信群或内部通讯平台，食堂菜单信息一般会通过这些渠道发布\n\n由于我无法获取到古乐的手机号码，建议您可以通过企业微信或公司内部通讯录直接联系综合中心古乐咨询食堂菜单相关事宜。', role='assistant', function_call=None, tool_calls=None))], created=1763544067, model='deepseek-chat', object='chat.completion', system_fingerprint='fp_ffc7281d48_prod0820_fp8_kvcache', usage=CompletionUsage(completion_tokens=111, prompt_tokens=5643, total_tokens=5754, prompt_tokens_details={'cached_tokens': 5504}, prompt_cache_hit_tokens=5504, prompt_cache_miss_tokens=139))
+[DEBUG] 响应对象类型: <class 'openai.types.chat.chat_completion.ChatCompletion'>
+[DEBUG] 消息对象: ChatCompletionMessage(content='根据查询结果，食堂相关事务主要由**综合中心**负责，经办人是**古乐**。\n\n不过关于食堂菜单的具体信息，建议您：\n1. 可以联系综合中心古乐咨询\n2. 查看公司内部通知或公告，食堂菜单通常会定期更新发布\n3. 关注企业微信群或内部通讯平台，食堂菜单信息一般会通过这些渠道发布\n\n由于我无法获取到古乐的手机号码，建议您可以通过企业微信或公司内部通讯录直接联系综合中心古乐咨询食堂菜单相关事宜。', role='assistant', function_call=None, tool_calls=None)
+[DEBUG] 消息内容: 根据查询结果，食堂相关事务主要由**综合中心**负责，经办人是**古乐**。
+
+不过关于食堂菜单的具体信息，建议您：
+1. 可以联系综合中心古乐咨询
+2. 查看公司内部通知或公告，食堂菜单通常会定期更新发布
+3. 关注企业微信群或内部通讯平台，食堂菜单信息一般会通过这些渠道发布
+
+由于我无法获取到古乐的手机号码，建议您可以通过企业微信或公司内部通讯录直接联系综合中心古乐咨询食堂菜单相关事宜。
+[DEBUG] 工具调用: None
+[INFO] LLM决定给出最终回复
+[INFO] 最终回复内容: 根据查询结果，食堂相关事务主要由**综合中心**负责，经办人是**古乐**。
+
+不过关于食堂菜单的具体信息，建议您：
+1. 可以联系综合中心古乐咨询
+2. 查看公司内部通知或公告，食堂菜单通常会定期更新发布
+3. 关注企业微信群或内部通讯平台，食堂菜单信息一般会通过这些渠道发布
+
+由于我无法获取到古乐的手机号码，建议您可以通过企业微信或公司内部通讯录直接联系综合中心古乐咨询食堂菜单相关事宜。
+[INFO] 总共进行了 3 轮ReAct，调用了工具: ['search_doc', 'search_employee']
+[INFO] 从conversation_manager加载用户 user_a_张三 的对话历史（包含最新SubAgent结果）
+[INFO] 处理查询: 好的，那公司健身房相关内容呢？
+
+[INFO] === ReAct 迭代 1 ===
+[DEBUG] 原始大模型响应: ChatCompletion(id='586e0462-989b-4ed9-84d0-3d003740edf8', choices=[Choice(finish_reason='tool_calls', index=0, logprobs=None, message=ChatCompletionMessage(content='我来帮您查询公司健身房相关的负责人。', role='assistant', function_call=None, tool_calls=[ChatCompletionMessageToolCall(id='call_00_ZPwlKam55KfdwGa9kj1ttD8L', function=Function(arguments='{"query": "健身房 负责人"}', name='search_doc'), type='function', index=0)]))], created=1763544124, model='deepseek-chat', object='chat.completion', system_fingerprint='fp_ffc7281d48_prod0820_fp8_kvcache', usage=CompletionUsage(completion_tokens=25, prompt_tokens=5766, total_tokens=5791, prompt_tokens_details={'cached_tokens': 5632}, prompt_cache_hit_tokens=5632, prompt_cache_miss_tokens=134))
+[DEBUG] 响应对象类型: <class 'openai.types.chat.chat_completion.ChatCompletion'>
+[DEBUG] 消息对象: ChatCompletionMessage(content='我来帮您查询公司健身房相关的负责人。', role='assistant', function_call=None, tool_calls=[ChatCompletionMessageToolCall(id='call_00_ZPwlKam55KfdwGa9kj1ttD8L', function=Function(arguments='{"query": "健身房 负责人"}', name='search_doc'), type='function', index=0)])
+[DEBUG] 消息内容: 我来帮您查询公司健身房相关的负责人。
+[DEBUG] 工具调用: [ChatCompletionMessageToolCall(id='call_00_ZPwlKam55KfdwGa9kj1ttD8L', function=Function(arguments='{"query": "健身房 负责人"}', name='search_doc'), type='function', index=0)]
+[INFO] LLM决定调用工具，共 1 个工具调用
+[INFO] 处理工具调用: search_doc (ID: call_00_ZPwlKam55KfdwGa9kj1ttD8L)127.0.0.1 - - [19/Nov/2025 17:22:04] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:22:05] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:22:07] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:22:08] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:22:10] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:22:11] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:22:14] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:22:14] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:22:17] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:22:17] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:22:20] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:22:20] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:22:23] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:22:23] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:22:26] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:22:26] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:22:29] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:22:29] "POST /message HTTP/1.1" 200 -
+
+[INFO] 工具参数: {'query': '健身房 负责人'}
+[INFO] 工具执行完成: search_doc
+[INFO] 工具结果预览: {"序号":"","部门名称":"人力资源","问题":"薪酬福利负责人是谁？","相似问法":"薪酬、工资","答案":"薪酬福利负责人是孙铭 \n 联系方式：sunm7@chinatelecom.cn","责任人":"孙铭"}
+
+{"序号":"96","部门名称":"人力资源","问题":"内训师培训资料在哪？","相似问法":"大模型培训资料/重点课程培训资料/内训师/公司重点产品培训资料"...
+[INFO] 所有工具调用完成，继续下一轮判断...
+
+[INFO] === ReAct 迭代 2 ===
+[DEBUG] 原始大模型响应: ChatCompletion(id='3c169bc7-fe0a-41d6-afd8-f02364bc691c', choices=[Choice(finish_reason='tool_calls', index=0, logprobs=None, message=ChatCompletionMessage(content='让我再尝试用更具体的查询来查找健身房相关信息：', role='assistant', function_call=None, tool_calls=[ChatCompletionMessageToolCall(id='call_00_T7ZFuQjtbDNwLcK4KxLkDARJ', function=Function(arguments='{"query": "健身 运动 体育"}', name='search_doc'), type='function', index=0)]))], created=1763544129, model='deepseek-chat', object='chat.completion', system_fingerprint='fp_ffc7281d48_prod0820_fp8_kvcache', usage=CompletionUsage(completion_tokens=30, prompt_tokens=6657, total_tokens=6687, prompt_tokens_details={'cached_tokens': 5760}, prompt_cache_hit_tokens=5760, prompt_cache_miss_tokens=897))
+[DEBUG] 响应对象类型: <class 'openai.types.chat.chat_completion.ChatCompletion'>
+[DEBUG] 消息对象: ChatCompletionMessage(content='让我再尝试用更具体的查询来查找健身房相关信息：', role='assistant', function_call=None, tool_calls=[ChatCompletionMessageToolCall(id='call_00_T7ZFuQjtbDNwLcK4KxLkDARJ', function=Function(arguments='{"query": "健身 运动 体育"}', name='search_doc'), type='function', index=0)])
+[DEBUG] 消息内容: 让我再尝试用更具体的查询来查找健身房相关信息：
+[DEBUG] 工具调用: [ChatCompletionMessageToolCall(id='call_00_T7ZFuQjtbDNwLcK4KxLkDARJ', function=Function(arguments='{"query": "健身 运动 体育"}', name='search_doc'), type='function', index=0)]
+[INFO] LLM决定调用工具，共 1 个工具调用
+[INFO] 处理工具调用: search_doc (ID: call_00_T7ZFuQjtbDNwLcK4KxLkDARJ)
+[INFO] 工具参数: {'query': '健身 运动 体育'}
+[INFO] 工具执行完成: search_doc
+[INFO] 工具结果预览: {"序号":"20","部门名称":"","问题":"","相似问法":"","答案":"","责任人":""}
+
+{"序号":"18","部门名称":"","问题":"","相似问法":"","答案":"","责任人":""}
+
+{"序号":"19","部门名称":"","问题":"","相似问法":"","答案":"","责任人":""}
+
+{"序号":"21","部门名称":"","问题":...
+[INFO] 所有工具调用完成，继续下一轮判断...
+
+[INFO] === ReAct 迭代 3 ===
+[DEBUG] 原始大模型响应: ChatCompletion(id='f2369794-369f-4410-8cfe-1fd91aff860a', choices=[Choice(finish_reason='tool_calls', index=0, logprobs=None, message=ChatCompletionMessage(content='根据查询结果，文档中没有直接找到健身房相关的具体负责人信息。让我尝试搜索综合中心的相关人员：', role='assistant', function_call=None, tool_calls=[ChatCompletionMessageToolCall(id='call_00_G5k7d5Rg6sJOB2y1ER5sdNFl', function=Function(arguments='{"query": "综合中心 健身房"}', name='search_employee'), type='function', index=0)]))], created=1763544135, model='deepseek-chat', object='chat.completion', system_fingerprint='fp_ffc7281d48_prod0820_fp8_kvcache', usage=CompletionUsage(completion_tokens=39, prompt_tokens=7090, total_tokens=7129, prompt_tokens_details={'cached_tokens': 6656}, prompt_cache_hit_tokens=6656, prompt_cache_miss_tokens=434))
+[DEBUG] 响应对象类型: <class 'openai.types.chat.chat_completion.ChatCompletion'>
+[DEBUG] 消息对象: ChatCompletionMessage(content='根据查询结果，文档中没有直接找到健身房相关的具体负责人信息。让我尝试搜索综合中心的相关人员：', role='assistant', function_call=None, tool_calls=[ChatCompletionMessageToolCall(id='call_00_G5k7d5Rg6sJOB2y1ER5sdNFl', function=Function(arguments='{"query": "综合中心 健身房"}', name='search_employee'), type='function', index=0)])
+[DEBUG] 消息内容: 根据查询结果，文档中没有直接找到健身房相关的具体负责人信息。让我尝试搜索综合中心的相关人员：
+[DEBUG] 工具调用: [ChatCompletionMessageToolCall(id='call_00_G5k7d5Rg6sJOB2y1ER5sdNFl', function=Function(arguments='{"query": "综合中心 健身房"}', name='search_employee'), type='function', index=0)]
+[INFO] LLM决定调用工具，共 1 个工具调用
+[INFO] 处理工具调用: search_employee (ID: call_00_G5k7d5Rg6sJOB2y1ER5sdNFl)
+[INFO] 工具参数: {'query': '综合中心 健身房'}
+[INFO] 工具执行完成: search_employee
+[INFO] 工具结果预览: The user is asking about the gym in the comprehensive center, so the relevant employee would likely be from the facilities or sports department, or someone whose responsibilities include gym managemen...
+[INFO] 所有工具调用完成，继续下一轮判断...
+
+[INFO] === ReAct 迭代 4 ===
+[DEBUG] 原始大模型响应: ChatCompletion(id='aad3d312-21d9-4b9c-8739-dfbecb332630', choices=[Choice(finish_reason='stop', index=0, logprobs=None, message=ChatCompletionMessage(content='根据查询结果，我找到了一个可能相关的联系人：\n\n**张伟** - 手机号：13800138000\n\n不过关于公司健身房的具体信息，建议您：\n\n1. **联系张伟**咨询健身房相关事宜\n2. 查看公司内部通知或公告，健身房使用规则、开放时间等信息通常会通过内部渠道发布\n3. 关注企业微信群或内部通讯平台，健身房相关信息一般会通过这些渠道通知\n\n由于我无法确认张伟是否确实负责健身房管理，建议您可以通过企业微信或公司内部通讯录进一步确认健身房的具体负责人。健身房这类设施通常由综合中心或行政管理部门负责管理。', role='assistant', function_call=None, tool_calls=None))], created=1763544148, model='deepseek-chat', object='chat.completion', system_fingerprint='fp_ffc7281d48_prod0820_fp8_kvcache', usage=CompletionUsage(completion_tokens=130, prompt_tokens=7282, total_tokens=7412, prompt_tokens_details={'cached_tokens': 7104}, prompt_cache_hit_tokens=7104, prompt_cache_miss_tokens=178))
+[DEBUG] 响应对象类型: <class 'openai.types.chat.chat_completion.ChatCompletion'>
+[DEBUG] 消息对象: ChatCompletionMessage(content='根据查询结果，我找到了一个可能相关的联系人：\n\n**张伟** - 手机号：13800138000\n\n不过关于公司健身房的具体信息，建议您：\n\n1. **联系张伟**咨询健身房相关事宜\n2. 查看公司内部通知或公告，健身房使用规则、开放时间等信息通常会通过内部渠道发布\n3. 关注企业微信群或内部通讯平台，健身房相关信息一般会通过这些渠道通知\n\n由于我无法确认张伟是否确实负责健身房管理，建议您可以通过企业微信或公司内部通讯录进一步确认健身房的具体负责人。健身房这类设施通常由综合中心或行政管理部门负责管理。', role='assistant', function_call=None, tool_calls=None)
+[DEBUG] 消息内容: 根据查询结果，我找到了一个可能相关的联系人：
+
+**张伟** - 手机号：13800138000
+
+不过关于公司健身房的具体信息，建议您：
+
+1. **联系张伟**咨询健身房相关事宜
+2. 查看公司内部通知或公告，健身房使用规则、开放时间等信息通常会通过内部渠道发布
+3. 关注企业微信群或内部通讯平台，健身房相关信息一般会通过这些渠道通知
+
+由于我无法确认张伟是否确实负责健身房管理，建议您可以通过企业微信或公司内部通讯录进一步确认健身房的具体负责人。健身房这类设施通常由综合中心或行政管理部门负责管理。
+[DEBUG] 工具调用: None
+[INFO] LLM决定给出最终回复
+[INFO] 最终回复内容: 根据查询结果，我找到了一个可能相关的联系人：
+
+**张伟** - 手机号：13800138000
+
+不过关于公司健身房的具体信息，建议您：
+
+1. **联系张伟**咨询健身房相关事宜
+2. 查看公司内部通知或公告，健身房使用规则、开放时间等信息通常会通过内部渠道发布
+3. 关注企业微信群或内部通讯平台，健身房相关信息一般会通过这些渠道通知
+
+由于我无法确认张伟是否确实负责健身房管理，建议您可以通过企业微信或公司内部通讯录进一步确认健身房的具体负责人。健身房这类设施通常由综合中心或行政管理部门负责管理。127.0.0.1 - - [19/Nov/2025 17:22:31] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:22:32] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:22:32] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:22:35] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:22:35] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:22:38] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:22:38] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:22:41] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:22:41] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:22:44] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:22:44] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:22:47] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:22:47] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:22:50] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:22:50] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:22:53] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:22:53] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:22:56] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:22:56] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:22:59] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:22:59] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:23:02] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:23:02] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:23:05] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:23:05] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:23:08] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:23:08] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:23:11] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:23:11] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:23:14] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:23:14] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:23:17] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:23:17] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:23:20] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:23:20] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:23:23] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:23:23] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:23:24] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:23:26] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:23:29] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:23:32] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:23:35] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:23:38] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:23:40] "POST /message HTTP/1.1" 200 -
+
+[INFO] 总共进行了 4 轮ReAct，调用了工具: ['search_doc', 'search_doc', 'search_employee']
+[INFO] 从conversation_manager加载用户 user_a_张三 的对话历史（包含最新SubAgent结果）
+[INFO] 处理查询: 周末健身房开门嘛？
+
+[INFO] === ReAct 迭代 1 ===
+[DEBUG] 原始大模型响应: ChatCompletion(id='2bdfef0c-8cb3-4678-a827-28226be8e886', choices=[Choice(finish_reason='tool_calls', index=0, logprobs=None, message=ChatCompletionMessage(content='我来帮您查询健身房开放时间的相关信息。', role='assistant', function_call=None, tool_calls=[ChatCompletionMessageToolCall(id='call_00_EwYuNTZE9StyGYKnp3jDSjER', function=Function(arguments='{"query": "健身房 开放时间 周末"}', name='search_doc'), type='function', index=0)]))], created=1763544192, model='deepseek-chat', object='chat.completion', system_fingerprint='fp_ffc7281d48_prod0820_fp8_kvcache', usage=CompletionUsage(completion_tokens=28, prompt_tokens=7421, total_tokens=7449, prompt_tokens_details={'cached_tokens': 7360}, prompt_cache_hit_tokens=7360, prompt_cache_miss_tokens=61))
+[DEBUG] 响应对象类型: <class 'openai.types.chat.chat_completion.ChatCompletion'>
+[DEBUG] 消息对象: ChatCompletionMessage(content='我来帮您查询健身房开放时间的相关信息。', role='assistant', function_call=None, tool_calls=[ChatCompletionMessageToolCall(id='call_00_EwYuNTZE9StyGYKnp3jDSjER', function=Function(arguments='{"query": "健身房 开放时间 周末"}', name='search_doc'), type='function', index=0)])
+[DEBUG] 消息内容: 我来帮您查询健身房开放时间的相关信息。
+[DEBUG] 工具调用: [ChatCompletionMessageToolCall(id='call_00_EwYuNTZE9StyGYKnp3jDSjER', function=Function(arguments='{"query": "健身房 开放时间 周末"}', name='search_doc'), type='function', index=0)]
+[INFO] LLM决定调用工具，共 1 个工具调用
+[INFO] 处理工具调用: search_doc (ID: call_00_EwYuNTZE9StyGYKnp3jDSjER)
+[INFO] 工具参数: {'query': '健身房 开放时间 周末'}
+[INFO] 工具执行完成: search_doc
+[INFO] 工具结果预览: {"序号":"9","部门名称":"综合中心","问题":"工作时间是几点到几点？","相似问法":"工作时间","答案":"工作时间：早8:30-午11:30、午13:30-晚18:30\n午休时间：11:30-13:30 \n具体以本部门要求为准。","责任人":""}
+
+{"序号":"","部门名称":"人力资源","问题":"家庭医生","相似问法":"家庭医生","答案":"每年7月左右...
+[INFO] 所有工具调用完成，继续下一轮判断...
+
+[INFO] === ReAct 迭代 2 ===
+[DEBUG] 原始大模型响应: ChatCompletion(id='b23e2490-6b66-4ea9-9296-1691aa7d367d', choices=[Choice(finish_reason='tool_calls', index=0, logprobs=None, message=ChatCompletionMessage(content='根据文档检索结果，我没有找到健身房周末开放时间的相关信息。文档中主要包含工作时间、门禁权限等基本信息，但没有具体提到健身房的使用时间安排。\n\n让我尝试联系之前找到的相关人员来获取准确的健身房开放时间信息：', role='assistant', function_call=None, tool_calls=[ChatCompletionMessageToolCall(id='call_00_kA6PGXlTaXXObMPsx9ttvFLF', function=Function(arguments='{"employee_info": [{"id": "1", "name": "张伟", "phone": "13800138000", "question": "您好，想咨询一下公司健身房周末是否开放？具体的开放时间是什么时候？"}]}', name='contact_employee'), type='function', index=0)]))], created=1763544199, model='deepseek-chat', object='chat.completion', system_fingerprint='fp_ffc7281d48_prod0820_fp8_kvcache', usage=CompletionUsage(completion_tokens=107, prompt_tokens=8563, total_tokens=8670, prompt_tokens_details={'cached_tokens': 7424}, prompt_cache_hit_tokens=7424, prompt_cache_miss_tokens=1139))
+[DEBUG] 响应对象类型: <class 'openai.types.chat.chat_completion.ChatCompletion'>
+[DEBUG] 消息对象: ChatCompletionMessage(content='根据文档检索结果，我没有找到健身房周末开放时间的相关信息。文档中主要包含工作时间、门禁权限等基本信息，但没有具体提到健身房的使用时间安排。\n\n让我尝试联系之前找到的相关人员来获取准确的健身房开放时间信息：', role='assistant', function_call=None, tool_calls=[ChatCompletionMessageToolCall(id='call_00_kA6PGXlTaXXObMPsx9ttvFLF', function=Function(arguments='{"employee_info": [{"id": "1", "name": "张伟", "phone": "13800138000", "question": "您好，想咨询一下公司健身房周末是否开放？具体的开放时间是什么时候？"}]}', name='contact_employee'), type='function', index=0)])
+[DEBUG] 消息内容: 根据文档检索结果，我没有找到健身房周末开放时间的相关信息。文档中主要包含工作时间、门禁权限等基本信息，但没有具体提到健身房的使用时间安排。
+
+让我尝试联系之前找到的相关人员来获取准确的健身房开放时间信息：
+[DEBUG] 工具调用: [ChatCompletionMessageToolCall(id='call_00_kA6PGXlTaXXObMPsx9ttvFLF', function=Function(arguments='{"employee_info": [{"id": "1", "name": "张伟", "phone": "13800138000", "question": "您好，想咨询一下公司健身房周末是否开放？具体的开放时间是什么时候？"}]}', name='contact_employee'), type='function', index=0)]
+[INFO] LLM决定调用工具，共 1 个工具调用
+[INFO] 处理工具调用: contact_employee (ID: call_00_kA6PGXlTaXXObMPsx9ttvFLF)
+[INFO] contact_employee工具参数: {'employee_info': [{'id': '1', 'name': '张伟', 'phone': '13800138000', 'question': '您好，想咨询一下公司健身房周末是否开放？具体的开放时间是什么时候？'}]}
 [INFO] contact_employee工具已启动
-[INFO] 提取到 1 个session_id: ['6624abc9-2450-4425-906b-d7c1fb9ad269']
-[INFO] 已注册session_id映射: 6624abc9-2450-4425-906b-d7c1fb9ad269 -> tool_call_id=call_00_YwY76Wd9n1SB3WQkQPD7enI0, user_id=user_a_张三
+[INFO] 提取到 1 个session_id: ['d8a3206f-7de5-437e-aae6-e1d2835df9c4']
+[INFO] 已注册session_id映射: d8a3206f-7de5-437e-aae6-e1d2835df9c4 -> tool_call_id=call_00_kA6PGXlTaXXObMPsx9ttvFLF, user_id=user_a_张三
 [INFO] 检测到contact_employee工具，执行特殊处理
 [INFO] 已保存用户 user_a_张三 的对话历史
 [INFO] contact_employee特殊处理完成，直接返回回复
-[INFO] 最终回复内容: 找到了综合中心的张三，让我联系他询问停车信息：
-[INFO] 总共进行了 3 轮ReAct，调用了工具: ['search_employee', 'search_employee', 'contact_employee']
-[INFO] 从conversation_manager加载用户 user_a_张三 的对话历史（包含最新SubAgent结果）
-[INFO] 处理查询: 好的。
+[INFO] 最终回复内容: 根据文档检索结果，我没有找到健身房周末开放时间的相关信息。文档中主要包含工作时间、门禁权限等基本信息，但没有具体提到健身房的使用时间安排。
 
-[INFO] === ReAct 迭代 1 ===
-[DEBUG] 原始大模型响应: ChatCompletion(id='0bfbeb9e-21d0-4b2f-8337-6c1b72f520bd', choices=[Choice(finish_reason='stop', index=0, logprobs=None, message=ChatCompletionMessage(content='已联系综合中心的张三询问公司附近停车信息，有结果后我会及时通知您。\n\n如果您还有其他问题需要咨询，也可以随时告诉我。', role='assistant', function_call=None, tool_calls=None))], created=1763020289, model='deepseek-chat', object='chat.completion', system_fingerprint='fp_ffc7281d48_prod0820_fp8_kvcache', usage=CompletionUsage(completion_tokens=29, prompt_tokens=9586, total_tokens=9615, prompt_tokens_details={'cached_tokens': 9408}, prompt_cache_hit_tokens=9408, prompt_cache_miss_tokens=178))
-[DEBUG] 响应对象类型: <class 'openai.types.chat.chat_completion.ChatCompletion'>
-[DEBUG] 消息对象: ChatCompletionMessage(content='已联系综合中心的张三询问公司附近停车信息，有结果后我会及时通知您。\n\n如果您还有其他问题需要咨询，也可以随时告诉我。', role='assistant', function_call=None, tool_calls=None)
-[DEBUG] 消息内容: 已联系综合中心的张三询问公司附近停车信息，有结果后我会及时通知您。
-
-如果您还有其他问题需要咨询，也可以随时告诉我。
-[DEBUG] 工具调用: None
-[INFO] LLM决定给出最终回复
-[INFO] 最终回复内容: 已联系综合中心的张三询问公司附近停车信息，有结果后我会及时通知您。
-
-如果您还有其他问题需要咨询，也可以随时告诉我。
-[INFO] 总共进行了 1 轮ReAct，调用了工具: []
-[INFO] 用户 * 有 4 个待处理会话，自动使用最新的: 6624abc9-2450-4425-906b-d7c1fb9ad269
+让我尝试联系之前找到的相关人员来获取准确的健身房开放时间信息：
+[INFO] 总共进行了 2 轮ReAct，调用了工具: ['search_doc', 'contact_employee']
+[INFO] 用户 * 有1个待处理会话，自动使用: d8a3206f-7de5-437e-aae6-e1d2835df9c4
 
 [CALLBACK] 收到子agent回调通知
-  会话ID: 6624abc9-2450-4425-906b-d7c1fb9ad269
+  会话ID: d8a3206f-7de5-437e-aae6-e1d2835df9c4
   用户A: user_a_张三
-  原始问题: 您好，想咨询一下公司附近有什么可以停车的地方吗？包括公司内部停车场、周边公共停车场、停车费用等信息。
-  子agent结果: 用户未提供任何关于公司附近停车场所的信息，无法获取公司内部停车场、周边公共停车场或停车费用等细节。建议用户后续通过其他渠道（如公司行政或本地地图应用）查询。
-[DEBUG] 更新tool消息内容，tool_call_id=call_00_YwY76Wd9n1SB3WQkQPD7enI0
-[DEBUG] 更新后的内容预览: 已成功联系张三（ID: 12345），子agent已向其提问：您好，想咨询一下公司附近有什么可以停车的地方吗？包括公司内部停车场、周边公共停车场、停车费用等信息。
-会话ID: 6624abc9-2450-4425-906b-d7c1fb9ad269
+  原始问题: 您好，想咨询一下公司健身房周末是否开放？具体的开放时间是什么时候？
+  子agent结果: 张伟表示不知道公司健身房周末的开放情况，无法提供具体信息。
+[DEBUG] 更新tool消息内容，tool_call_id=call_00_kA6PGXlTaXXObMPsx9ttvFLF
+[DEBUG] 更新后的内容预览: 已成功联系张伟（ID: 13800138000），子agent已向其提问：您好，张伟，想咨询一下公司健身房周末是否开放？具体的开放时间是什么时候？
+会话ID: d8a3206f-7de5-437e-aae6-e1d2835df9c4
 
-所有会话ID: 6624abc9-2450-4425-906b-d7c1fb9ad269
+所有会话ID: d8a3206f-7de5-437e-aae6-e1d2835df9c4
 我会在收到完整回复后通知您。
 
 【已收到回复】
-用户未提供...
+张伟表示不知道公司健身房周...
 [INFO] 已更新用户 user_a_张三 的对话历史，tool消息已包含SubAgent结果
 [INFO] 已更新用户 user_a_张三 的对话历史，添加SubAgent结果
 
@@ -489,235 +528,205 @@ Press CTRL+C to quit
                    ✨ 准备推送通知给用户A ✨
 ══════════════════════════════════════════════════════════════════════
 📌 目标用户: user_a_张三
-📌 关于问题: 您好，想咨询一下公司附近有什么可以停车的地方吗？包括公司内部停车场、周边公共停车场、停车费用等信息。
+📌 关于问题: 您好，想咨询一下公司健身房周末是否开放？具体的开放时间是什么时候？127.0.0.1 - - [19/Nov/2025 17:23:41] "POST /session_callback HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:23:41] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:23:41] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:23:44] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:23:44] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:23:47] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:23:47] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:23:50] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:23:50] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:23:53] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:23:53] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:23:56] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:23:56] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:23:59] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:23:59] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:24:02] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:24:02] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:24:05] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:24:05] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:24:08] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:24:08] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:24:11] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:24:11] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:24:14] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:24:14] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:24:17] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:24:17] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:24:20] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:24:20] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:24:23] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:24:23] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:24:26] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:24:26] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:24:26] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:24:29] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:24:29] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:24:32] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:24:32] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:24:35] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:24:35] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:24:38] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:24:38] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:24:41] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:24:41] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:24:44] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:24:44] "POST /message HTTP/1.1" 200 -
+
 
 💡 推送内容:
-用户未提供任何关于公司附近停车场所的信息，无法获取公司内部停车场、周边公共停车场或停车费用等细节。建议用户后续通过其他渠道（如公司行政或本地地图应用）查询。
+张伟表示不知道公司健身房周末的开放情况，无法提供具体信息。
 ══════════════════════════════════════════════════════════════════════
 ✅ 通知已记录到系统，用户A的终端会自动接收
 
-[INFO] 用户 * 有 3 个待处理会话，自动使用最新的: 6d181fd5-f8ab-4eab-8337-3da21cdf62cc
-[INFO] 用户 * 有 3 个待处理会话，自动使用最新的: 6d181fd5-f8ab-4eab-8337-3da21cdf62cc127.0.0.1 - - [13/Nov/2025 15:52:04] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:52:07] "POST /message HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:52:07] "POST /session_callback HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:52:07] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:52:08] "POST /message HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:52:10] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:52:11] "POST /message HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:52:13] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:52:14] "POST /message HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:52:16] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:52:17] "POST /message HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:52:17] "POST /message HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:52:19] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:52:20] "POST /message HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:52:22] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:52:23] "POST /message HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:52:25] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:52:26] "POST /message HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:52:28] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:52:29] "POST /message HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:52:31] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:52:32] "POST /message HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:52:35] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:52:35] "POST /message HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:52:38] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:52:38] "POST /message HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:52:41] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:52:41] "POST /message HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:52:44] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:52:44] "POST /message HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:52:47] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:52:47] "POST /message HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:52:50] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:52:50] "POST /message HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:52:53] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:52:53] "POST /message HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:52:56] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:52:56] "POST /message HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:52:59] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:52:59] "POST /message HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:53:02] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:53:02] "POST /message HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:53:05] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:53:05] "POST /message HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:53:08] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:53:08] "POST /message HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:53:11] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:53:11] "POST /message HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:53:14] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:53:14] "POST /message HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:53:17] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:53:17] "POST /message HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:53:20] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:53:20] "POST /message HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:53:23] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:53:23] "POST /message HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:53:26] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:53:26] "POST /message HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:53:29] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:53:29] "POST /message HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:53:32] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:53:32] "POST /message HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:53:35] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:53:35] "POST /message HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:53:38] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:53:38] "POST /message HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:53:41] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:53:41] "POST /message HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:53:44] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:53:44] "POST /message HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:53:47] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:53:47] "POST /message HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:53:50] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:53:50] "POST /message HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:53:53] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:53:53] "POST /message HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:53:56] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:53:56] "POST /message HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:53:59] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:53:59] "POST /message HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:54:02] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:54:02] "POST /message HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:54:05] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:54:05] "POST /message HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:54:08] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:54:08] "POST /message HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:54:11] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:54:11] "POST /message HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:54:14] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:54:14] "POST /message HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:54:17] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:54:17] "POST /message HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:54:20] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:54:20] "POST /message HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:54:23] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:54:23] "POST /message HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:54:26] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:54:26] "POST /message HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:54:29] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:54:29] "POST /message HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:54:32] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:54:32] "POST /message HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:54:35] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:54:35] "POST /message HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:54:38] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:54:38] "POST /message HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:54:41] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:54:41] "POST /message HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:54:44] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:54:44] "POST /message HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:54:47] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:54:47] "POST /message HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:54:50] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:54:50] "POST /message HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:54:53] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:54:53] "POST /message HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:54:56] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:54:56] "POST /message HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:54:59] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:55:00] "POST /message HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:55:02] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:55:03] "POST /message HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:55:05] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:55:06] "POST /message HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:55:08] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:55:09] "POST /message HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:55:11] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:55:12] "POST /message HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:55:14] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:55:15] "POST /message HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:55:17] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:55:18] "POST /message HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:55:20] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:55:21] "POST /message HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:55:23] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:55:24] "POST /message HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:55:26] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:55:27] "POST /message HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:55:29] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:55:30] "POST /message HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:55:32] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:55:33] "POST /message HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:55:35] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:55:36] "POST /message HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:55:38] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:55:39] "POST /message HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:55:41] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:55:42] "POST /message HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:55:44] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:55:45] "POST /message HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:55:47] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:55:48] "POST /message HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:55:50] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:55:51] "POST /message HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:55:53] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:55:54] "POST /message HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:55:56] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:55:57] "POST /message HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:55:59] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:56:00] "POST /message HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:56:02] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:56:03] "POST /message HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:56:05] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:56:06] "POST /message HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:56:08] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:56:09] "POST /message HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:56:11] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:56:12] "POST /message HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:56:14] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:56:15] "POST /message HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:56:17] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:56:18] "POST /message HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:56:20] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:56:21] "POST /message HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:56:23] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:56:24] "POST /message HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:56:27] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:56:27] "POST /message HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:56:30] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:56:30] "POST /message HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:56:33] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:56:33] "POST /message HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:56:36] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:56:36] "POST /message HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:56:39] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:56:39] "POST /message HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:56:42] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:56:42] "POST /message HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:56:45] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:56:45] "POST /message HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:56:48] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:56:48] "POST /message HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:56:51] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:56:51] "POST /message HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:56:54] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:56:54] "POST /message HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:56:57] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:56:57] "POST /message HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:57:00] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:57:00] "POST /message HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:57:03] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:57:03] "POST /message HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:57:06] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:57:06] "POST /message HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:57:09] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:57:09] "POST /message HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:57:12] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:57:12] "POST /message HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:57:15] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:57:15] "POST /message HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:57:18] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:57:18] "POST /message HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:57:21] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:57:21] "POST /message HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:57:24] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:57:24] "POST /message HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:57:27] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:57:27] "POST /message HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:57:30] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:57:30] "POST /message HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:57:33] "GET /get_notifications HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:57:33] "POST /message HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:57:36] "POST /message HTTP/1.1" 200 -
-127.0.0.1 - - [13/Nov/2025 15:57:39] "POST /message HTTP/1.1" 200 -
+[INFO] 从conversation_manager加载用户 user_a_张三 的对话历史（包含最新SubAgent结果）
+[INFO] 处理查询: 不是，那邵天宇是负责什么的啊？
+
+[INFO] === ReAct 迭代 1 ===
+[DEBUG] 原始大模型响应: ChatCompletion(id='3e82b3c1-695b-4e9b-bf54-482592d78e6c', choices=[Choice(finish_reason='tool_calls', index=0, logprobs=None, message=ChatCompletionMessage(content='我来帮您查询邵天宇的相关信息。', role='assistant', function_call=None, tool_calls=[ChatCompletionMessageToolCall(id='call_00_uwXcmJX0vHnIE76MElnQqlRu', function=Function(arguments='{"query": "邵天宇 负责人"}', name='search_doc'), type='function', index=0)]))], created=1763544251, model='deepseek-chat', object='chat.completion', system_fingerprint='fp_ffc7281d48_prod0820_fp8_kvcache', usage=CompletionUsage(completion_tokens=28, prompt_tokens=8865, total_tokens=8893, prompt_tokens_details={'cached_tokens': 8640}, prompt_cache_hit_tokens=8640, prompt_cache_miss_tokens=225))
+[DEBUG] 响应对象类型: <class 'openai.types.chat.chat_completion.ChatCompletion'>
+[DEBUG] 消息对象: ChatCompletionMessage(content='我来帮您查询邵天宇的相关信息。', role='assistant', function_call=None, tool_calls=[ChatCompletionMessageToolCall(id='call_00_uwXcmJX0vHnIE76MElnQqlRu', function=Function(arguments='{"query": "邵天宇 负责人"}', name='search_doc'), type='function', index=0)])
+[DEBUG] 消息内容: 我来帮您查询邵天宇的相关信息。
+[DEBUG] 工具调用: [ChatCompletionMessageToolCall(id='call_00_uwXcmJX0vHnIE76MElnQqlRu', function=Function(arguments='{"query": "邵天宇 负责人"}', name='search_doc'), type='function', index=0)]
+[INFO] LLM决定调用工具，共 1 个工具调用
+[INFO] 处理工具调用: search_doc (ID: call_00_uwXcmJX0vHnIE76MElnQqlRu)
+[INFO] 工具参数: {'query': '邵天宇 负责人'}
+[INFO] 工具执行完成: search_doc
+[INFO] 工具结果预览: {"序号":"8","部门名称":"PMO+流程+其他","问题":"MSS协议级系统各模块对接人","相似问法":"","答案":"商机系统--010-58501984：负责网络接入，商机、合同、ICT项目管理功能技术支撑\n采购辅助--周倩倩、白波\n合同系统--周倩倩、白波\n合同解析--曹涛、张维维\n协议级项目管理系统（ICT系统）--曹涛、张维维\n财务--一线陈爽、张维维","责任人...
+[INFO] 所有工具调用完成，继续下一轮判断...
+
+[INFO] === ReAct 迭代 2 ===
+[DEBUG] 原始大模型响应: ChatCompletion(id='1ca7e8ac-b49b-4edd-9443-35ba39ec57b1', choices=[Choice(finish_reason='tool_calls', index=0, logprobs=None, message=ChatCompletionMessage(content='让我直接搜索邵天宇的员工信息：', role='assistant', function_call=None, tool_calls=[ChatCompletionMessageToolCall(id='call_00_rk8l0u9WYwed9pdoTa2UI3j4', function=Function(arguments='{"query": "邵天宇"}', name='search_employee'), type='function', index=0)]))], created=1763544255, model='deepseek-chat', object='chat.completion', system_fingerprint='fp_ffc7281d48_prod0820_fp8_kvcache', usage=CompletionUsage(completion_tokens=25, prompt_tokens=9563, total_tokens=9588, prompt_tokens_details={'cached_tokens': 8832}, prompt_cache_hit_tokens=8832, prompt_cache_miss_tokens=731))
+[DEBUG] 响应对象类型: <class 'openai.types.chat.chat_completion.ChatCompletion'>
+[DEBUG] 消息对象: ChatCompletionMessage(content='让我直接搜索邵天宇的员工信息：', role='assistant', function_call=None, tool_calls=[ChatCompletionMessageToolCall(id='call_00_rk8l0u9WYwed9pdoTa2UI3j4', function=Function(arguments='{"query": "邵天宇"}', name='search_employee'), type='function', index=0)])
+[DEBUG] 消息内容: 让我直接搜索邵天宇的员工信息：
+[DEBUG] 工具调用: [ChatCompletionMessageToolCall(id='call_00_rk8l0u9WYwed9pdoTa2UI3j4', function=Function(arguments='{"query": "邵天宇"}', name='search_employee'), type='function', index=0)]
+[INFO] LLM决定调用工具，共 1 个工具调用
+[INFO] 处理工具调用: search_employee (ID: call_00_rk8l0u9WYwed9pdoTa2UI3j4)
+[INFO] 工具参数: {'query': '邵天宇'}
+[INFO] 工具执行完成: search_employee
+[INFO] 工具结果预览: The search returned a single employee named "邵天宇" from the "平台业务部" with the phone number "18210126508" and responsibilities related to "后勤管理等相关事务". Since this matches the query directly, I can provide...
+[INFO] 所有工具调用完成，继续下一轮判断...
+
+[INFO] === ReAct 迭代 3 ===
+[DEBUG] 原始大模型响应: ChatCompletion(id='b8d1998a-1082-40a4-a25a-a34964a59a62', choices=[Choice(finish_reason='stop', index=0, logprobs=None, message=ChatCompletionMessage(content='根据查询结果，我找到了邵天宇的相关信息：\n\n**邵天宇**\n- 部门：平台业务部\n- 手机号：18210126508\n- 职责：负责后勤管理等相关事务\n\n从职责描述来看，邵天宇主要负责后勤管理相关工作。如果您有后勤管理方面的问题，可以联系邵天宇咨询。', role='assistant', function_call=None, tool_calls=None))], created=1763544264, model='deepseek-chat', object='chat.completion', system_fingerprint='fp_ffc7281d48_prod0820_fp8_kvcache', usage=CompletionUsage(completion_tokens=72, prompt_tokens=9668, total_tokens=9740, prompt_tokens_details={'cached_tokens': 9536}, prompt_cache_hit_tokens=9536, prompt_cache_miss_tokens=132))
+[DEBUG] 响应对象类型: <class 'openai.types.chat.chat_completion.ChatCompletion'>
+[DEBUG] 消息对象: ChatCompletionMessage(content='根据查询结果，我找到了邵天宇的相关信息：\n\n**邵天宇**\n- 部门：平台业务部\n- 手机号：18210126508\n- 职责：负责后勤管理等相关事务\n\n从职责描述来看，邵天宇主要负责后勤管理相关工作。如果您有后勤管理方面的问题，可以联系邵天宇咨询。', role='assistant', function_call=None, tool_calls=None)
+[DEBUG] 消息内容: 根据查询结果，我找到了邵天宇的相关信息：
+
+**邵天宇**
+- 部门：平台业务部
+- 手机号：18210126508
+- 职责：负责后勤管理等相关事务
+
+从职责描述来看，邵天宇主要负责后勤管理相关工作。如果您有后勤管理方面的问题，可以联系邵天宇咨询。
+[DEBUG] 工具调用: None
+[INFO] LLM决定给出最终回复
+[INFO] 最终回复内容: 根据查询结果，我找到了邵天宇的相关信息：
+
+**邵天宇**
+- 部门：平台业务部
+- 手机号：18210126508
+- 职责：负责后勤管理等相关事务
+
+从职责描述来看，邵天宇主要负责后勤管理相关工作。如果您有后勤管理方面的问题，可以联系邵天宇咨询。
+[INFO] 总共进行了 3 轮ReAct，调用了工具: ['search_doc', 'search_employee']
+[INFO] 从conversation_manager加载用户 user_a_张三 的对话历史（包含最新SubAgent结果）
+[INFO] 处理查询: 健身房、食堂啥的不属于后勤吗？
+
+[INFO] === ReAct 迭代 1 ===
+[DEBUG] 原始大模型响应: ChatCompletion(id='a1d9e30f-a2d5-4dda-aa65-ef8df02c3112', choices=[Choice(finish_reason='tool_calls', index=0, logprobs=None, message=ChatCompletionMessage(content='您说得对！健身房、食堂这些确实属于后勤管理范畴。\n\n根据刚才查询到的信息，邵天宇在平台业务部负责后勤管理等相关事务，那么健身房、食堂这些设施很可能就是由他负责管理的。\n\n让我再确认一下邵天宇的具体职责范围：', role='assistant', function_call=None, tool_calls=[ChatCompletionMessageToolCall(id='call_00_6rg6fUwrS457rcIf1mrXyp0F', function=Function(arguments='{"employee_info": [{"id": "1", "name": "邵天宇", "phone": "18210126508", "question": "您好，想确认一下您是否负责公司健身房和食堂的管理？如果是的话，想咨询健身房周末是否开放？具体的开放时间是什么时候？"}]}', name='contact_employee'), type='function', index=0)]))], created=1763544281, model='deepseek-chat', object='chat.completion', system_fingerprint='fp_ffc7281d48_prod0820_fp8_kvcache', usage=CompletionUsage(completion_tokens=130, prompt_tokens=9753, total_tokens=9883, prompt_tokens_details={'cached_tokens': 9728}, prompt_cache_hit_tokens=9728, prompt_cache_miss_tokens=25))127.0.0.1 - - [19/Nov/2025 17:24:47] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:24:47] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:24:49] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:24:50] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:24:53] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:24:56] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:24:59] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:25:02] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:25:05] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:25:08] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:25:11] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:25:14] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:25:17] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:25:20] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:25:22] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:25:23] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:25:26] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:25:29] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:25:32] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:25:35] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:25:37] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:25:37] "POST /session_callback HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:25:38] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:25:39] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:25:41] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:25:42] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:25:44] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:25:45] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:25:47] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:25:48] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:25:50] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:25:51] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:25:51] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:25:53] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:25:54] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:25:56] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:25:57] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:25:59] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:26:00] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:26:02] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:26:03] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:26:05] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:26:06] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:26:08] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:26:09] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:26:11] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:26:12] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:26:14] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:26:15] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:26:17] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:26:18] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:26:20] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:26:21] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:26:23] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:26:24] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:26:26] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:26:27] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:26:29] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:26:30] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:26:32] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:26:33] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:26:36] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:26:36] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:26:39] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:26:39] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:26:42] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:26:42] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:26:45] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:26:45] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:26:48] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:26:48] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:26:51] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:26:51] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:26:54] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:26:54] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:26:57] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:26:57] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:27:00] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:27:00] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:27:03] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:27:03] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:27:06] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:27:06] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:27:09] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:27:09] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:27:12] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:27:12] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:27:15] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:27:15] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:27:18] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:27:18] "POST /message HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:27:21] "GET /get_notifications HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2025 17:27:21] "POST /message HTTP/1.1" 200 -

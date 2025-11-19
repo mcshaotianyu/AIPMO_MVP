@@ -170,7 +170,7 @@ class ContactEmployeeTool:
         
         Args:
             employee_info: 员工信息列表，每个元素是一个字典，包含：
-                - id: 员工ID
+                - 手机号: 员工手机号
                 - name: 员工姓名
                 - question: 问询问题
             user_a: 用户A的标识
@@ -189,7 +189,7 @@ class ContactEmployeeTool:
                 results.append(f"错误：第 {idx+1} 个员工信息格式不正确，必须是字典")
                 continue
             
-            employee_id = emp.get("id") or emp.get("employee_id")
+            employee_id = emp.get("phone") or emp.get("employee_phone")
             employee_name = emp.get("name") or emp.get("employee_name")
             question = emp.get("question")
             
@@ -336,13 +336,13 @@ def get_tools_definitions() -> List[Dict]:
             "type": "function",
             "function": {
                 "name": "search_employee",
-                "description": "当search_doc工具无法检索到相关信息或检索到的结果不足以解决用户问题时，根据query内容从员工台账中检索相关员工",
+                "description": "当search_doc工具无法检索到相关信息或检索到的结果不足以解决用户问题时，可利用search_employee工具根据query内容从员工台账中检索相关员工",
                 "parameters": {
                     "type": "object",
                     "properties": {
                         "query": {
                             "type": "string",
-                            "description": "要检索的查询内容，可以是相关职责描述、部门、职位或员工姓名等"
+                            "description": "要检索的查询内容，可以是相关职责描述、部门、职位或员工姓名等，或可以根据用户的问题来组织可能会用到的查询内容"
                         }
                     },
                     "required": ["query"]
@@ -353,7 +353,7 @@ def get_tools_definitions() -> List[Dict]:
             "type": "function",
             "function": {
                 "name": "contact_employee",
-                "description": "当用户同意联系员工时，调用此工具联系员工问询相关问题。可以一次联系多个员工",
+                "description": "当用户同意联系其他员工时，调用此工具联系相关员工并问询相关问题。可以一次联系多个员工，也可以一次联系一个员工。",
                 "parameters": {
                     "type": "object",
                     "properties": {
@@ -363,9 +363,9 @@ def get_tools_definitions() -> List[Dict]:
                             "items": {
                                 "type": "object",
                                 "properties": {
-                                    "id": {
+                                    "phone": {
                                         "type": "string",
-                                        "description": "员工ID"
+                                        "description": "员工手机号"
                                     },
                                     "name": {
                                         "type": "string",
@@ -373,7 +373,7 @@ def get_tools_definitions() -> List[Dict]:
                                     },
                                     "question": {
                                         "type": "string",
-                                        "description": "要问询的问题或要直接发送给该员工的消息"
+                                        "description": "要向其他员工问询的问题或要直接发送给该员工的消息"
                                     }
                                 },
                                 "required": ["id", "name", "question"]
