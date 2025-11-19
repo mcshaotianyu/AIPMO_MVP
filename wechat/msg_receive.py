@@ -148,7 +148,7 @@ def parse_message(xml_content: str) -> Dict[str, Any]:
     return message
 
 
-@app.route('/yxg/wechat/callback', methods=['GET', 'POST'])
+@app.route('/yxgtest/wechat/callback', methods=['GET', 'POST'])
 def wechat_callback():
     """
     WeCom 回调端点。
@@ -503,4 +503,4 @@ def process_incoming_message(message_data: Dict[str, Any]) -> None:
 
 if __name__ == '__main__':
     # Run the Flask app for testing
-    app.run(host='0.0.0.0', port=8081, debug=True)
+    app.run(host='0.0.0.0', port=8081, debug=True, use_reloader=False)

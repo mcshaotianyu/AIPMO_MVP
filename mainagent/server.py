@@ -6,6 +6,7 @@ import requests
 from flask import Flask, request, jsonify
 from core import process_user_query
 from conversation_manager import conversation_manager
+from wechat.msg_send import send_text_message
 
 # 添加当前目录到路径以导入session_manager
 sys.path.append(os.path.dirname(os.path.abspath(__file__)))
@@ -54,6 +55,7 @@ def session_callback():
         session_id = data.get('session_id')
         result = data.get('result')
         user_a = data.get('user_a')
+        user_b = data.get('user_b')
         question = data.get('question')
         
         print(f"\n[CALLBACK] 收到子agent回调通知")
@@ -86,6 +88,34 @@ def session_callback():
         print(f"\n💡 推送内容:")
         print(f"{result}")
         print("═" * 70)
+
+        content = f"关于问题: {question}\n{user_b} 回复: \n  {result}"
+
+        # 拿问题发送的用户b的企微 需要用户b的手机号
+        send_res = send_text_message(user_a, content)
+        # {
+        #   "errcode" : 0,
+        #   "errmsg" : "ok",
+        #   "invaliduser" : "userid1|userid2",
+        #   "invalidparty" : "partyid1|partyid2",
+        #   "invalidtag": "tagid1|tagid2",
+        #   "unlicenseduser" : "userid3|userid4",
+        #   "msgid": "xxxx",
+        #   "response_code": "xyzxyz"
+        # }
+        # 如果部分接收人无权限或不存在，发送仍然执行，
+        # 但会返回无效的部分（即invaliduser或invalidparty或invalidtag或unlicenseduser），
+        # 常见的原因是接收人不在应用的可见范围内。
+
+        if send_res.get("errcode") != 0:
+            print(f"联系员工失败: errcode={send_res.get('errcode')}")
+            print("\n排查建议:")
+            print("1. errcode=60020：确认服务器公网IP已加入企业微信应用 IP 白名单")
+            print("2. errcode=40001：检查 CORP_ID 与 SECRET 是否正确")
+            print("3. errcode=40002：检查 AGENT_ID 是否正确")
+            print("4. 检查到 qyapi.weixin.qq.com 的网络连通性")
+            return f"联系员工失败：{send_res.get('errmsg', '未知错误')}"
+
         print(f"✅ 通知已记录到系统，用户A的终端会自动接收\n")
         
         return jsonify({"status": "success", "message": "回调接收成功"})

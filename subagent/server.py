@@ -264,6 +264,7 @@ def trigger_callback_if_needed(session_id: str):
                     "session_id": session_id,
                     "result": session.result,
                     "user_a": session.user_a,
+                    "user_b": session.user_b_name,
                     "question": session.question
                 },
                 timeout=10

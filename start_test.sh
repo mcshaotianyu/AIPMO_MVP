@@ -11,6 +11,18 @@ echo "           Multi-Agent 系统测试 - 启动脚本"
 echo "════════════════════════════════════════════════════════════"
 echo ""
 
+# 启动虚拟环境AIPMO_MVP
+if [ ! -d "AIPMO_MVP" ]; then
+    echo "📁 创建虚拟环境 AIPMO_MVP ..."
+    python3 -m venv AIPMO_MVP
+else
+    echo "✅ 虚拟环境 AIPMO_MVP 已存在，跳过创建"
+fi
+
+source AIPMO_MVP/bin/activate
+
+pip install -r requirements.txt
+
 # 停止旧服务
 echo "🧹 清理旧服务..."
 ./stop_services.sh > /dev/null 2>&1
@@ -18,6 +30,11 @@ sleep 1
 
 # 清理Python缓存
 rm -rf __pycache__ mainagent/__pycache__ subagent/__pycache__ codeagent/__pycache__ 2>/dev/null
+
+echo "🚀 启动Webhook服务 (端口8081)..."
+cd wechat
+python msg_receive.py > ../logs/webhook.log 2>&1 &
+cd ..
 
 # 启动主Agent
 echo "🚀 启动主Agent服务 (端口5001)..."
@@ -42,6 +59,8 @@ python server.py > ../logs/codeagent.log 2>&1 &
 CODE_PID=$!
 cd ..
 sleep 2
+
+deactivate
 
 # 检查服务
 echo "🔍 检查服务状态..."
