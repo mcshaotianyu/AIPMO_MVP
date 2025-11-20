@@ -1,6 +1,7 @@
 """数据库连接和操作模块"""
 
 import os
+import sys
 import psycopg2
 from psycopg2.extras import RealDictCursor
 from psycopg2.pool import SimpleConnectionPool
@@ -8,6 +9,10 @@ from contextlib import contextmanager
 from typing import Dict, List, Optional, Any
 import json
 import threading
+
+# 添加utils目录到路径
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+from utils.logger import database_logger as logger
 
 
 class Database:
@@ -51,10 +56,10 @@ class Database:
                 maxconn=10,
                 **self.db_config
             )
-            print(f"[INFO] 数据库连接池初始化成功: {self.db_config['host']}:{self.db_config['port']}/{self.db_config['database']}")
+            logger.info(f"数据库连接池初始化成功: {self.db_config['host']}:{self.db_config['port']}/{self.db_config['database']}")
         except Exception as e:
-            print(f"[ERROR] 数据库连接池初始化失败: {str(e)}")
-            print(f"[WARNING] 请确保PostgreSQL数据库已启动，可以使用 ./start_database.sh 启动数据库")
+            logger.error(f"数据库连接池初始化失败: {str(e)}", exc_info=True)
+            logger.warning("请确保PostgreSQL数据库已启动，可以使用 ./start_database.sh 启动数据库")
             # 不抛出异常，允许程序继续运行（但数据库操作会失败）
             self.pool = None
     
@@ -77,153 +82,29 @@ class Database:
             if conn:
                 self.pool.putconn(conn)
     
-    # ==================== 会话（Session）相关操作 ====================
+    # ==================== MainAgent对话历史（MainAgent Conversations）相关操作 ====================
     
-    def create_session(self, session_id: str, user_a: str, user_b_id: str, 
-                     user_b_name: str, question: str, callback_url: Optional[str] = None) -> Dict:
-        """创建新会话"""
-        with self.get_connection() as conn:
-            with conn.cursor(cursor_factory=RealDictCursor) as cur:
-                cur.execute("""
-                    INSERT INTO sessions (session_id, user_a, user_b_id, user_b_name, question, callback_url)
-                    VALUES (%s, %s, %s, %s, %s, %s)
-                    RETURNING *
-                """, (session_id, user_a, user_b_id, user_b_name, question, callback_url))
-                return dict(cur.fetchone())
-    
-    def get_session(self, session_id: str) -> Optional[Dict]:
-        """获取会话"""
-        with self.get_connection() as conn:
-            with conn.cursor(cursor_factory=RealDictCursor) as cur:
-                cur.execute("SELECT * FROM sessions WHERE session_id = %s", (session_id,))
-                row = cur.fetchone()
-                return dict(row) if row else None
-    
-    def update_session_status(self, session_id: str, status: str):
-        """更新会话状态"""
-        with self.get_connection() as conn:
-            with conn.cursor() as cur:
-                cur.execute(
-                    "UPDATE sessions SET status = %s WHERE session_id = %s",
-                    (status, session_id)
-                )
-    
-    def set_session_result(self, session_id: str, result: str):
-        """设置会话结果"""
-        with self.get_connection() as conn:
-            with conn.cursor() as cur:
-                cur.execute(
-                    "UPDATE sessions SET result = %s, status = 'completed' WHERE session_id = %s",
-                    (result, session_id)
-                )
-    
-    def mark_callback_triggered(self, session_id: str):
-        """标记回调已触发"""
-        with self.get_connection() as conn:
-            with conn.cursor() as cur:
-                cur.execute(
-                    "UPDATE sessions SET callback_triggered = TRUE WHERE session_id = %s",
-                    (session_id,)
-                )
-    
-    def get_pending_sessions(self, user_b_id: str) -> List[Dict]:
-        """获取特定用户B的待处理会话"""
-        with self.get_connection() as conn:
-            with conn.cursor(cursor_factory=RealDictCursor) as cur:
-                cur.execute("""
-                    SELECT s.*, 
-                           (SELECT content FROM session_messages 
-                            WHERE session_id = s.session_id AND role = 'assistant' 
-                            ORDER BY created_at DESC LIMIT 1) as latest_question,
-                           (SELECT COUNT(*) FROM session_messages WHERE session_id = s.session_id) / 2 as conversation_turns
-                    FROM sessions s
-                    WHERE s.user_b_id = %s AND s.status IN ('pending', 'in_progress')
-                    ORDER BY s.created_at DESC
-                """, (user_b_id,))
-                return [dict(row) for row in cur.fetchall()]
-    
-    def get_all_sessions(self) -> List[Dict]:
-        """获取所有会话（用于调试）"""
-        with self.get_connection() as conn:
-            with conn.cursor(cursor_factory=RealDictCursor) as cur:
-                cur.execute("""
-                    SELECT s.*,
-                           (SELECT content FROM session_messages 
-                            WHERE session_id = s.session_id AND role = 'assistant' 
-                            ORDER BY created_at DESC LIMIT 1) as latest_question,
-                           (SELECT COUNT(*) FROM session_messages WHERE session_id = s.session_id) / 2 as conversation_turns
-                    FROM sessions s
-                    ORDER BY s.created_at DESC
-                """)
-                return [dict(row) for row in cur.fetchall()]
-    
-    def get_all_pending_sessions(self) -> List[Dict]:
-        """获取所有待处理会话（用于测试，模拟所有用户）"""
-        with self.get_connection() as conn:
-            with conn.cursor(cursor_factory=RealDictCursor) as cur:
-                cur.execute("""
-                    SELECT s.*, 
-                           (SELECT content FROM session_messages 
-                            WHERE session_id = s.session_id AND role = 'assistant' 
-                            ORDER BY created_at DESC LIMIT 1) as latest_question,
-                           (SELECT COUNT(*) FROM session_messages WHERE session_id = s.session_id) / 2 as conversation_turns
-                    FROM sessions s
-                    WHERE s.status IN ('pending', 'in_progress')
-                    ORDER BY s.created_at DESC
-                """)
-                return [dict(row) for row in cur.fetchall()]
-    
-    # ==================== 会话消息（Session Messages）相关操作 ====================
-    
-    def add_session_message(self, session_id: str, role: str, content: str):
-        """添加会话消息"""
-        with self.get_connection() as conn:
-            with conn.cursor() as cur:
-                cur.execute("""
-                    INSERT INTO session_messages (session_id, role, content)
-                    VALUES (%s, %s, %s)
-                """, (session_id, role, content))
-    
-    def get_session_messages(self, session_id: str) -> List[Dict]:
-        """获取会话的所有消息"""
-        with self.get_connection() as conn:
-            with conn.cursor(cursor_factory=RealDictCursor) as cur:
-                cur.execute("""
-                    SELECT role, content, created_at
-                    FROM session_messages
-                    WHERE session_id = %s
-                    ORDER BY created_at ASC
-                """, (session_id,))
-                rows = cur.fetchall()
-                return [
-                    {
-                        "role": row["role"],
-                        "content": row["content"],
-                        "timestamp": row["created_at"].isoformat() if row["created_at"] else None
-                    }
-                    for row in rows
-                ]
-    
-    # ==================== 用户对话历史（User Conversations）相关操作 ====================
-    
-    def save_user_message(self, user_id: str, role: str, content: Optional[str] = None,
-                         tool_call_id: Optional[str] = None, tool_calls: Optional[List[Dict]] = None):
-        """保存用户消息"""
+    def save_mainagent_message(self, user_id: str, role: str, content: Optional[str] = None,
+                               tool_call_id: Optional[str] = None, tool_calls: Optional[List[Dict]] = None):
+        """保存MainAgent对话消息"""
+        logger.debug(f"保存MainAgent消息 - 用户ID: {user_id}, 角色: {role}, 内容长度: {len(content) if content else 0}")
         with self.get_connection() as conn:
             with conn.cursor() as cur:
                 tool_calls_json = json.dumps(tool_calls) if tool_calls else None
                 cur.execute("""
-                    INSERT INTO user_conversations (user_id, role, content, tool_call_id, tool_calls)
+                    INSERT INTO mainagent_conversations (user_id, role, content, tool_call_id, tool_calls)
                     VALUES (%s, %s, %s, %s, %s)
                 """, (user_id, role, content, tool_call_id, tool_calls_json))
+                logger.debug(f"MainAgent消息已保存到数据库")
     
-    def get_user_conversation(self, user_id: str) -> List[Dict]:
-        """获取用户的对话历史"""
+    def get_mainagent_conversation(self, user_id: str) -> List[Dict]:
+        """获取MainAgent的对话历史"""
+        logger.debug(f"获取MainAgent对话历史 - 用户ID: {user_id}")
         with self.get_connection() as conn:
             with conn.cursor(cursor_factory=RealDictCursor) as cur:
                 cur.execute("""
                     SELECT role, content, tool_call_id, tool_calls
-                    FROM user_conversations
+                    FROM mainagent_conversations
                     WHERE user_id = %s
                     ORDER BY created_at ASC
                 """, (user_id,))
@@ -240,50 +121,82 @@ class Database:
                         # tool_calls已经是JSONB，直接使用
                         msg["tool_calls"] = row["tool_calls"]
                     result.append(msg)
+                logger.debug(f"获取到 {len(result)} 条对话历史")
                 return result
     
-    def update_user_message(self, user_id: str, tool_call_id: str, new_content: str):
-        """更新用户消息（用于更新tool消息的内容）"""
+    def update_mainagent_message(self, user_id: str, tool_call_id: str, new_content: str):
+        """更新MainAgent消息（用于更新tool消息的内容）"""
         with self.get_connection() as conn:
             with conn.cursor() as cur:
                 cur.execute("""
-                    UPDATE user_conversations
+                    UPDATE mainagent_conversations
                     SET content = %s
                     WHERE user_id = %s AND tool_call_id = %s AND role = 'tool'
                 """, (new_content, user_id, tool_call_id))
     
-    def clear_user_conversation(self, user_id: str):
-        """清空用户的对话历史"""
+    def clear_mainagent_conversation(self, user_id: str):
+        """清空MainAgent的对话历史"""
         with self.get_connection() as conn:
             with conn.cursor() as cur:
-                cur.execute("DELETE FROM user_conversations WHERE user_id = %s", (user_id,))
+                cur.execute("DELETE FROM mainagent_conversations WHERE user_id = %s", (user_id,))
     
-    # ==================== 会话映射（Session Mappings）相关操作 ====================
+    # ==================== 员工台账（Employee Directory）相关操作 ====================
     
-    def register_session_mapping(self, session_id: str, tool_call_id: str, user_id: str):
-        """注册session_id到tool_call_id和user_id的映射"""
-        with self.get_connection() as conn:
-            with conn.cursor() as cur:
-                cur.execute("""
-                    INSERT INTO session_mappings (session_id, tool_call_id, user_id)
-                    VALUES (%s, %s, %s)
-                    ON CONFLICT (session_id) DO UPDATE
-                    SET tool_call_id = EXCLUDED.tool_call_id, user_id = EXCLUDED.user_id
-                """, (session_id, tool_call_id, user_id))
-    
-    def get_session_mapping(self, session_id: str) -> Optional[Dict]:
-        """获取session_id对应的tool_call_id和user_id"""
+    def search_employee_phones(self, names: List[str]) -> List[Dict[str, str]]:
+        """
+        根据员工姓名列表查询手机号
+        
+        Args:
+            names: 员工姓名列表
+            
+        Returns:
+            List[Dict]: 查询结果列表，每个元素包含 {"name": "姓名", "phone": "手机号"}
+        """
+        if not names or not isinstance(names, list):
+            logger.warning("search_employee_phones: 输入参数无效")
+            return []
+        
+        logger.info(f"查询员工手机号 - 姓名列表: {names}, 数量: {len(names)}")
         with self.get_connection() as conn:
             with conn.cursor(cursor_factory=RealDictCursor) as cur:
+                # 使用IN查询，匹配姓名列表
+                placeholders = ','.join(['%s'] * len(names))
+                cur.execute(f"""
+                    SELECT name, phone
+                    FROM employee_directory
+                    WHERE name IN ({placeholders})
+                """, tuple(names))
+                
+                rows = cur.fetchall()
+                result = []
+                for row in rows:
+                    result.append({
+                        "name": row["name"],
+                        "phone": row["phone"]
+                    })
+                logger.info(f"查询完成 - 找到 {len(result)} 个员工信息")
+                if result:
+                    logger.debug(f"查询结果: {result}")
+                return result
+    
+    def add_employee(self, name: str, phone: str, department: Optional[str] = None):
+        """添加员工到台账"""
+        with self.get_connection() as conn:
+            with conn.cursor() as cur:
                 cur.execute("""
-                    SELECT tool_call_id, user_id
-                    FROM session_mappings
-                    WHERE session_id = %s
-                """, (session_id,))
-                row = cur.fetchone()
-                return dict(row) if row else None
+                    INSERT INTO employee_directory (name, phone, department)
+                    VALUES (%s, %s, %s)
+                    ON CONFLICT (name) DO UPDATE
+                    SET phone = EXCLUDED.phone, department = EXCLUDED.department
+                """, (name, phone, department))
+    
+    def get_all_employees(self) -> List[Dict]:
+        """获取所有员工（用于调试）"""
+        with self.get_connection() as conn:
+            with conn.cursor(cursor_factory=RealDictCursor) as cur:
+                cur.execute("SELECT name, phone, department FROM employee_directory ORDER BY name")
+                return [dict(row) for row in cur.fetchall()]
 
 
 # 全局数据库实例
 db = Database()
-

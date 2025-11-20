@@ -1,11 +1,16 @@
 """代码Agent工具模块"""
 
 import os
+import sys
 import json
 import pandas as pd
 import subprocess
 import tempfile
 from typing import Dict, Any, List
+
+# 添加utils目录到路径
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+from utils.logger import codeagent_logger as logger
 
 
 class ReadXlsxTool:
@@ -26,14 +31,20 @@ class ReadXlsxTool:
             str: JSON格式的前20行数据和列信息
         """
         try:
+            logger.info(f"执行read_xlsx工具，文件路径: {file_path}")
+            
             if not os.path.exists(file_path):
+                logger.error(f"文件不存在: {file_path}")
                 return f"错误：文件不存在: {file_path}"
             
             if not file_path.endswith(('.xlsx', '.xls')):
+                logger.error(f"文件格式不支持: {file_path}")
                 return f"错误：文件格式不支持，需要.xlsx或.xls格式"
             
             # 读取前20行
+            logger.debug("开始读取Excel文件前20行")
             df = pd.read_excel(file_path, nrows=20)
+            logger.info(f"成功读取 {len(df)} 行数据，列数: {len(df.columns)}")
             
             # 获取列信息
             columns_info = []
@@ -67,9 +78,11 @@ class ReadXlsxTool:
                 "data": data_rows
             }
             
+            logger.info(f"read_xlsx工具执行成功，读取 {len(data_rows)} 行，{len(columns_info)} 列")
             return json.dumps(result, ensure_ascii=False, indent=2)
             
         except Exception as e:
+            logger.error(f"read_xlsx工具执行异常: {str(e)}", exc_info=True)
             return f"读取XLSX文件失败：{str(e)}"
 
 
@@ -92,13 +105,18 @@ class ExecuteCodeTool:
             str: 执行结果
         """
         try:
+            logger.info(f"执行execute_code工具，代码长度: {len(code)} 字符，文件路径: {file_path}")
+            
             if not file_path:
+                logger.error("file_path参数为空")
                 return "错误：file_path 参数不能为空"
             
             if not os.path.exists(file_path):
+                logger.error(f"文件不存在: {file_path}")
                 return f"错误：文件不存在: {file_path}"
             
             # 创建临时文件保存代码
+            logger.debug("创建临时Python文件")
             with tempfile.NamedTemporaryFile(mode='w', suffix='.py', delete=False, encoding='utf-8') as f:
                 # 在代码开头添加文件路径变量
                 # 转义文件路径中的反斜杠
@@ -113,10 +131,12 @@ FILE_PATH = r'{escaped_path}'
 """
                 f.write(modified_code)
                 temp_code_file = f.name
+                logger.debug(f"临时文件已创建: {temp_code_file}")
             
             try:
                 # 执行代码，工作目录设置为文件所在目录
                 work_dir = os.path.dirname(os.path.abspath(file_path)) if file_path else None
+                logger.info(f"开始执行Python代码，工作目录: {work_dir}")
                 result = subprocess.run(
                     ['python', temp_code_file],
                     capture_output=True,
@@ -125,24 +145,34 @@ FILE_PATH = r'{escaped_path}'
                     cwd=work_dir
                 )
                 
+                logger.info(f"代码执行完成，返回码: {result.returncode}")
+                
                 if result.returncode == 0:
                     output = result.stdout.strip()
+                    logger.info(f"代码执行成功，输出长度: {len(output)} 字符")
+                    logger.debug(f"代码输出预览: {output[:300]}{'...' if len(output) > 300 else ''}")
                     if output:
                         return f"执行成功：\n{output}"
                     else:
+                        logger.warning("代码执行成功但无输出")
                         return "执行成功，但无输出"
                 else:
                     error = result.stderr.strip()
+                    logger.error(f"代码执行失败，返回码: {result.returncode}")
+                    logger.error(f"错误信息: {error}")
                     return f"执行失败：\n{error}"
                     
             finally:
                 # 清理临时文件
                 if os.path.exists(temp_code_file):
                     os.unlink(temp_code_file)
+                    logger.debug(f"临时文件已删除: {temp_code_file}")
                     
         except subprocess.TimeoutExpired:
+            logger.error("代码执行超时（30秒）")
             return "执行超时：代码执行时间超过30秒"
         except Exception as e:
+            logger.error(f"execute_code工具执行异常: {str(e)}", exc_info=True)
             return f"执行代码失败：{str(e)}"
 
 

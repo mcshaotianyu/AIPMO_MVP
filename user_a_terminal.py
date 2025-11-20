@@ -6,19 +6,14 @@
 1. 向主agent提问
 2. 接收主agent的回复
 3. 多轮对话
-4. 接收异步推送的结果（通过轮询通知）
 
 使用方法：
-1. 确保主agent和子agent服务已启动
+1. 确保主agent服务已启动
 2. 运行此脚本: python user_a_terminal.py
 """
 
 import requests
-import json
-import time
-import threading
 import sys
-from datetime import datetime
 
 MAINAGENT_URL = "http://localhost:5001"
 
@@ -29,9 +24,6 @@ class UserATerminal:
     def __init__(self, user_id="user_a_张三"):
         self.user_id = user_id
         self.conversation_history = None
-        self.last_notification_check = time.time()
-        self.known_notifications = set()
-        self.monitoring = True
         
     def print_banner(self):
         """打印横幅"""
@@ -43,7 +35,6 @@ class UserATerminal:
         print("提示:")
         print("  - 直接输入问题向主agent提问")
         print("  - 输入 'quit' 或 'exit' 退出")
-        print("  - 当子agent完成任务时，会自动收到推送通知")
         print("=" * 70)
     
     def send_query(self, query):
@@ -101,55 +92,9 @@ class UserATerminal:
         
         print("─" * 70)
     
-    def check_notifications(self):
-        """检查是否有新的推送通知"""
-        try:
-            response = requests.get(
-                f"{MAINAGENT_URL}/get_notifications",
-                timeout=5
-            )
-            
-            if response.status_code == 200:
-                notifications = response.json().get("notifications", {})
-                
-                # 检查新通知
-                for session_id, notification in notifications.items():
-                    # 不在已读消息中
-                    if session_id not in self.known_notifications:
-                        self.known_notifications.add(session_id)
-                        self.display_notification(notification)
-                        
-        except Exception as e:
-            pass  # 静默失败
-    
-    def display_notification(self, notification):
-        """显示推送通知"""
-        print("\n")
-        print("🔔" + "═" * 68 + "🔔")
-        print("                   ✨ 收到新的推送通知 ✨")
-        print("═" * 70)
-        print(f"📌 关于您的问题:")
-        print(f"   {notification['question']}")
-        print(f"\n💡 我们已经为您咨询了相关人员，得到以下答复:")
-        print(f"\n{notification['result']}")
-        print(f"\n⏰ 时间: {notification.get('timestamp', 'N/A')}")
-        print("═" * 70)
-        print()
-    
-    def notification_monitor(self):
-        """后台监控通知"""
-        while self.monitoring:
-            time.sleep(3)  # 每3秒检查一次
-            self.check_notifications()
-    
     def run(self):
         """运行交互终端"""
         self.print_banner()
-        
-        # 启动通知监控线程，每三秒轮询一次，检查是否有新的推送通知，模拟用户A接收消息
-        monitor_thread = threading.Thread(target=self.notification_monitor)
-        monitor_thread.daemon = True
-        monitor_thread.start()
         
         # 检查服务是否可用
         try:
@@ -172,7 +117,6 @@ class UserATerminal:
                 
                 if user_input.lower() in ['quit', 'exit', '退出']:
                     print("\n👋 再见！")
-                    self.monitoring = False
                     break
                 
                 if not user_input:
@@ -188,7 +132,6 @@ class UserATerminal:
                 
             except KeyboardInterrupt:
                 print("\n\n👋 程序被用户中断")
-                self.monitoring = False
                 break
             except Exception as e:
                 print(f"\n❌ 发生错误: {str(e)}")

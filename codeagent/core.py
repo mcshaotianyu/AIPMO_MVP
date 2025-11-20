@@ -1,11 +1,16 @@
 """代码Agent核心逻辑模块"""
 
 import os
+import sys
 import json
 import re
 from openai import OpenAI
 from prompts import SYSTEM_PROMPT
 from tools import ToolManager, get_tools_definitions
+
+# 添加utils目录到路径
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+from utils.logger import codeagent_logger as logger
 
 
 def clean_and_validate_code(code: str) -> str:
@@ -165,22 +170,26 @@ def execute_code_agent(user_query: str, file_path: str = None, max_iterations: i
         while iteration < max_iterations:
             iteration += 1
             execution_log.append(f"=== 迭代 {iteration} ===")
-            print(f"\n[INFO] === ReAct 迭代 {iteration} ===")
+            logger.info(f"=== ReAct 迭代 {iteration}/{max_iterations} ===")
+            logger.debug(f"当前对话历史消息数: {len(messages)}")
             
             # 调用LLM with Tools
+            logger.info("调用LLM API...")
             response = client.chat.completions.create(
                 model="deepseek-chat",
                 messages=messages,
                 tools=tools,
                 stream=False
             )
+            logger.debug(f"LLM API调用成功，响应ID: {response.id}")
             
             message = response.choices[0].message
-            print(f"\n[INFO] 消息内容: {message.content}")
-            print(f"\n[INFO]工具调用: {message.tool_calls}")
+            logger.debug(f"LLM响应内容: {message.content if message.content else 'None'}...")
+            logger.debug(f"LLM工具调用数量: {len(message.tool_calls) if message.tool_calls else 0}")
             
             # 检查是否有工具调用
             if message.tool_calls:
+                logger.info(f"LLM决定调用工具，共 {len(message.tool_calls)} 个工具调用")
                 execution_log.append("LLM决定调用工具")
                 # 添加助手消息到历史
                 messages.append({
@@ -199,22 +208,29 @@ def execute_code_agent(user_query: str, file_path: str = None, max_iterations: i
                 })
                 
                 # 处理每个工具调用
-                for tool_call in message.tool_calls:
+                for idx, tool_call in enumerate(message.tool_calls, 1):
                     function_name = tool_call.function.name
                     function_args_str = tool_call.function.arguments
                     tool_call_id = tool_call.id
                     
+                    logger.info(f"处理工具调用 [{idx}/{len(message.tool_calls)}]: {function_name} (ID: {tool_call_id})")
                     execution_log.append(f"调用工具: {function_name}({function_args_str})")
                     called_functions.append(function_name)
                     
                     try:
                         function_args = json.loads(function_args_str)
+                        logger.debug(f"工具 {function_name} 参数: {json.dumps(function_args, ensure_ascii=False)}")
                     except json.JSONDecodeError as e:
                         function_result = f"错误：函数参数解析失败: {str(e)}"
+                        logger.error(f"工具 {function_name} 参数解析失败: {str(e)}")
+                        logger.error(f"原始参数字符串: {function_args_str}")
                     else:
                         # 执行工具
+                        logger.info(f"开始执行工具: {function_name}")
                         function_result = tool_manager.execute_tool(function_name, function_args)
-                        print(f"[INFO] 工具 {function_name} 执行结果: {function_result[:200]}...")
+                        logger.info(f"工具 {function_name} 执行完成")
+                        logger.debug(f"工具 {function_name} 结果长度: {len(function_result)} 字符")
+                        logger.debug(f"工具 {function_name} 结果预览: {function_result[:300]}{'...' if len(function_result) > 300 else ''}")
                     
                     # 添加工具结果到消息历史
                     messages.append({
@@ -224,6 +240,7 @@ def execute_code_agent(user_query: str, file_path: str = None, max_iterations: i
                     })
                     
                     execution_log.append(f"工具结果: {function_result[:100]}...")
+                    logger.debug(f"工具 {function_name} 结果已添加到对话历史")
             else:
                 # 没有工具调用，检查LLM回复中是否包含代码
                 assistant_content = message.content
@@ -256,7 +273,8 @@ def execute_code_agent(user_query: str, file_path: str = None, max_iterations: i
                         })
                         continue
                     
-                    print(f"[INFO] 从LLM回复中提取到代码，准备执行")
+                    logger.info("从LLM回复中提取到代码，开始清理和验证")
+                    logger.debug(f"提取的代码长度: {len(extracted_code)} 字符")
                     execution_log.append("从LLM回复中提取代码并执行")
                     
                     # 添加助手消息到历史
@@ -266,12 +284,16 @@ def execute_code_agent(user_query: str, file_path: str = None, max_iterations: i
                     })
                     
                     # 执行代码
+                    logger.info("开始执行代码")
                     function_result = tool_manager.execute_tool("execute_code", {
                         "code": extracted_code,
                         "file_path": file_path
                     })
                     called_functions.append("execute_code")
-                    execution_log.append(f"执行代码结果: {function_result[:200]}...")
+                    logger.info("代码执行完成")
+                    logger.debug(f"代码执行结果长度: {len(function_result)} 字符")
+                    logger.debug(f"代码执行结果预览: {function_result}{'...' if len(function_result) > 300 else ''}")
+                    execution_log.append(f"执行代码结果: {function_result}...")
                     
                     # 添加执行结果到消息历史
                     messages.append({
@@ -294,11 +316,14 @@ def execute_code_agent(user_query: str, file_path: str = None, max_iterations: i
                         "content": final_answer
                     })
                     execution_log.append("LLM给出最终答案")
-                    print(f"[INFO] LLM给出最终答案: {final_answer}")
+                    logger.info("LLM给出最终答案（无代码执行）")
+                    logger.info(f"最终答案: {final_answer}{'...' if len(final_answer) > 200 else ''}")
                     break
         
         # 如果达到最大迭代次数
         if iteration >= max_iterations:
+            logger.warning(f"达到最大迭代次数 {max_iterations}，强制结束")
+            logger.warning(f"已调用工具: {called_functions}")
             return {
                 "status": "max_iterations_reached",
                 "final_answer": final_answer or "达到最大迭代次数，未完成处理",
@@ -307,6 +332,7 @@ def execute_code_agent(user_query: str, file_path: str = None, max_iterations: i
                 "function_called": called_functions
             }
         
+        logger.info(f"查询处理完成，迭代次数: {iteration}, 调用工具: {called_functions}")
         return {
             "status": "completed",
             "final_answer": final_answer or "处理完成",
@@ -316,6 +342,7 @@ def execute_code_agent(user_query: str, file_path: str = None, max_iterations: i
         }
         
     except Exception as e:
+        logger.error(f"处理查询异常: {str(e)}", exc_info=True)
         return {
             "status": "error",
             "error": str(e),
@@ -360,7 +387,9 @@ def process_user_query(user_query: str, file_path: str = None, conversation_hist
     messages.append({"role": "user", "content": user_query})
     
     try:
-        print(f"[INFO] 处理查询: {user_query}")
+        logger.info(f"处理查询: {user_query[:100]}{'...' if len(user_query) > 100 else ''}")
+        logger.debug(f"文件路径: {file_path}")
+        logger.debug(f"对话历史消息数: {len(messages)}")
         
         max_iterations = 10
         iteration = 0
@@ -369,21 +398,26 @@ def process_user_query(user_query: str, file_path: str = None, conversation_hist
         
         while iteration < max_iterations:
             iteration += 1
-            print(f"\n[INFO] === ReAct 迭代 {iteration} ===")
+            logger.info(f"=== ReAct 迭代 {iteration}/{max_iterations} ===")
+            logger.debug(f"当前对话历史消息数: {len(messages)}")
             
             # 调用LLM with Tools
+            logger.info("调用LLM API...")
             response = client.chat.completions.create(
                 model="deepseek-chat",
                 messages=messages,
                 tools=tools,
                 stream=False
             )
+            logger.debug(f"LLM API调用成功，响应ID: {response.id}")
             
             message = response.choices[0].message
+            logger.debug(f"LLM响应内容: {message.content if message.content else 'None'}...")
+            logger.debug(f"LLM工具调用数量: {len(message.tool_calls) if message.tool_calls else 0}")
             
             # 检查是否有工具调用
             if message.tool_calls:
-                print(f"[INFO] LLM决定调用工具")
+                logger.info(f"LLM决定调用工具，共 {len(message.tool_calls)} 个工具调用")
                 # 添加助手消息到历史
                 messages.append({
                     "role": "assistant",
@@ -410,12 +444,18 @@ def process_user_query(user_query: str, file_path: str = None, conversation_hist
                 
                 try:
                     function_args = json.loads(function_args_str)
+                    logger.debug(f"工具 {function_name} 参数: {json.dumps(function_args, ensure_ascii=False)}")
                 except json.JSONDecodeError as e:
                     function_result = f"错误：函数参数解析失败: {str(e)}"
+                    logger.error(f"工具 {function_name} 参数解析失败: {str(e)}")
+                    logger.error(f"原始参数字符串: {function_args_str}")
                 else:
                     # 执行工具
+                    logger.info(f"开始执行工具: {function_name}")
                     function_result = tool_manager.execute_tool(function_name, function_args)
-                    print(f"[INFO] 工具 {function_name} 执行结果: {function_result[:200]}...")
+                    logger.info(f"工具 {function_name} 执行完成")
+                    logger.debug(f"工具 {function_name} 结果长度: {len(function_result)} 字符")
+                    logger.debug(f"工具 {function_name} 结果预览: {function_result[:300]}{'...' if len(function_result) > 300 else ''}")
                 
                 # 添加工具结果到消息历史
                 messages.append({
@@ -423,6 +463,7 @@ def process_user_query(user_query: str, file_path: str = None, conversation_hist
                     "tool_call_id": tool_call_id,
                     "content": function_result
                 })
+                logger.debug(f"工具 {function_name} 结果已添加到对话历史")
             else:
                 # 没有工具调用，检查LLM回复中是否包含代码
                 assistant_content = message.content
@@ -455,7 +496,9 @@ def process_user_query(user_query: str, file_path: str = None, conversation_hist
                         })
                         continue
                     
-                    print(f"[INFO] 从LLM回复中提取到代码，准备执行")
+                    logger.info("从LLM回复中提取到代码，开始清理和验证")
+                    logger.debug(f"提取的代码长度: {len(extracted_code)} 字符")
+                    logger.debug(f"清理后的代码长度: {len(cleaned_code)} 字符")
                     
                     # 添加助手消息到历史
                     messages.append({
@@ -464,12 +507,15 @@ def process_user_query(user_query: str, file_path: str = None, conversation_hist
                     })
                     
                     # 执行代码
+                    logger.info("开始执行代码")
                     function_result = tool_manager.execute_tool("execute_code", {
                         "code": cleaned_code,
                         "file_path": file_path
                     })
                     called_functions.append("execute_code")
-                    print(f"[INFO] 代码执行结果: {function_result[:200]}...")
+                    logger.info("代码执行完成")
+                    logger.debug(f"代码执行结果长度: {len(function_result)} 字符")
+                    logger.debug(f"代码执行结果预览: {function_result[:300]}{'...' if len(function_result) > 300 else ''}")
                     
                     # 添加执行结果到消息历史
                     messages.append({
@@ -491,11 +537,17 @@ def process_user_query(user_query: str, file_path: str = None, conversation_hist
                         "role": "assistant",
                         "content": answer
                     })
-                    print(f"[INFO] LLM给出最终答案: {answer}")
+                    logger.info("LLM给出最终答案（无代码执行）")
+                    logger.info(f"最终答案: {answer}{'...' if len(answer) > 200 else ''}")
                     break
         
+        status = "completed" if answer else "max_iterations_reached"
+        if status == "max_iterations_reached":
+            logger.warning(f"达到最大迭代次数 {max_iterations}，强制结束")
+        logger.info(f"查询处理完成，状态: {status}, 迭代次数: {iteration}, 调用工具: {called_functions}")
+        
         return {
-            "status": "completed" if answer else "max_iterations_reached",
+            "status": status,
             "answer": answer or "达到最大迭代次数",
             "function_called": called_functions,
             "iterations": iteration,
@@ -503,6 +555,7 @@ def process_user_query(user_query: str, file_path: str = None, conversation_hist
         }
         
     except Exception as e:
+        logger.error(f"处理查询异常: {str(e)}", exc_info=True)
         return {
             "status": "error",
             "error": str(e),
