@@ -4,6 +4,16 @@
 
 ---
 
+### 企微收发消息
+```
+官网接口文档 -https://developer.work.weixin.qq.com/document/path/90236
+msg_receive.py
+    /yxgtest/wechat/callback 接收消息接口 post方法
+    process_incoming_message 方法处理消息并发送到主Agent
+msg_send.py 
+    send_text_message 发送文本消息到指定用户。
+```
+
 ## 🚀 快速测试（3步）
 
 ### 第1步：启动服务
